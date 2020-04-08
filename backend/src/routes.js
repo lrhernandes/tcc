@@ -22,6 +22,8 @@ routes.delete('/client/settings/delete:id', ClientController.delete);
 routes.post('/announcements', AnnouncementController.create);
 routes.get('/announcements', AnnouncementController.index);
 routes.delete('/announcements/:id', AnnouncementController.delete);
+//routes.put('announcements/settings/:id', AnnouncementController.update);
+routes.put('announcements/settings/:id', AnnouncementController.update);
 
 
 
