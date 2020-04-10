@@ -26,8 +26,28 @@ module.exports = {
         return cli;
     },
     //ATUALIZAR CLIENT
-    async update (req, res){
-        //Pendente
+    async update(req, id_par){
+        const { firstName, lastName, user, password, email, rg, born, uf, city } = req;
+        const cli = await Client.findOne({
+            where:{
+                id: id_par
+            },
+        });
+        if(firstName){ cli.firstName = firstName; };
+        if(lastName){ cli.lastName = lastName; };
+        if(password){ cli.password = password; };
+        if(email){ cli.email = email; };
+        if(uf){ cli.uf = uf; };
+        if(city){ cli.city = city; };
+        const client = await cli.save({
+            findAll: firstName,
+            lastName: lastName,
+            password: password,
+            email: email,
+            uf: uf,
+            city: city,
+        });
+        return client;
     },
     //DELETAR CLIENT
     async delete (req, res){

@@ -19,7 +19,20 @@ module.exports = {
     },
     //ATUALIZAR CLIENT
     async update(req, res){
-        //pendente
+        const id_par = req.params.id;
+        const client_id = req.headers.authorization;
+        const cli = await Client.findOne({
+            where:{
+                id: id_par
+            },
+        });
+        if(cli.id == client_id){
+            const upcli = await client.update(req.body, id_par);
+            return res.json(upcli);
+        }else{
+            console.log("erro na edição!");
+            return res.json({ message: "Não foi possível editar esse cliente!"});
+        }
     },
     //DELETAR CLIENT
     async delete(req, res){

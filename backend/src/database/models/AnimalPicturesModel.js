@@ -1,7 +1,7 @@
 //REQUISIÇÕES
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../connection');
-const ClientModel = require('./ClientModel');
+const AnnouncementModel = require('./AnnouncementModel');
 
 //CAMPOS
 /*
@@ -10,18 +10,18 @@ const ClientModel = require('./ClientModel');
  */
 
 //MODELO
-const AnimalPicturesModel = sequelize.define('animal_pictures', {
+const AnimalPictures = sequelize.define('animal_pictures', {
     fk_idad:{
         type: DataTypes.INTEGER,
         allowNull: false,
-        references: { model: ClientModel, key: 'id' },
+        references: { model: AnnouncementModel, key: 'id' },
         validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
     },
     animal_pic:{
         type: DataTypes.STRING
     }
 }, {});
-module.exports = AnimalPicturesModel;
+module.exports = AnimalPictures;
 
 //CRIAÇÃO DA TABELA NO BANCO
-//AnimalPicturesModel.sync({force: true});
+//AnimalPictures.sync({force: true});

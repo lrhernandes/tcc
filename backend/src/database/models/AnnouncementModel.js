@@ -63,8 +63,11 @@ const Announcement = sequelize.define('announcements', {
         allowNull: false,
         validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
     },
-    latitude: { type: DataTypes.INTEGER },
-    longitude: { type: DataTypes.INTEGER },
+    cep: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+    },
     uf:{
         type: DataTypes.STRING,
         allowNull: false,
