@@ -113,19 +113,6 @@ header{
     text-align: center;
 }
 
-.form-content .fake-form{
-    width: 70vw;
-    margin: auto;
-    margin-top: 50px;
-    text-align: center;
-    line-height: 300px;
-    background: #F1F1F1;
-    box-shadow: 5px 10px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 33px;
-    z-index: 1;
-    position: relative;
-}
-
 .form-content img{
     position: absolute;
 }
