@@ -6,7 +6,7 @@ const AnnouncementModel = require('./AnnouncementModel');
 //CAMPOS
 /*
  * fk_iduser
- * profile_pic
+ * animal_pic
  */
 
 //MODELO

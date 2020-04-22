@@ -2,22 +2,22 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../connection');
 const ClientModel = require('./ClientModel');
+const AdressModel = require('./AdressModel');
 
 //CAMPOS
 /*
  * sex *
  * age *
- * latitude *
- * longitude *
  * health *
- * fk_iduser *
+ * group *
+ * available *
+ * size *
+ * fk_idUser *
  * temperament *
  * description *
  * type *
  * name *
- * uf *
- * city *
- * size *
+ * fk_idAdress *
  */
 
 //MODELO
@@ -54,38 +54,36 @@ const Announcement = sequelize.define('announcements', {
     },
     age:{
         type: DataTypes.STRING,
+        allowNull: false,
+        validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
     },
     health:{
         type: DataTypes.STRING
     },
-    sex:{
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
-    },
-    cep: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
-    },
-    uf:{
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
-    },
-    city:{
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
-    },
-    fk_iduser:{
+    fk_idUser:{
         type: DataTypes.INTEGER,
         allowNull: false,
         references: { model: ClientModel, key: 'id' },
         validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
     },
+    fk_idAdress:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: { model: AdressModel, key: 'id' },
+        validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+    },
     size:{
         type: DataTypes.STRING,
+        allowNull: false,
+        validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+    },
+    available:{
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+    },
+    group:{
+        type: DataTypes.BOOLEAN,
         allowNull: false,
         validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
     }
@@ -93,4 +91,4 @@ const Announcement = sequelize.define('announcements', {
 module.exports = Announcement;
 
 //CRIAÇÃO DA TABELA NO BANCO
-//Announcement.sync({force: true});
+Announcement.sync({force: true});

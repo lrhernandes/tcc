@@ -1,21 +1,18 @@
 //REQUISIÇÕES
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../connection');
+const AdressModel = require('./AdressModel');
 
 //CAMPOS
 /*
- * firstName
- * lastName
- * user
- * password
- * email
- * rg
- * born
- * uf
- * city
+ * firstName*
+ * lastName*
+ * user*
+ * password*
+ * email*
+ * rg*
+ * born*
  * loginState
- * latitude
- * longitide
  * profile_pic
  */
 
@@ -82,23 +79,13 @@ const Client = sequelize.define('client', {
             notEmpty: { msg: "Este campo não pode estar vazio" }
         }
     },
-    uf:{
-        type: DataTypes.STRING,
+    fk_idAdress:{
+        type: DataTypes.INTEGER,
         allowNull: false,
-        validate: {
-            notEmpty: { msg: "Este campo não pode estar vazio" }
-        }
-    },
-    city:{
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            notEmpty: { msg: "Este campo não pode estar vazio" }
-        }
+        references: { model: AdressModel, key: 'id' },
+        validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
     },
     loginState: { type: DataTypes.BOOLEAN },
-    latitude: { type: DataTypes.INTEGER },
-    longitude: { type: DataTypes.INTEGER },
     profile_pic: { type: DataTypes.STRING  }
 }, {});
 module.exports = Client;
