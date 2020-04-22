@@ -6,7 +6,6 @@ const routes = express.Router();
 const ClientController = require('./controllers/ClientController');
 const AnnouncementController = require('./controllers/AnnouncementController');
 const AnimalPicturesController = require('./controllers/AnimalPicturesController');
-const ConversationController = require('./controllers/ConversationController');
 
 //ROTA RAIZ
 routes.get('/', (req, res)=>{
@@ -31,8 +30,5 @@ routes.delete('/announcements/:id', AnnouncementController.delete);
 routes.post('/pictures/:id', AnimalPicturesController.create);
 routes.get('/pictures', AnimalPicturesController.index);
 
-//ROTAS CONVERSATIONS
-routes.post('/conversation/:id', ConversationController.create);
-routes.get('/conversation', ConversationController.index);
 
 module.exports = routes;

@@ -29,7 +29,7 @@ const Adress = sequelize.define('adress', {
         validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
     }
 }, {});
-module.exports = Announcement;
+module.exports = Adress;
 
 //CRIAÇÃO DA TABELA NO BANCO
 //Adress.sync({force: true});
