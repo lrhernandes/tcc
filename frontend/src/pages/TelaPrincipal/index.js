@@ -16,6 +16,7 @@ export default function TelaPrincipal(){
     return (
         <div className="page"> 
             <div className="content-area">
+
                 {/* MENU HORIZONTAL E BANNER */}
                 <header>
                     <MenuHorizontal/>
@@ -46,7 +47,7 @@ export default function TelaPrincipal(){
                 <p className="copy">
                     2020 <MdCopyright size={12}/> GetPet
                 </p>
-
+                
             </div>
         </div>
     );
