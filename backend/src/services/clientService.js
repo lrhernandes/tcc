@@ -1,17 +1,21 @@
 //REQUISIÇÕES
 const connection = require ('../database/connection');
 const Client = require('../database/models/ClientModel');
+const Adress = require('../database/models/AdressModel');
 
 module.exports = {
     //LISTAR CLIENTS
     async index (){
-        const clients = await Client.findAll();
-        console.log(clients);
+        const clients = await Client.findAll({
+            include:[{
+                model: Adress , as: 'id'
+            }]
+        });
         return clients;
     },
     //SALVAR CLIENT NO BANCO
-    async create(req){ //recebe a requisição de ClientController.js
-        const { firstName, lastName, user, password, email, rg, born, uf, city } = req; //desestrutura a requisição
+    async create(req, idAdress){
+        const { firstName, lastName, rg, user, password, born, email} = req;
         const cli = await Client.create({
             firstName: firstName,
             lastName: lastName,
@@ -20,9 +24,9 @@ module.exports = {
             email: email,
             rg: rg,
             born: born,
-            uf: uf,
-            city: city
+            idAdress: idAdress
         });
+        console.log("User inserido");
         return cli;
     },
     //ATUALIZAR CLIENT

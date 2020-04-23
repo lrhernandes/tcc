@@ -3,19 +3,6 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../connection');
 const AdressModel = require('./AdressModel');
 
-//CAMPOS
-/*
- * firstName*
- * lastName*
- * user*
- * password*
- * email*
- * rg*
- * born*
- * loginState
- * profile_pic
- */
-
 //MODELO
 const Client = sequelize.define('client', {
     firstName: {
@@ -36,6 +23,16 @@ const Client = sequelize.define('client', {
             len: { args: [2,25], msg: "Este campo deve ter entre 2 e 25 caracteres" }
         }
     },
+    rg: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique: true,
+        validate: {
+            notEmpty: { msg: "Este campo não pode estar vazio" },
+            isNumeric: { msg: "Este campo deve ser preenchido apenas com números" },
+            len:{ args: [9, 9], msg: "Este campo deve ser preenchido com exatamente 9 números" }
+        }
+    },
     user: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -53,6 +50,13 @@ const Client = sequelize.define('client', {
             len: { args: [6, 20], msg: "Este campo deve ter entre 6 e 20 caracteres" }
         }
     },
+    born: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+        validate: {
+            notEmpty: { msg: "Este campo não pode estar vazio" }
+        }
+    },
     email: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -62,33 +66,22 @@ const Client = sequelize.define('client', {
             isEmail: { msg: "Este campo deve ser preenchido com um email válido" }
         }
     },
-    rg: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        unique: true,
-        validate: {
-            notEmpty: { msg: "Este campo não pode estar vazio" },
-            isNumeric: { msg: "Este campo deve ser preenchido apenas com números" },
-            len:{ args: [9, 9], msg: "Este campo deve ser preenchido com exatamente 9 números" }
-        }
-    },
-    born: {
-        type: DataTypes.DATEONLY,
-        allowNull: false,
-        validate: {
-            notEmpty: { msg: "Este campo não pode estar vazio" }
-        }
-    },
-    fk_idAdress:{
+    idAdress:{
         type: DataTypes.INTEGER,
         allowNull: false,
         references: { model: AdressModel, key: 'id' },
-        validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+        validate: { notEmpty: { msg: "Este campo não pode estar vazio" } },
+        onDelete: 'CASCADE'
     },
     loginState: { type: DataTypes.BOOLEAN },
     profile_pic: { type: DataTypes.STRING  }
-}, {});
-module.exports = Client;
+}, function () {
+    Client.hasOne(AdressModel, {foreignKey: 'id', as: 'fk_idAdress'});
+});
+
+module.exports = Client
+
+//Client.hasOne(AdressModel, {foreignKey: 'id', as: 'fk_idAdress'});
 
 //CRIAÇÃO DA TABELA NO BANCO
 //Client.sync({force: true});

@@ -1,20 +1,7 @@
 //REQUISIÇÕES
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../connection');
-
-//CAMPOS
-/*
- * sex *
- * age *
- * health *
- * group
- * available
- * fk_idUser 
- * temperament *
- * description *
- * type *
- * name *
- */
+const Client = require('../models/ClientModel');
 
 //MODELO
 const Adress = sequelize.define('adress', {
@@ -27,8 +14,23 @@ const Adress = sequelize.define('adress', {
         type: DataTypes.STRING,
         allowNull: false,
         validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+    },
+    street:{
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+    },
+    houseNumber:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
     }
-}, {});
+}, function () {
+    Adress.belongsTo(Client, {foreignKey: 'id', as: 'Adress'});
+});
+
+//Adress.belongsTo(Client, {foreignKey: 'id', as: 'Adress'});
+
 module.exports = Adress;
 
 //CRIAÇÃO DA TABELA NO BANCO

@@ -37,16 +37,6 @@ const Announcement = sequelize.define('announcements', {
             max: { args: 1100, msg: "Este campo deve ter no máximo 1100 caracteres" }
         }
     },
-    type: {
-        type: DataTypes.STRING,
-        allownull: false,
-        validate: {
-            notEmpty: { msg: "Este campo não pode estar vazio" }
-        }
-    },
-    temperament:{
-        type: DataTypes.STRING,
-    },
     sex:{
         type: DataTypes.STRING,
         allowNull: false,
@@ -60,16 +50,19 @@ const Announcement = sequelize.define('announcements', {
     health:{
         type: DataTypes.STRING
     },
-    fk_idUser:{
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: { model: ClientModel, key: 'id' },
-        validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+    temperament:{
+        type: DataTypes.STRING,
     },
-    fk_idAdress:{
-        type: DataTypes.INTEGER,
+    type: {
+        type: DataTypes.STRING,
+        allownull: false,
+        validate: {
+            notEmpty: { msg: "Este campo não pode estar vazio" }
+        }
+    },
+    group:{
+        type: DataTypes.BOOLEAN,
         allowNull: false,
-        references: { model: AdressModel, key: 'id' },
         validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
     },
     size:{
@@ -82,13 +75,20 @@ const Announcement = sequelize.define('announcements', {
         allowNull: false,
         validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
     },
-    group:{
-        type: DataTypes.BOOLEAN,
+    fk_idAdress:{
+        type: DataTypes.INTEGER,
         allowNull: false,
+        references: { model: AdressModel, key: 'id' },
+        validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+    },
+    fk_idUser:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: { model: ClientModel, key: 'id' },
         validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
     }
 }, {});
 module.exports = Announcement;
 
 //CRIAÇÃO DA TABELA NO BANCO
-Announcement.sync({force: true});
+//Announcement.sync({force: true});

@@ -23,18 +23,15 @@ const Adoption = sequelize.define('adoption', {
         allowNull: false,
         references: { model: ClientModel, key: 'id' },
         validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
-    }
-}, {});
-module.exports = Adoption;
-
-//CRIAÇÃO DA TABELA NO BANCO
-Adoption.sync({force: true});
-
-/*
-,
+    },
     fk_idAnnouncement:{
         type: DataTypes.INTEGER,
         allowNull: false,
         references: { model: AnnouncementModel, key: 'id' },
         validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
-    },*/
+    }
+}, {});
+module.exports = Adoption;
+
+//CRIAÇÃO DA TABELA NO BANCO
+//Adoption.sync({force: true});
