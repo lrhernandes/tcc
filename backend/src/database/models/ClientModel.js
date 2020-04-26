@@ -1,6 +1,5 @@
 'use strict'
 module.exports = (sequelize, DataTypes) => {
-
     const Client = sequelize.define('client', {
         id: {
             type: DataTypes.UUID,
@@ -72,6 +71,9 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: { msg: "Este campo não pode estar vazio" },
                 isEmail: { msg: "Este campo deve ser preenchido com um email válido" }
             }
+        },
+        whatsapp: {
+            type: DataTypes.INTEGER
         },
         loginState: { type: DataTypes.BOOLEAN },
         profile_pic: { type: DataTypes.STRING  }

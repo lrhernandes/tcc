@@ -7,6 +7,7 @@ const connection = require('./database/connection');
 const ClientController = require('./controllers/ClientController');
 const AnnouncementController = require('./controllers/AnnouncementController');
 const AnimalPicturesController = require('./controllers/AnimalPicturesController');
+const AdoptionController = require('./controllers/AdoptionController');
 
 //ROTA RAIZ
 routes.get('/', (req, res)=>{
@@ -31,5 +32,8 @@ routes.delete('/announcements/:id', AnnouncementController.delete);
 routes.post('/pictures/:id', AnimalPicturesController.create);
 routes.get('/pictures', AnimalPicturesController.index);
 
+//ROTAS ADOPTION
+routes.get('/adoptions', AdoptionController.index);
+routes.post('/adoption/:id', AdoptionController.create);
 
 module.exports = routes;

@@ -1,19 +1,30 @@
 //REQUISIÇÕES
 const Adoption = require('../database/models/AdoptionModel');
+const connection = require ('../database/connection');
 
 module.exports = {
-    //LISTAR ANÚNCIOS
+    //LISTAR ADOÇÕES
     async index (){
-        const adoptions = await Adoption.findAll();
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        const adoptions = connection.adoption.findAll({
+            include:[{
+                model: connection.client
+            },
+            {
+                model: connection.announcement
+            }
+        ]
+        });
         return adoptions;
     },
-    //SALVAR FOTOS NO BD
-    async create(req, announcement_id, client_id){ //recebe a requisição de AdoptionController.js
-        const { fk_idUserAdopter} = req; //desestrutura a requisição
-        const adoption = await Adoption.create({
-            fk_idUserAdopter: fk_idUserAdopter,
-            fk_idUserDonor: client_id,
-            fk_idAnnoucement: announcement_id
+
+    //SALVAR ADOÇÃO NO BD
+    async create(req, announcement_id, client_id){
+        const { userAdopterId} = req; 
+        const adoption = connection.adoption.create({
+            userAdopterId: userAdopterId,
+            userDonorId: client_id,
+            announcementId: announcement_id
         });
         return adoption;
     },
