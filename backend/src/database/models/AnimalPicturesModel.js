@@ -1,27 +1,24 @@
-//REQUISIÇÕES
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('../connection');
-const AnnouncementModel = require('./AnnouncementModel');
+'use strict'
+module.exports = (sequelize, DataTypes) => {
+    const AnimalPictures = sequelize.define('animal_pictures', {
+        id: {
+            type: DataTypes.UUID,
+            primaryKey: true,
+            defaultValue: DataTypes.UUIDV4,
+            allowNull: false
+        },
+        announcementId: {
+            type: DataTypes.UUID,
+            allowNull: false
+        },
+        animal_pic:{
+            type: DataTypes.STRING
+        }
+    }, {
+        underscored: true
+    });
 
-//CAMPOS
-/*
- * fk_iduser
- * animal_pic
- */
+    //AnimalPictures.sync({force: true});
+    return AnimalPictures;
+}
 
-//MODELO
-const AnimalPictures = sequelize.define('animal_pictures', {
-    fk_idad:{
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: { model: AnnouncementModel, key: 'id' },
-        validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
-    },
-    animal_pic:{
-        type: DataTypes.STRING
-    }
-}, {});
-module.exports = AnimalPictures;
-
-//CRIAÇÃO DA TABELA NO BANCO
-//AnimalPictures.sync({force: true});

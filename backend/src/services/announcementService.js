@@ -1,50 +1,46 @@
 //REQUISIÇÕES
 const Announcement = require('../database/models/AnnouncementModel');
+const connection = require ('../database/connection');
 
 module.exports = {
     //LISTAR ANÚNCIOS
     async index (){
-        const announcements = await Announcement.findAll();
+        const announcements = await connection.announcement.findAll({
+            include: [{
+                model: connection.adress,
+            }]
+        });
         return announcements;
     },
+
     //SALVAR ANNOUNCEMENT NO BANCO
-    async create(req, client_id){ //recebe a requisição de AnnouncementController.js
-        const { name, description, sex, age, cep, health, temperament, type, uf, city, size} = req; //desestrutura a requisição
-        const announcement = await Announcement.create({
+    async create(req, adressId, userId){
+        const { name, description, sex, age, health, temperament, type, group, size, available} = req; //desestrutura a requisição
+        const announcement = await connection.announcement.create({
+            adressId: adressId,
+            userId: userId,
             name: name,
             description: description,
             sex: sex,
             age: age,
-            cep: cep,
             health: health,
-            fk_iduser: client_id,
             temperament: temperament,
             type: type,
-            uf: uf,
-            city: city,
-            size: size
+            group: group,
+            size: size,
+            available: available
         });
+        console.log("Announcement inserido!");
         return announcement;
     },
-    //DELETAR ANÚNCIOS
-    async delete(id_par){
-        const ann = await Announcement.findOne({
-            where:{
-                id: id_par
-            },
-        });
-        const delann = await Announcement.destroy({
-            where:{
-                id: id_par
-            },
-        });
-    },
+
     //ATUALIZAR ANÚNCIOS
-    async update(req, id_par){
+    async update(req, id_par_ann, id_endereco){
         const { name, description, sex, age, cep, health, temperament, type, uf, city, size} = req;
-        const ann = await Announcement.findOne({
+        console.log("ID do endereço do anúncio AAAAAAAAAAAAAAAAAAAAAa: " + id_endereco);
+        const ann = await connection.announcement.findOne({
             where:{
-                id: id_par
+                id: id_par_ann
             },
         });
         if(name){ ann.name = name;};
@@ -70,7 +66,29 @@ module.exports = {
             uf: uf,
             city: city,
             size: size
+        })
+        const getAnnouncement = await connection.announcement.findOne({
+            include: [{
+                model: connection.adress,
+            }],
+            where: {
+                adressId :  id_endereco
+            }
         });
-        return announcement;
+        return getAnnouncement;
+    },
+    
+    //DELETAR ANÚNCIOS
+    async delete(id_par){
+        const ann = await Announcement.findOne({
+            where:{
+                id: id_par
+            },
+        });
+        const delann = await Announcement.destroy({
+            where:{
+                id: id_par
+            },
+        });
     }
 }

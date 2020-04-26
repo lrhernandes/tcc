@@ -11,7 +11,7 @@ module.exports = {
     //SALVAR ADDRESSES NO BANCO
     async create(req){
         const {uf, city, street, houseNumber} = req;
-        const adr = await Adress.create({
+        const adr = await connection.adress.create({
             uf: uf,
             city: city,
             street: street,
@@ -19,12 +19,13 @@ module.exports = {
         });
         return adr.id;
     },
+    
     //ATUALIZAR ADDRESSES
-    async update(req, id_par){
+    async update(req, id_adr){
         const {uf, city, street, houseNumber} = req;
-        const adr = await Adress.findOne({
+        const adr = await connection.adress.findOne({
             where:{
-                id: id_par
+                id: id_adr
             },
         });
         if(uf){ adr.uf = uf; };
@@ -37,9 +38,9 @@ module.exports = {
             street: street,
             houseNumber: houseNumber,
         });
-        console.log(adress);
         return adress;
     },
+
     //DELETAR ADDRESSES
     async delete (req, res){
         //pendente

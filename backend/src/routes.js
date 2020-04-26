@@ -1,6 +1,7 @@
 //REQUISIÇÕES
 const express = require('express');
 const routes = express.Router();
+const connection = require('./database/connection');
 
 //CONTROLLERS
 const ClientController = require('./controllers/ClientController');

@@ -2,6 +2,7 @@
 const client = require('../services/clientService.js');
 const Client = require('../database/models/ClientModel');
 const adress = require('../services/adressService');
+const connection = require ('../database/connection');
 
 module.exports = {
     //LISTAR CLIENTS
@@ -9,6 +10,7 @@ module.exports = {
         const clients = await client.index();
         return res.json(clients);
     },
+    
     //SALVAR CLIENT NO BANCO
     async create (req, res) {
         const idAdress = await adress.create(req.body);
@@ -16,21 +18,26 @@ module.exports = {
         if(us){
             return res.send(req.body).status(201).send();
         }else{
-           console.log("Erro ao cadastrar"); 
-           res.status(400).send('Error in insert new record');
+           return res.status(400).send('Error in insert new record');
         }
     },
+
     //ATUALIZAR CLIENT
     async update(req, res){
         const id_par = req.params.id;
         const client_id = req.headers.authorization;
-        const cli = await Client.findOne({
+        const cli = await connection.client.findOne({
             where:{
                 id: id_par
             },
         });
+
+        const jsonS = JSON.stringify(cli.dataValues);
+        const jsonP = JSON.parse(jsonS);
+        const id_endereco = jsonP.adressId;
+
         if(cli.id == client_id){
-            const upadr = await adress.update(req.body, id_par);
+            const upadr = await adress.update(req.body, id_endereco); //requisição e id do endereço
             const upcli = await client.update(req.body, id_par);
             return res.json(upcli).status(200).send();
         }else{
@@ -38,6 +45,7 @@ module.exports = {
             return res.status(401).send();
         }
     },
+
     //DELETAR CLIENT
     async delete(req, res){
         //pendente
