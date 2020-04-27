@@ -6,8 +6,8 @@ const connection = require ('../database/connection');
 module.exports = {
     //LISTAR ADOÇÕES
     async index(res){
-        const adoptions = await adoption.index();
-        return res.json(adoptions);
+        const getAdoptions = await adoption.index();
+        return res.json(getAdoptions);
     },
 
     //SALVAR ADOÇÕES NO BD
