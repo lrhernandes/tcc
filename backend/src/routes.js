@@ -25,6 +25,7 @@ routes.delete('/client/settings/delete/:id', ClientController.delete);
 //ROTAS ANNOUNCEMENTS
 routes.post('/announcements', AnnouncementController.create);
 routes.get('/announcements', AnnouncementController.index);
+routes.get('/availableannouncements', AnnouncementController.getAvailableAnnouncements);
 routes.put('/announcements/settings/:id', AnnouncementController.update);
 routes.delete('/announcements/:id', AnnouncementController.delete);
 

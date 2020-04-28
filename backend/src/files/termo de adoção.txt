@@ -1,4 +1,0 @@
-{
-    "title" : "Termo de adoção segura",
-    "content" : "Conteúdo"
-}

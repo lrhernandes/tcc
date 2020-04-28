@@ -14,17 +14,14 @@ module.exports = {
     async create(req, res){
         const client_id = req.headers.authorization;
         const announcement_id = req.params.id;
-        const ann = await connection.announcement.findOne({
-            where:{
-                id : announcement_id
-            }
-        });
-        if(ann.userId == client_id){
+        const ann = await connection.announcement.findOne({where:{ id : announcement_id }});
+        const {available} = JSON.parse(JSON.stringify(ann.dataValues)); // anúncio disponível?
+        if(ann.userId == client_id && available){
             const adoptions = await adoption.create(req.body, announcement_id, client_id);
             return res.json(adoptions);
         }else{
             console.log("Erro na edição!");
-            return res.json({ "mensagem" : "Parece que você não tem permissão para alterar o status de adoção desse anúncio! "}).status(401).send();
+            return res.json({ "msg":"Este anúncio não pode ser editado!"}).status(401).send();
         }
     }
 }

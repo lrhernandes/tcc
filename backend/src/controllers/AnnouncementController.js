@@ -11,6 +11,12 @@ module.exports = {
         return res.json(announcements);
     },
 
+    //LISTAR ANÚNCIOS DISPONÍVEIS
+    async getAvailableAnnouncements(req, res){
+        const availableAnnouncements = await announcement.getAvailableAnnouncements();
+        return res.json(availableAnnouncements);
+    },
+
     //CRIAR ANÚNCIOS 
     async create (req, res) {
         const userId = req.headers.authorization;

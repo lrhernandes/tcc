@@ -13,6 +13,19 @@ module.exports = {
         return announcements;
     },
 
+    //LISTAR ANÚNCIOS DISPONÍVEIS
+    async getAvailableAnnouncements (){
+        const availableAnnouncements = await connection.announcement.findAll({
+            include: [{
+                model: connection.adress,
+            }],
+            where:{
+                available : true
+            }
+        });
+        return availableAnnouncements;
+    },
+
     //SALVAR ANNOUNCEMENT NO BANCO
     async create(req, adressId, userId){
         const { name, description, sex, age, health, temperament, type, group, size, available} = req; //desestrutura a requisição
@@ -36,7 +49,7 @@ module.exports = {
 
     //ATUALIZAR ANÚNCIOS
     async update(req, id_par_ann, id_endereco){
-        const { name, description, sex, age, cep, health, temperament, type, uf, city, size} = req;
+        const { name, description, sex, age, cep, health, temperament, type, uf, city, size, available} = req;
         console.log("ID do endereço do anúncio AAAAAAAAAAAAAAAAAAAAAa: " + id_endereco);
         const ann = await connection.announcement.findOne({
             where:{
@@ -54,6 +67,7 @@ module.exports = {
         if(uf){ ann.uf = uf; };
         if(city){ ann.city = city; };
         if(size){ ann.size = size; };
+        if(available){ ann.available = available}
         const announcement = await ann.save({
             name: name,
             description: description,
@@ -65,7 +79,8 @@ module.exports = {
             type: type,
             uf: uf,
             city: city,
-            size: size
+            size: size,
+            available: available
         })
         const getAnnouncement = await connection.announcement.findOne({
             include: [{
