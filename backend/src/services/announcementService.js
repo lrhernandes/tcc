@@ -32,28 +32,11 @@ module.exports = {
         return availableAnnouncements;
     },
 
-    //SALVAR ANNOUNCEMENT NO BANCO
-    async create(req, adressId, userId){
-        const { name, description, sex, age, health, temperament, type, group, size, available} = req; //desestrutura a requisição
-        const announcement = await connection.announcement.create({
-            adressId: adressId,
-            userId: userId,
-            name: name,
-            description: description,
-            sex: sex,
-            age: age,
-            health: health,
-            temperament: temperament,
-            type: type,
-            group: group,
-            size: size,
-            available: available
-        });
-        const newannouncement = this.register(userId, adressId, name, description, type, size, sex, age);
-        console.log("Announcement inserido!");
-        return announcement;
+    //DELETAR ANÚNCIOS
+    async delete(id_par){
+        //pendente
     },
-
+    
     //ATUALIZAR ANÚNCIOS
     async update(req, id_par_ann, id_endereco){
         const { name, description, sex, age, cep, health, temperament, type, uf, city, size, available} = req;
@@ -99,23 +82,30 @@ module.exports = {
         });
         return getAnnouncement;
     },
-    
-    //DELETAR ANÚNCIOS
-    async delete(id_par){
-        /*
-        const ann = await Announcement.findOne({
-            where:{
-                id: id_par
-            },
+
+    //SALVAR ANNOUNCEMENT NO BANCO
+    async create(req, adressId, userId){
+        const { name, description, sex, age, health, temperament, type, group, size, available} = req; //desestrutura a requisição
+        const announcement = await connection.announcement.create({
+            adressId: adressId,
+            userId: userId,
+            name: name,
+            description: description,
+            sex: sex,
+            age: age,
+            health: health,
+            temperament: temperament,
+            type: type,
+            group: group,
+            size: size,
+            available: available
         });
-        const delann = await Announcement.destroy({
-            where:{
-                id: id_par
-            },
-        });*/
+        const newannouncement = this.register(userId, adressId, name, description, type, size, sex, age);
+        console.log("Announcement inserido!");
+        return announcement;
     },
 
-    //Email
+    //ENVIAE EMAIL DA INSERÇÃO DE ANÚNCIO
     async register(userId, adressId, name, description, type, size, sex, age) {
         //client
         const user = await connection.client.findOne({where: { id: userId}});

@@ -16,31 +16,14 @@ module.exports = {
         const getClients = await connection.client.findAll({
             include: [{
                     model: connection.adress,
-            }],/*
-            where: {
-                id: "23b3f110-8b53-4a31-8c09-213d629073ca"
-            }*/
+            }]
         });
-
         return getClients;
     },
-
-    //SALVAR CLIENT NO BANCO
-    async create(req, idAdress){
-        const { firstName, lastName, rg, user, password, born, email} = req;
-        const cli = await connection.client.create({
-            firstName: firstName,
-            lastName: lastName,
-            user: user,
-            password: password,
-            email: email,
-            rg: rg,
-            born: born,
-            adressId: idAdress
-        });
-        const mail = this.register(firstName, lastName, email);
-        console.log("User inserido");
-        return mail;
+    
+    //DELETAR CLIENT
+    async delete (req, res){
+        //pendente
     },
 
     //ATUALIZAR CLIENT
@@ -75,12 +58,25 @@ module.exports = {
         return getClient;
     },
 
-    //DELETAR CLIENT
-    async delete (req, res){
-        //pendente
+    //SALVAR CLIENT NO BANCO
+    async create(req, idAdress){
+        const { firstName, lastName, rg, user, password, born, email} = req;
+        const cli = await connection.client.create({
+            firstName: firstName,
+            lastName: lastName,
+            user: user,
+            password: password,
+            email: email,
+            rg: rg,
+            born: born,
+            adressId: idAdress
+        });
+        const mail = this.register(firstName, lastName, email);
+        console.log("User inserido");
+        return mail;
     },
 
-    //Email
+    //ENVIAR EMAIL DO CADASTRO DE CLIENTS
     async register(firstName, lastName, email) {
         const termo = strTermo.termo();
         const mail = strEmail.registerEmail(firstName);

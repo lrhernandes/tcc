@@ -11,16 +11,10 @@ module.exports = {
     async index (){
         //pendente
     },
-    //SALVAR ADDRESSES NO BANCO
-    async create(req){
-        const {uf, city, street, houseNumber} = req;
-        const adr = await connection.adress.create({
-            uf: uf,
-            city: city,
-            street: street,
-            houseNumber: houseNumber
-        });
-        return adr.id;
+
+    //DELETAR ADDRESSES
+    async delete (req, res){
+        //pendente
     },
     
     //ATUALIZAR ADDRESSES
@@ -44,8 +38,15 @@ module.exports = {
         return adress;
     },
 
-    //DELETAR ADDRESSES
-    async delete (req, res){
-        //pendente
+    //SALVAR ADDRESSES NO BANCO
+    async create(req){
+        const {uf, city, street, houseNumber} = req;
+        const adr = await connection.adress.create({
+            uf: uf,
+            city: city,
+            street: street,
+            houseNumber: houseNumber
+        });
+        return adr.id;
     }
 }
