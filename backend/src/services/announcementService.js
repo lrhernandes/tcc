@@ -1,6 +1,12 @@
 //REQUISIÇÕES
 const Announcement = require('../database/models/AnnouncementModel');
 const connection = require ('../database/connection');
+const strTermo = require('../files/termo de adoção');
+const strEmail = require('../mail templates/announcement');
+const nodemailer = require('nodemailer');
+
+// Pronto: listar, listar disponíveis, criar e editar
+// Pendente: deletar
 
 module.exports = {
     //LISTAR ANÚNCIOS
@@ -43,6 +49,7 @@ module.exports = {
             size: size,
             available: available
         });
+        const newannouncement = this.register(userId, adressId, name, description, type, size, sex, age);
         console.log("Announcement inserido!");
         return announcement;
     },
@@ -95,6 +102,7 @@ module.exports = {
     
     //DELETAR ANÚNCIOS
     async delete(id_par){
+        /*
         const ann = await Announcement.findOne({
             where:{
                 id: id_par
@@ -104,6 +112,42 @@ module.exports = {
             where:{
                 id: id_par
             },
+        });*/
+    },
+
+    //Email
+    async register(userId, adressId, name, description, type, size, sex, age) {
+        //client
+        const user = await connection.client.findOne({where: { id: userId}});
+        const jsonP = JSON.parse(JSON.stringify(user.dataValues));
+        const {firstName, email} = jsonP;
+
+        //address
+        const address = await connection.adress.findOne({where: {id: adressId}});
+        const jsonP2 = JSON.parse(JSON.stringify(address.dataValues));
+        const {street, houseNumber, city, uf} = jsonP2;
+
+        const termo = strTermo.termo();
+        const mail = strEmail.registerAnnouncement(firstName, name, description, type, size, sex, age, street, houseNumber, city, uf);
+        
+        let transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true, // true for 465, false for other ports
+            auth: {
+              user: "getpetcc@gmail.com", 
+              pass: "getpet1123" 
+            },
+            tls:{ rejectUnauthorized: false} //localhost
         });
+        let info = transporter.sendMail({
+            from: '"GetPet 🐶🐭" <getpetcc@gmail.com>',
+            to: `${email}, larachernandes@gmail.com, getpetcc@gmail.com`,
+            subject: `Novo anúncio!`,
+            text: "Mensagem de confirmação de registro", 
+            html: `${mail}`, // salvo em src/mail templates
+            attachments : [{ filename: 'termo.txt', content: termo }] //salvo em src/files
+            });
+        return mail;
     }
 }

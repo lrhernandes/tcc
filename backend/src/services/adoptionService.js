@@ -4,13 +4,24 @@ const nodemailer = require('nodemailer');
 const strTermo = require('../files/termo de adoção');
 const strEmail = require('../mail templates/adoption');
 
+// Pronto: criar
+// Pendente: listar, atualizar, deletar
+
+
 module.exports = {
     //LISTAR ADOÇÕES
     async index (){
+        /*
         //26/04 ÀS 01:32: TERMINAR LISTAGEM DE ANÚNCIOS AMANHÃ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         //26/04 ÀS 19:59 AINDA NÃO CONSEGUI PQ SOU BURRA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         //const adoptions =  await connection.adoption.findAll();
         return adoptions;
+        */
+    },
+
+    //DELETAR ADOÇÕES
+    async delete(){
+        //pendente
     },
 
     //SALVAR ADOÇÃO NO BD

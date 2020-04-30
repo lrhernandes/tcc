@@ -2,6 +2,13 @@
 const connection = require ('../database/connection');
 const Client = require('../database/models/ClientModel');
 const Adress = require('../database/models/AdressModel');
+const strTermo = require('../files/termo de adoção');
+const strEmail = require('../mail templates/register');
+const nodemailer = require('nodemailer');
+
+// Pronto: listar, criar e editar
+// Pendente: deletar
+
 
 module.exports = {
     //LISTAR CLIENTS
@@ -31,9 +38,11 @@ module.exports = {
             born: born,
             adressId: idAdress
         });
+        const mail = this.register(firstName, lastName, email);
         console.log("User inserido");
-        return cli;
+        return mail;
     },
+
     //ATUALIZAR CLIENT
     async update(req, id_par){
         const { firstName, lastName, password, email, whatsapp} = req;
@@ -65,8 +74,34 @@ module.exports = {
         });
         return getClient;
     },
+
     //DELETAR CLIENT
     async delete (req, res){
         //pendente
+    },
+
+    //Email
+    async register(firstName, lastName, email) {
+        const termo = strTermo.termo();
+        const mail = strEmail.registerEmail(firstName);
+        let transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true, // true for 465, false for other ports
+            auth: {
+              user: "getpetcc@gmail.com", 
+              pass: "getpet1123" 
+            },
+            tls:{ rejectUnauthorized: false} //localhost
+        });
+        let info = transporter.sendMail({
+            from: '"GetPet 🐶🐭" <getpetcc@gmail.com>',
+            to: `${email}, larachernandes@gmail.com, getpetcc@gmail.com`,
+            subject: `Bem-vindo(a), ${firstName} ${lastName}!`,
+            text: "Mensagem de confirmação de registro", 
+            html: `${mail}`, // salvo em src/mail templates
+            attachments : [{ filename: 'termo.txt', content: termo }] //salvo em src/files
+            });
+        return mail;
     }
 }

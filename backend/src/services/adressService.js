@@ -3,6 +3,9 @@ const connection = require ('../database/connection');
 const Adress = require('../database/models/AdressModel');
 const Client = require('../database/models/ClientModel');
 
+// Pronto: criar e editar
+// Pendente: atualizar e deletar
+
 module.exports = {
     //LISTAR ADDRESSES
     async index (){
