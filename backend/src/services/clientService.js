@@ -1,14 +1,11 @@
 //REQUISIÇÕES
 const connection = require ('../database/connection');
-const Client = require('../database/models/ClientModel');
-const Adress = require('../database/models/AdressModel');
 const strTermo = require('../files/termo de adoção');
 const strEmail = require('../mail templates/register');
 const nodemailer = require('nodemailer');
 
 // Pronto: listar, criar e editar
 // Pendente: deletar
-
 
 module.exports = {
     //LISTAR CLIENTS

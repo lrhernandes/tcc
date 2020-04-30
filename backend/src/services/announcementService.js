@@ -1,5 +1,4 @@
 //REQUISIÇÕES
-const Announcement = require('../database/models/AnnouncementModel');
 const connection = require ('../database/connection');
 const strTermo = require('../files/termo de adoção');
 const strEmail = require('../mail templates/announcement');
