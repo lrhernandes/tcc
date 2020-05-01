@@ -41,10 +41,10 @@ module.exports = {
 
         if(ann.userId == client_id){
             const delann = await announcement.delete(id_par);
-            return res.json({ message: "Anúncio excluído com sucesso!"});
+            return res.json(delann);
         }else{
             console.log("erro na excluão!");
-            return res.json({ message: "Não é possível excluir esse anúncio!"});
+            return res.json({ message: "Não é possível excluir esse anúncio!"}).status(401).send();
         } 
     },
     

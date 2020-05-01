@@ -3,6 +3,7 @@ const connection = require ('../database/connection');
 const strTermo = require('../files/termo de adoção');
 const strEmail = require('../mail templates/announcement');
 const nodemailer = require('nodemailer');
+const addressService = require('./adressService');
 
 // Pronto
 
@@ -31,13 +32,23 @@ module.exports = {
     },
 
     //DELETAR ANÚNCIOS
-    async delete(id_par){
-        await connection.announcement.destroy({
-            where: {
-              id: id_par
-            }
-        });
-        return "Excluido com sucesso!";
+    async delete(id_par_ann){
+        //encontra id do endereço do anúncio para deletar
+        const announcement = await connection.announcement.findOne({ where: { id: id_par_ann }});
+        const jsonP = JSON.parse(JSON.stringify(announcement.dataValues));
+        const { adressId } = jsonP;
+        console.log("Address ID: " + adressId)
+        //deleta endereço do anúncio
+        const adr = await addressService.delete(adressId);
+        console.log("Endereço do anúncio deletado");
+        //deleta anúncio
+        const ann = await connection.announcement.destroy({ where: { id: id_par } });
+        console.log("Anúncio deletado");
+        if(ann){
+            return "Anúncio excluído com sucesso!";
+        }else{
+            return "Não foi possível excluir esse anúncio!";
+        }
     },
     
     //ATUALIZAR ANÚNCIOS

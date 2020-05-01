@@ -48,6 +48,8 @@ module.exports = {
 
     //DELETAR CLIENT
     async delete(req, res){
-        //pendente
+        const client_id = req.headers.authorization;
+        const cli = await client.delete(client_id);
+        return res.json(cli);
     }
 };

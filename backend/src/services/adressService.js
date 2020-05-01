@@ -13,8 +13,13 @@ module.exports = {
     },
 
     //DELETAR ADDRESSES
-    async delete (req, res){
-        //pendente
+    async delete (addressId){
+        const adr = await connection.adress.destroy({ where : { id: addressId }});
+        if(adr){
+            return "Endereço excluído com sucesso!";
+        }else{
+            return "Não foi possível excluir esse enderço!";
+        }
     },
     
     //ATUALIZAR ADDRESSES

@@ -20,7 +20,7 @@ routes.get('/', (req, res)=>{
 routes.post('/client', ClientController.create);
 routes.get('/client', ClientController.index);
 routes.put('/client/settings/:id', ClientController.update);
-routes.delete('/client/settings/delete/:id', ClientController.delete);
+routes.delete('/client/settings/delete', ClientController.delete);
 
 //ROTAS ANNOUNCEMENTS
 routes.post('/announcements', AnnouncementController.create);
