@@ -17,6 +17,13 @@ module.exports = {
         return res.json(availableAnnouncements);
     },
 
+    //LISTAR ANÚNCIOS DO CLIENT
+    async getClientAnnouncements(req, res){
+        const client_id = req.headers.authorization;
+        const clientAnnouncements = await announcement.getClientAnnouncements(client_id);
+        return res.json(clientAnnouncements);
+    },
+
     //CRIAR ANÚNCIOS 
     async create (req, res) {
         const userId = req.headers.authorization;

@@ -20,6 +20,12 @@ module.exports = {
         return availableAnnouncements;
     },
 
+    //LISTAR ANÚNCIOS DO CLIENT
+    async getClientAnnouncements (client_id){
+        const availableAnnouncements = await connection.announcement.findAll({ include: [{ model: connection.adress }], where: { available : true, userId : client_id }});
+        return availableAnnouncements;
+    },
+
     //DELETAR ANÚNCIOS
     async delete(id_par_ann){
         //DELETE ADDRESS FROM ANNOUNCEMENT
