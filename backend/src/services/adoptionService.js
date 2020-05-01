@@ -5,7 +5,7 @@ const strTermo = require('../files/termo de adoção');
 const strEmail = require('../mail templates/adoption');
 
 // Pronto: criar
-// Pendente: listar, atualizar, deletar
+// Pendente: listar, deletar
 
 module.exports = {
     //LISTAR ADOÇÕES
@@ -15,11 +15,6 @@ module.exports = {
 
     //DELETAR ADOÇÕES
     async delete(){
-        //pendente
-    },
-
-    //ATUALIZAR ADOÇÕES
-    async update(){
         //pendente
     },
 

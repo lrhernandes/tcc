@@ -1,9 +1,9 @@
 //REQUISIÇÕES
 const connection = require ('../database/connection');
 const addressService = require('../services/adressService');
-const announcementService = require('../services/announcementService');
 const strTermo = require('../files/termo de adoção');
 const strEmail = require('../mail templates/register');
+const strEmailDeleteAccount = require('../mail templates/deleteAccount');
 const nodemailer = require('nodemailer');
 
 // Pronto
@@ -20,8 +20,9 @@ module.exports = {
         //DELETE ADDRESSES FROM CLIENT
         const client = await connection.client.findOne({ where : { id: client_id }});
         let jsonP = JSON.parse(JSON.stringify(client.dataValues));
-        let { adressId } = jsonP;
+        const { adressId, firstName, lastName, email } = jsonP;
         let deladr = addressService.delete(adressId);
+        const mail = this.deleteAccount(firstName, lastName, email);
 
         //DELETE ADDRESSES FROM CLIENT ANNOUNCEMENTS
         const announcements = await connection.announcement.findAll({ where : { userId: client_id }});
@@ -103,6 +104,29 @@ module.exports = {
             text: "Mensagem de confirmação de registro", 
             html: `${mail}`, // salvo em src/mail templates
             attachments : [{ filename: 'termo.txt', content: termo }] //salvo em src/files
+            });
+        return mail;
+    },
+
+    //ENVIAR EMAIL DO DELEÇÃO DE CLIENTS
+    async deleteAccount(firstName, lastName, email) {
+        const mail = strEmailDeleteAccount.deleteAccount(firstName);
+        let transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true, // true for 465, false for other ports
+            auth: {
+              user: "getpetcc@gmail.com", 
+              pass: "getpet1123" 
+            },
+            tls:{ rejectUnauthorized: false} //localhost
+        });
+        let info = transporter.sendMail({
+            from: '"GetPet 🐶🐭" <getpetcc@gmail.com>',
+            to: `${email}, larachernandes@gmail.com, getpetcc@gmail.com`,
+            subject: `Até logo, ${firstName} ${lastName}!`,
+            text: "Mensagem de deleção de registro", 
+            html: `${mail}`
             });
         return mail;
     }
