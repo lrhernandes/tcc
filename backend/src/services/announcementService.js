@@ -4,8 +4,7 @@ const strTermo = require('../files/termo de adoção');
 const strEmail = require('../mail templates/announcement');
 const nodemailer = require('nodemailer');
 
-// Pronto: listar, listar disponíveis, criar e editar
-// Pendente: deletar
+// Pronto
 
 module.exports = {
     //LISTAR ANÚNCIOS
@@ -33,7 +32,12 @@ module.exports = {
 
     //DELETAR ANÚNCIOS
     async delete(id_par){
-        //pendente
+        await connection.announcement.destroy({
+            where: {
+              id: id_par
+            }
+        });
+        return "Excluido com sucesso!";
     },
     
     //ATUALIZAR ANÚNCIOS

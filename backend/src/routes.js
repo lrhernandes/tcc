@@ -27,7 +27,7 @@ routes.post('/announcements', AnnouncementController.create);
 routes.get('/announcements', AnnouncementController.index);
 routes.get('/availableannouncements', AnnouncementController.getAvailableAnnouncements);
 routes.put('/announcements/settings/:id', AnnouncementController.update);
-routes.delete('/announcements/:id', AnnouncementController.delete);
+routes.delete('/announcements/delete/:id', AnnouncementController.delete);
 
 //ROTAS ANIMAL PICTURES
 routes.post('/pictures/:id', AnimalPicturesController.create);

@@ -33,18 +33,18 @@ module.exports = {
     async delete (req, res){
         const id_par = req.params.id;
         const client_id = req.headers.authorization;
-        const ann = await Announcement.findOne({
+        const ann = await connection.announcement.findOne({
             where:{
                 id: id_par
             },
         });
 
-        if(ann.fk_iduser == client_id){
+        if(ann.userId == client_id){
             const delann = await announcement.delete(id_par);
             return res.json({ message: "Anúncio excluído com sucesso!"});
         }else{
             console.log("erro na excluão!");
-            return res.json({ message: "Não foi possível excluir esse anúncio!"});
+            return res.json({ message: "Não é possível excluir esse anúncio!"});
         } 
     },
     
