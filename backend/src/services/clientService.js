@@ -22,11 +22,14 @@ module.exports = {
         let jsonP = JSON.parse(JSON.stringify(client.dataValues));
         let { adressId } = jsonP;
         let deladr = addressService.delete(adressId);
+
         //DELETE ADDRESSES FROM CLIENT ANNOUNCEMENTS
         const announcements = await connection.announcement.findAll({ where : { userId: client_id }});
         announcements.forEach(deleteAdressAnnouncement);
+
         //DELETE ANNOUNCEMENTS FROM CLIENT
         const ann = await connection.announcement.destroy({ where: { userId: client_id } });
+        
         //DELETE CLIENT
         const cli = await connection.client.destroy({ where:{ id: client_id }});
         return "Perfil e dependências excluídas com sucesso";
@@ -57,14 +60,7 @@ module.exports = {
             email: email,
             whatsapp: whatsapp
         });
-        const getClient = await connection.client.findOne({
-            include: [{
-                    model: connection.adress,
-            }],
-            where: {
-                id: id_par
-            }
-        });
+        const getClient = await connection.client.findOne({ include: [{ model: connection.adress }], where: { id: id_par }});
         return getClient;
     },
 

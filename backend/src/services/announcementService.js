@@ -10,24 +10,13 @@ const addressService = require('./adressService');
 module.exports = {
     //LISTAR ANÚNCIOS
     async index (){
-        const announcements = await connection.announcement.findAll({
-            include: [{
-                model: connection.adress,
-            }]
-        });
+        const announcements = await connection.announcement.findAll({ include: [{ model: connection.adress }]});
         return announcements;
     },
 
     //LISTAR ANÚNCIOS DISPONÍVEIS
     async getAvailableAnnouncements (){
-        const availableAnnouncements = await connection.announcement.findAll({
-            include: [{
-                model: connection.adress,
-            }],
-            where:{
-                available : true
-            }
-        });
+        const availableAnnouncements = await connection.announcement.findAll({ include: [{ model: connection.adress }], where:{ available : true }});
         return availableAnnouncements;
     },
 
@@ -47,11 +36,7 @@ module.exports = {
     async update(req, id_par_ann, id_endereco){
         const { name, description, sex, age, cep, health, temperament, type, uf, city, size, available} = req;
         console.log("ID do endereço do anúncio AAAAAAAAAAAAAAAAAAAAAa: " + id_endereco);
-        const ann = await connection.announcement.findOne({
-            where:{
-                id: id_par_ann
-            },
-        });
+        const ann = await connection.announcement.findOne({ where:{ id: id_par_ann }});
         if(name){ ann.name = name;};
         if(description){ ann.description = description; };
         if(sex){ ann.sex = sex; };
@@ -78,20 +63,13 @@ module.exports = {
             size: size,
             available: available
         })
-        const getAnnouncement = await connection.announcement.findOne({
-            include: [{
-                model: connection.adress,
-            }],
-            where: {
-                adressId :  id_endereco
-            }
-        });
+        const getAnnouncement = await connection.announcement.findOne({ include: [{ model: connection.adress }], where: { adressId :  id_endereco }});
         return getAnnouncement;
     },
 
     //SALVAR ANNOUNCEMENT NO BANCO
     async create(req, adressId, userId){
-        const { name, description, sex, age, health, temperament, type, group, size, available} = req; //desestrutura a requisição
+        const { name, description, sex, age, health, temperament, type, group, size, available} = req; 
         const announcement = await connection.announcement.create({
             adressId: adressId,
             userId: userId,

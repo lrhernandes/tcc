@@ -15,21 +15,13 @@ module.exports = {
     //DELETAR ADDRESSES
     async delete (addressId){
         const adr = await connection.adress.destroy({ where : { id: addressId }});
-        if(adr){
-            return "Endereço excluído com sucesso!";
-        }else{
-            return "Não foi possível excluir esse enderço!";
-        }
+        return "Endereço excluído com sucesso!";
     },
     
     //ATUALIZAR ADDRESSES
     async update(req, id_adr){
         const {uf, city, street, houseNumber} = req;
-        const adr = await connection.adress.findOne({
-            where:{
-                id: id_adr
-            },
-        });
+        const adr = await connection.adress.findOne({ where:{ id: id_adr }});
         if(uf){ adr.uf = uf; };
         if(city){ adr.city = city; };
         if(street){ adr.street = street; };
