@@ -6,8 +6,7 @@ const strTermo = require('../files/termo de adoção');
 const strEmail = require('../mail templates/register');
 const nodemailer = require('nodemailer');
 
-// Pronto: listar, criar e editar
-// Pendente: deletar
+// Pronto
 
 module.exports = {
     //LISTAR CLIENTS

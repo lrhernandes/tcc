@@ -33,22 +33,14 @@ module.exports = {
 
     //DELETAR ANÚNCIOS
     async delete(id_par_ann){
-        //encontra id do endereço do anúncio para deletar
+        //DELETE ADDRESS FROM ANNOUNCEMENT
         const announcement = await connection.announcement.findOne({ where: { id: id_par_ann }});
         const jsonP = JSON.parse(JSON.stringify(announcement.dataValues));
         const { adressId } = jsonP;
-        console.log("Address ID: " + adressId)
-        //deleta endereço do anúncio
         const adr = await addressService.delete(adressId);
-        console.log("Endereço do anúncio deletado");
-        //deleta anúncio
-        const ann = await connection.announcement.destroy({ where: { id: id_par } });
-        console.log("Anúncio deletado");
-        if(ann){
-            return "Anúncio excluído com sucesso!";
-        }else{
-            return "Não foi possível excluir esse anúncio!";
-        }
+        //DELETE ANNOUNCEMENT
+        const ann = await connection.announcement.destroy({ where: { id: id_par_ann } });
+        return "Anúncio excluído com sucesso!";
     },
     
     //ATUALIZAR ANÚNCIOS
