@@ -33,7 +33,12 @@ html, body{
     font-size: 14px;
     border: 0px;
     border-radius: 8px;
-    width: 110px;
+    width: 120px;
+    height: 35px;
+    font-family: Roboto;
+    font-style: normal;
+    position: relative;
+    text-align: center;
     transition: filter 0.2s;
 }
 
@@ -43,15 +48,15 @@ html, body{
 
 .gray{
     background-color: #646464;
+    color: #FFFFFF;
+    font-size: 14px;
     border: 0px;
     border-radius: 8px;
     width: 160px;
+    height: 50px;
     font-family: Roboto;
     font-style: normal;
-    font-size: 15px;
-    line-height: 40px;
     margin: auto;
-    color: #FFFFFF;
     position: relative;
     text-align: center;
 }
@@ -74,4 +79,13 @@ html, body{
     font-size: 18px;
     text-align: center;
     color: #646464;
+}
+
+.form-sujest{
+    color: rgb(158, 158, 158);
+    display: inline-block;
+    float: left;
+    font-size: 12px;
+    padding-bottom: 5px;
+    font-weight: 100;
 }

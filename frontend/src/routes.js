@@ -11,7 +11,7 @@ export default function(){
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={TelaPrincipal}/>
-                <Route path="/register" component={Register}/>
+                <Route path="/register/:page?" component={Register}/>
                 <Route path="/login" component={Login}/>
                 <Route path="/about" component={About}/>
             </Switch>

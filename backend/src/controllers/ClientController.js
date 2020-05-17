@@ -1,6 +1,5 @@
 //REQUISIÇÕES
 const client = require('../services/clientService.js');
-const Client = require('../database/models/ClientModel');
 const adress = require('../services/adressService');
 const connection = require ('../database/connection');
 

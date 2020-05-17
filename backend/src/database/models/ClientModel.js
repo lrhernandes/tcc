@@ -53,7 +53,6 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             validate: {
                 notEmpty: { msg: "Este campo não pode estar vazio" },
-                len: { args: [6, 20], msg: "Este campo deve ter entre 6 e 20 caracteres" }
             }
         },
         born: {

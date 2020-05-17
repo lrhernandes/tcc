@@ -5,6 +5,7 @@ import { MdClose } from "react-icons/md";
 import '../../js/select';
 
 import CadastrarClientRegister from '../../templates/CadastrarClientsForm';
+import ClientRegister1 from '../../templates/ClientRegister1';
 
 export default function ContentareaCenteredRegister(){
     return (
@@ -19,10 +20,8 @@ export default function ContentareaCenteredRegister(){
                     <div className="x-icon"><Link to="/"><MdClose size={20}/></Link></div>
                     <div className="camada-fix">
                         <div className="form-register">
-                            <CadastrarClientRegister/>
+                            <CadastrarClientRegister form={ClientRegister1}/>
                         </div>
-                        <Link className="register-button" to="/"><button className="purple">CADASTRE-SE</button></Link>
-                        <Link className="menu-link" to="/login"> <p>Já possuo cadastro</p> </Link>
                     </div>
                 </div>
             </section>

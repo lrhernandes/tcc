@@ -5,6 +5,7 @@ const strTermo = require('../files/termo de adoção');
 const strEmail = require('../mail templates/register');
 const strEmailDeleteAccount = require('../mail templates/deleteAccount');
 const nodemailer = require('nodemailer');
+const bcrypt = require('bcryptjs');
 
 // Pronto
 
@@ -67,7 +68,7 @@ module.exports = {
 
     //SALVAR CLIENT NO BANCO
     async create(req, idAdress){
-        const { firstName, lastName, rg, user, password, born, email} = req;
+        let { firstName, lastName, rg, user, password, born, email} = req;
         const cli = await connection.client.create({
             firstName: firstName,
             lastName: lastName,
@@ -78,9 +79,19 @@ module.exports = {
             born: born,
             adressId: idAdress
         });
+        function hashing(){
+            bcrypt.genSalt(10, function(err, salt) {
+                bcrypt.hash(password, salt, async function(err, hash) {
+                    cli.password = hash;
+                    await cli.save({
+                        password: password
+                    })
+                });
+            });
+        }
+        const pass = hashing();
         const mail = this.register(firstName, lastName, email);
-        console.log("User inserido");
-        return mail;
+        return cli;
     },
 
     //ENVIAR EMAIL DO CADASTRO DE CLIENTS
