@@ -1,8 +1,11 @@
 form #h2{
     font-size: 24px;
 }
-form #h4{
-    font-size: 16px;
+.h4{
+    color: #646464;
+    font-weight: 300;
+    padding-bottom: 20px;
+    float: left;
 }
 
 #form-login .button-group-space{
@@ -18,3 +21,18 @@ input[type="password"], input[type="password"]::placeholder{
     color: rgb(158, 158, 158);
 }
 
+.bottom-register .register-link{
+    font-size: 12px;
+    font-weight: bold;
+    width: 50%;
+    margin: auto;
+}
+
+.bottom-register .register-link a{
+    color: #3d3d3d;
+    transition: filter 0.2s;
+}
+
+.bottom-register .register-link a:hover{
+    filter: brightness(95%);
+}
