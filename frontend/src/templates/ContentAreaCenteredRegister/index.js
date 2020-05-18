@@ -1,11 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { MdClose } from "react-icons/md";
-
 import '../../js/select';
-
 import CadastrarClientRegister from '../../templates/CadastrarClientsForm';
-import ClientRegister1 from '../../templates/ClientRegister1';
 
 export default function ContentareaCenteredRegister(){
     return (
@@ -20,7 +17,7 @@ export default function ContentareaCenteredRegister(){
                     <div className="x-icon"><Link to="/"><MdClose size={20}/></Link></div>
                     <div className="camada-fix">
                         <div className="form-register">
-                            <CadastrarClientRegister form={ClientRegister1}/>
+                            <CadastrarClientRegister/>
                         </div>
                     </div>
                 </div>

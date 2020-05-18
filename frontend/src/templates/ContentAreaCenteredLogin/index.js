@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { MdClose } from "react-icons/md";
 import './styles.css';
+import ClientLoginForm from '../LoginClientsForm';
 
 export default function ContentareaCenteredLogin(){
     return (
@@ -11,10 +12,8 @@ export default function ContentareaCenteredLogin(){
                     <p className="title-center-page"><Link to="/" className="none-visited">GetPet</Link></p>
                     <div id="camada-fix-login">
                         <div className="form-login">
-                            <p>Formulário para login de client</p>
+                            <ClientLoginForm/>
                         </div>
-                        <Link className="register-button" to="/"><button className="purple">Entrar</button></Link>
-                        <Link className="menu-link" to="/register"> <p>Não possuo cadastro</p> </Link>
                     </div>
                 </div>
             </section>

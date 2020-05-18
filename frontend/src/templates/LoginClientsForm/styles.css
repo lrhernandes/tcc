@@ -1,0 +1,20 @@
+form #h2{
+    font-size: 24px;
+}
+form #h4{
+    font-size: 16px;
+}
+
+#form-login .button-group-space{
+    position: relative;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+input[type="password"], input[type="password"]::placeholder{
+    font-weight: bold;
+    letter-spacing: 5px;
+    font-size: large;
+    color: rgb(158, 158, 158);
+}
+

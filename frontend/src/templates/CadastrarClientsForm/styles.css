@@ -5,10 +5,28 @@
     margin-top: -20px;
 }
 
-.register-button button{
-    margin-top: 5vh;
-    height: 40px;
-    width: 140px;
+#form-register-scroll{
+    overflow: auto;
+    scroll-behavior: smooth;
+    height: 330px;
+}
+
+#form-register-scroll #space-scroll-div{
+    border-right: 8px solid transparent;
+}
+
+#form-register-scroll::-webkit-scrollbar {
+    width: 0.4em;
+}
+   
+#form-register-scroll::-webkit-scrollbar-track {
+    background: #e5e5e5;
+    border-radius: 8px;
+}
+   
+#form-register-scroll::-webkit-scrollbar-thumb {
+    background-color: #b4b4b4;
+    border-radius: 8px;
 }
 
 input, select{
@@ -18,13 +36,13 @@ input, select{
     padding: 15px;
     font-family: 'Montserrat', sans-serif;
     width: 100%;
-    float: left;
     line-height: 26px;
     height: 45px;
     margin-bottom: 20px;
+    position: relative;
 }
 
-input::placeholder{
+input::placeholder, select::placeholder{
     color: rgb(158, 158, 158);
 }
 
@@ -54,38 +72,6 @@ li{
     position: relative;
 }
 
-.bottom-register{
-    height: 30px;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: row-reverse;
-}
-
-.bottom-register .next-icon{
-    right: 0;
-    text-align: right;
-    position: absolute;
-}
-
-.bottom-register .next-icon a{
-    font-size: 14px;
-    color: blueviolet;
-    transition: filter 0.2s;
-}
-
-.bottom-register .next-icon:disabled a{
-    font-size: 14px;
-    color: gray;
-    transition: none;
-}
-
-.bottom-register .next-icon a:hover{
-    text-decoration: none; 
-    font-weight: 500;
-    filter: brightness(40%);
-}
-
 .bottom-register .login-link{
     font-size: 12px;
     font-weight: bold;
@@ -102,7 +88,6 @@ li{
 .bottom-register .login-link a:hover{
     filter: brightness(95%);
 }
-
 
 .form-group-1{
     width: calc(50% - 20px);
@@ -122,8 +107,20 @@ div form h4{
     float: left;
 }
 
-.bottom-register button{
-    border: 0;
-    width: 100px;
-    background: transparent;
+#space-scroll-div .button-group-space{
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.button-group-space .negative-purple{
+    margin-left: 10px;
+}
+
+.space-h4{
+    margin-top: 40px;
+}
+
+#space-scroll-div #uf, #space-scroll-div #cidade{
+    height: 50px;
 }
