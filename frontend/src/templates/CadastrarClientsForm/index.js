@@ -1,13 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import './styles.css'
-import '../../js/select'
 import {Link} from 'react-router-dom';
 
 export default function CadastrarClientForm(){
     const [step, setStep] = useState(0);
+
+    function loadSelect(){
+        return (function(uf, city, api) {
+        function createOption (value, text) {
+          const option = document.createElement('option')
+          option.value = value
+          option.innerHTML = text
+          return option
+        }
+        function pushSelect (item, el) {
+          const opt = createOption(item.geonameId, item.toponymName)
+          el.append(opt)
+        } 
+        function handleAjax (res, el) {   
+         res.geonames.forEach(each => {
+           pushSelect(each, el)
+         })
+        } 
+        function getinfo (geoid, hasUf = false) {
+          fetch(`https://www.geonames.org/childrenJSON?geonameId=${geoid}`)
+            .then(res => res.json())
+            .then(res => {
+              if(hasUf) {
+                city.length = 1; //clear
+                handleAjax(res, city)
+              } else {
+                handleAjax(res, uf)
+              }
+          });
+        }
+        function init () {
+          uf.addEventListener('change', function() {
+            getinfo(this.value, true)
+          })
+          getinfo(api)
+        }
+        init()
+      })(
+        document.getElementById('uf'),
+        document.getElementById('cidade'),
+        3469034
+      );
+    }
+
     return (
         <div>
-            {step == 0 && (
+            {step === 0 && (
                 <div>
                     <form>
                         <div>
@@ -28,20 +71,21 @@ export default function CadastrarClientForm(){
                                 <label>Data de nascimento</label><br/>
                                 <input id="born" type="date"/>
                             </div>
-                        </div>
-                    </form>
-                    <button className="next-button" onClick={() => setStep(step + 1) }>PRÓXIMO 🡢</button>
-                    <div className="bottom-register">
+
+                            </div>
+                        </form>
+                        <button className="next-button" onClick={() => {setStep(step + 1)} }>PRÓXIMO 🡢</button>
+                        <div className="bottom-register">
                         <p className="login-link"> <Link to="/login">Já possuo cadastro</Link></p> 
                     </div>
                 </div>
             )}
 
-            {step == 1 && (
+            {step === 1 && (
                 <div id="register-step1">
                     <h4 className="h4">Endereço</h4>
                     <label>UF</label><br/>
-                    <select id="uf"><option defaultValue >Estado</option></select>
+                    <select id="uf" onClick={()=>{loadSelect()}}><option defaultValue >Estado</option></select>
 
                     <label>Cidade</label><br/>
                     <select id="cidade"> <option defaultValue >Cidade</option></select>
@@ -55,12 +99,12 @@ export default function CadastrarClientForm(){
                         <label>Nº</label><br/>
                         <input id="number" placeholder="Nº"/>
                     </div>
-                    <button className="previous-button" onClick={() => setStep(step - 1) }>🡠VOLTAR</button>
+                    <button className="previous-button" onClick={() => setStep(step - 1) }>🡠 VOLTAR</button>
                     <button className="next-button" onClick={() => setStep(step + 1) }>PRÓXIMO 🡢</button>
                 </div>
             )}
 
-            {step ==2 && (
+            {step ===2 && (
                 <div id="register-step2">
                     <h4 className="h4">Contato</h4>
                     <label>E-mail</label><br/>
@@ -69,12 +113,12 @@ export default function CadastrarClientForm(){
                     <label>WhatsApp</label><br/>
                     <p className="form-sujest">Com código do país e área</p>
                     <input id="whatsapp" placeholder="Apenas números"/>
-                    <button className="previous-button" onClick={() => setStep(step - 1) }>🡠VOLTAR</button>
+                    <button className="previous-button" onClick={() => setStep(step - 1) }>🡠 VOLTAR</button>
                     <button className="next-button" onClick={() => setStep(step + 1) }>PRÓXIMO 🡢</button>
                 </div>
             )}
 
-            {step == 3 && (
+            {step === 3 && (
                 <div id="register-step3">
                     <h4 className="h4">Acesso</h4>
                     <label>Nome de usuário</label><br/>

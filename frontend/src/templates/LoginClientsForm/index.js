@@ -14,7 +14,7 @@ export default function LoginClientForm(){
                 <label>Senha</label><br/>
                 <input type="password" id="password" placeholder="••••••••••"/>
                 <div className="button-group-space">
-                    <Link to="/"><button className="purple">ENTRAR</button></Link>
+                    <Link className="menu-link" to="/home"><button className="purple">ENTRAR</button></Link>
                 </div>
             </form>
             <div className="bottom-register">

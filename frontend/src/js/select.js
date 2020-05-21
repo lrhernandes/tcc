@@ -1,5 +1,3 @@
-// import '../templates/CadastrarClientsForm';
-
 // window.onload = function() {
 //     (function(uf, city, api) {
 //         function createOption (value, text) {
@@ -31,7 +29,7 @@
 //         }
 //         function init () {
 //           uf.addEventListener('change', function() {
-//              getinfo(this.value, true)
+//             getinfo(this.value, true)
 //           })
 //           getinfo(api)
 //         }
