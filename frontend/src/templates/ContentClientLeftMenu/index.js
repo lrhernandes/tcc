@@ -12,16 +12,16 @@ export default function ContentClientLeftMenu(){
             <ul>
                 <div className="left-menu-item-group-center">
                     <li className="left-menu-item-center">
-                        <div><Link to="/"  title="Tela inicial"><MdHome size={20}/></Link></div>
+                        <div><Link to="/home"  title="Tela inicial"><MdHome size={20}/></Link></div>
                     </li>
                     <li className="left-menu-item-center">
-                        <div><Link to="/"  title="Meus anúncios"><MdPets size={20}/></Link></div>
+                        <div><Link to="/myannouncements"  title="Meus anúncios"><MdPets size={20}/></Link></div>
                     </li>
                     <li className="left-menu-item-center">
-                        <div><Link to="/"  title="Anúncios favoritos"><MdFavorite size={20}/></Link></div>
+                        <div><Link to="/myfavorites"  title="Anúncios favoritos"><MdFavorite size={20}/></Link></div>
                     </li>
                     <li className="left-menu-item-center">
-                        <div><Link to="/"  title="Configurações da conta"><MdSettings size={20}/></Link></div>
+                        <div><Link to="/settings"  title="Configurações da conta"><MdSettings size={20}/></Link></div>
                     </li>
                 </div>
             </ul>

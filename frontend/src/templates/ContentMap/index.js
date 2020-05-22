@@ -2,9 +2,9 @@ import React from 'react';
 import './styles.css';
 import '../../js/maps'
 import {GoogleMap, withScriptjs, withGoogleMap, Marker} from 'react-google-maps'
+import mapStyles from '../../templates/ContentMap/mapstyles'
 
-/*
-function loadMap(){
+/*function loadMap(){
     return (
         const MyMapComponent = (props) =>
         <GoogleMap 
@@ -14,14 +14,14 @@ function loadMap(){
             {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
         </GoogleMap>
 )}
-
 const MapWrapped = withScriptjs(withGoogleMap(loadMap));*/
 
 const MyMapComponent = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
         defaultZoom={15}
-        defaultCenter={{ lat: -29.934590, lng: -51.170860 }
-    }>
+        defaultCenter={{ lat: -29.934590, lng: -51.170860 }}
+        defaultOptions={{styles: mapStyles, mapTypeControl: false}}
+        >
     {props.isMarkerShown && <Marker position={{ lat: -29.934590, lng: -51.170860 }}/>}
   </GoogleMap>
 ))

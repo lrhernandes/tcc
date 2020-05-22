@@ -43,12 +43,12 @@
 }
 
 /* scroll */
-.box-home-announcements-animals::-webkit-scrollbar {
+.box-home-announcements-animals ul::-webkit-scrollbar {
     width: 0.4em;
-}.box-home-announcements-animals::-webkit-scrollbar-track {
+}.box-home-announcements-animals ul::-webkit-scrollbar-track {
     background: #cecdcd;
     border-radius: 8px;
-}.box-home-announcements-animals::-webkit-scrollbar-thumb {
+}.box-home-announcements-animals ul::-webkit-scrollbar-thumb {
     background-color: #b4b4b4;
     border-radius: 8px;
 }	
