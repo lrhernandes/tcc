@@ -15,6 +15,9 @@ export default function ContentMyAnnouncementsItens(){
                 <li> <Announcement/> </li>
                 <li> <Announcement/> </li>
                 <li> <Announcement/> </li>
+                <li> <Announcement/> </li>
+                <li> <Announcement/> </li>
+                <li> <Announcement/> </li>
             </ul>
         </div>
     )

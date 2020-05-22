@@ -1,10 +1,9 @@
 import React from 'react';
-import './styles.css';
 
 export default function RightSession({content}){
     const Content = content;
     return (
-        <div className="right-session">
+        <div className="right-session" id="right-session-default">
             <Content/>
         </div>
     )

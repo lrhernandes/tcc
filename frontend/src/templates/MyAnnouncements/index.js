@@ -1,17 +1,14 @@
 import React from 'react';
 import './styles.css';
 
-import Announcement from '../../templates/AnnouncementItemFromList'
 import ContentMyAnnouncements from '../../templates/ContentMyAnnouncementsItens'
 
-import elipse7 from '../../assets/Ellipse 7.svg';
 import dots from '../../assets/change1 2.svg'
 
 export default function MyAnnouncements(){
     return (
         <div className="my-announcements">
             
-            <img id="elipse7-my-announcements" src={elipse7}/>
             <img id="dots-my-announcements" src={dots}/>
 
             <div className="content-my-announcements">
