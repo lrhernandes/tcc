@@ -1,0 +1,11 @@
+.client-settings{
+    padding-top: 50px;
+    padding-bottom: 30px;
+    width: 100%;
+    position: relative;
+    margin-left: 20px;
+}
+
+.client-settings img{
+    position: absolute;
+}

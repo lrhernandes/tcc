@@ -12,8 +12,8 @@
     padding-left: 30px;
     position: absolute;
     z-index: 1;
-    background-color: #fbfbfb;
-    box-shadow: 0px 0px 50px rgba(112, 112, 112, 0.25);
+    background-color: #e8e8e8;
+    box-shadow: 0px 0px 50px rgba(112, 112, 112, 0.157);
 }
 
 .current-day{

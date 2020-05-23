@@ -8,6 +8,7 @@ import About from './pages/About';
 import Home from './pages/Home';
 import ClientAnnouncements from './pages/ClientAnnouncements';
 import Favourite from './pages/LikedAnnouncements'
+import ClientSettings from './pages/ClientSettings'
 
 export default function(){
     return(
@@ -19,7 +20,8 @@ export default function(){
                 <Route path="/about" component={About}/>
                 <Route path="/home" component={Home}/>
                 <Route path="/myannouncements" component={ClientAnnouncements}/>
-                <Route path="/favourite" component={Favourite}/>
+                <Route path="/myfavorites" component={Favourite}/>
+                <Route path="/mysettings" component={ClientSettings}/>
             </Switch>
         </BrowserRouter>
     )
