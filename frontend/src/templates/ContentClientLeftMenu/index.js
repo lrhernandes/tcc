@@ -18,7 +18,7 @@ export default function ContentClientLeftMenu(){
                         <div><Link to="/myannouncements"  title="Meus anúncios"><MdPets size={20}/></Link></div>
                     </li>
                     <li className="left-menu-item-center">
-                        <div><Link to="/myfavorites"  title="Anúncios favoritos"><MdFavorite size={20}/></Link></div>
+                        <div><Link to="/favourite"  title="Anúncios favoritos"><MdFavorite size={20}/></Link></div>
                     </li>
                     <li className="left-menu-item-center">
                         <div><Link to="/settings"  title="Configurações da conta"><MdSettings size={20}/></Link></div>

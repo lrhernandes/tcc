@@ -3,13 +3,15 @@ import './styles.css';
 
 import ContentMyAnnouncements from '../../templates/ContentMyAnnouncementsItens'
 
-import dots from '../../assets/change1 2.svg'
+import elipse7 from '../../assets/Ellipse 7.1.svg'
+import dots from '../../assets/whitedots.svg'
 
 export default function MyAnnouncements(){
     return (
         <div className="my-announcements">
             
             <img id="dots-my-announcements" src={dots}/>
+            <img id="elipse7-my-announcements" src={elipse7}/>
 
             <div className="content-my-announcements">
                 <p className="title-default-page">Meus anúncios</p>

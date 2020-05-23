@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import About from './pages/About';
 import Home from './pages/Home';
 import ClientAnnouncements from './pages/ClientAnnouncements';
+import Favourite from './pages/LikedAnnouncements'
 
 export default function(){
     return(
@@ -18,6 +19,7 @@ export default function(){
                 <Route path="/about" component={About}/>
                 <Route path="/home" component={Home}/>
                 <Route path="/myannouncements" component={ClientAnnouncements}/>
+                <Route path="/favourite" component={Favourite}/>
             </Switch>
         </BrowserRouter>
     )

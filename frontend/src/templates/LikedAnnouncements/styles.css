@@ -1,0 +1,15 @@
+.liked-announcements{
+    padding-top: 50px;
+    padding-bottom: 30px;
+    width: 100%;
+    position: relative;
+    margin-left: 20px;
+}
+
+.liked-announcements img{
+    position: absolute;
+}
+
+#content-itens-my-favourite-announcements{
+    margin-top: 100px;
+}

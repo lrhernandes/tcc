@@ -1,11 +1,12 @@
 import React from 'react';
+import './styles.css'
 
 import { MdDelete } from "react-icons/md";
 import {Link} from 'react-router-dom';
 
 export default function MyAnnouncementItem(){
     return (
-        <div className="announcement-item-from-list">
+        <div className="announcement-item-from-list" id="announcement-item-from-list-my-announcement">
             <div className="image-announcement-item-from-list">
                 
             </div>

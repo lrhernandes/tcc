@@ -16,6 +16,11 @@
 
 #dots-my-announcements{
     right: 0;
+    top: 10px;
+}
+
+#elipse-my-announcements{
+    bottom: 0;
 }
 
 .content-my-announcements{
