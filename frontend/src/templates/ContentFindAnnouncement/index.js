@@ -1,11 +1,9 @@
 import React from 'react';
 import './styles.css';
 
-import { FaFilter } from "react-icons/fa";
-import {Link} from 'react-router-dom';
-
 import Form from '../../templates/LocalizarAnimaisHomeForm';
 import Announcement from '../../templates/AnnouncementItemFromList'
+import Filter from '../../templates/FilterAnnouncementsHome';
 
 var data = new Date();
 var day = data.getDate();
@@ -23,10 +21,8 @@ export default function ContentFindAnnouncement(){
                 <div className="home-form-locate-animals">
                     <Form/>
                 </div>
-                <div className="content-bichinhos-filtrar">
-                    <p className="bichinhos-regiao">BICHINHOS NA SUA REGIÃO</p>
-                    <p className="filtrar-announcements"> <Link to=""  className="content-find-announcement-filtrar"> <FaFilter size={10}/> FILTRAR</Link></p>
-                </div>
+                
+                <Filter/>
                 
                 <div className="box-home-announcements-animals">
                     <ul className="home-announcements-animals">
