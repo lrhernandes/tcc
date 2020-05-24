@@ -48,15 +48,15 @@ export default function LocalizarAnimaisHomeForm (){
     return (
         <div className="localizar-animais-home-form">
           <div>
-            <label>Estado</label><br/>
-            <select id="uf" onClick={()=>{loadSelect()}}><option defaultValue >Estado</option></select>
+            <label>Em qual estado?</label><br/>
+            <select id="uf" onClick={()=>{loadSelect()}}><option defaultValue >Selecionar</option></select>
           </div>
           <div>
-            <label>Cidade</label><br/>
-            <select id="cidade"> <option defaultValue >Cidade</option></select>
+            <label>E cidade?</label><br/>
+            <select id="cidade"> <option defaultValue >Selecionar</option></select>
           </div>
           <div id="filtrar-button-box">
-            <button className="gray">FILTRAR</button>
+            <button className="purple">LOCALIZAR</button>
           </div>
         </div>
     )

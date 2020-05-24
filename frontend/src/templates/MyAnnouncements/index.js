@@ -14,7 +14,7 @@ export default function MyAnnouncements(){
             <img id="elipse7-my-announcements" src={elipse7}/>
 
             <div className="content-my-announcements">
-                <p className="title-default-page">Meus anúncios</p>
+                <p className="title-default-page">MEUS ANÚNCIOS</p>
                 <p className="subtitle-default-page">Animais cadastrados para adoção</p>
                 <button className="purple">NOVO ANÚNCIO</button>
                 <div className="content-itens-my-announcements">

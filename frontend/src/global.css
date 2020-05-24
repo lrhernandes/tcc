@@ -53,6 +53,7 @@ html, body{
     position: relative;
     text-align: center;
     transition: filter 0.2s;
+    margin: auto;
 }
 
 .gray{
@@ -102,14 +103,15 @@ html, body{
 .title-default-page{
     font-family: Roboto;
     font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
+    font-weight: 600;
+    font-size: 20px;
     line-height: 50px;
+    color: hsl(0, 0%, 20%);
 }
 
 .subtitle-default-page{
     font-family: Roboto;
     font-style: normal;
     font-weight: 300;
-    font-size: 14px;
+    font-size: 18px;
 }

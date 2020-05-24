@@ -14,7 +14,7 @@ export default function LikedAnnouncements(){
             <img id="elipse7-my-announcements" src={elipse7}/>
 
             <div className="content-my-announcements">
-                <p className="title-default-page">Meus anúncios favoritos</p>
+                <p className="title-default-page">MEUS ANÚNCIOS FAVORITOS</p>
                 <p className="subtitle-default-page">Os bichinhos que tenho interesse em adotar</p>
                 <div className="content-itens-my-announcements" id="content-itens-my-favourite-announcements">
                     <ContentMyAnnouncements/>

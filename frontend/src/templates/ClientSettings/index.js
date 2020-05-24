@@ -12,7 +12,7 @@ export default function ClientSettings(){
             <img id="elipse7-my-announcements" src={elipse7}/>
 
             <div>
-                <p className="title-default-page">Meu perfil</p>
+                <p className="title-default-page">MEU PERFIL</p>
                 <p className="subtitle-default-page">Meus dados cadastrados</p>
             </div>
         </div>
