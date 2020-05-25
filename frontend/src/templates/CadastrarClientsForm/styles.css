@@ -5,7 +5,7 @@
     margin-top: -20px;
 }
 
-input[type="text"], select{
+input[type="text"], input[type="password"], input[type="date"], input[type="number"], select, textarea{
     background-color: white;
     border: 1px solid rgb(158, 158, 158);
     border-radius: 8px;

@@ -1,7 +1,8 @@
 import React from 'react';
 import './styles.css';
 
-export default function LocalizarAnimaisHomeForm (){
+export default function LocalizarAnimaisHomeForm (){  
+
     function loadSelect(){
         return (function(uf, city, api) {
         function createOption (value, text) {
@@ -44,12 +45,13 @@ export default function LocalizarAnimaisHomeForm (){
         3469034
       );
     }
-    
+        
     return (
+      <div className="gambiarra">
         <div className="localizar-animais-home-form">
           <div>
             <label>Em qual estado?</label><br/>
-            <select id="uf" onClick={()=>{loadSelect()}}><option defaultValue >Selecionar</option></select>
+            <select id="uf"><option defaultValue >Selecionar</option></select>
           </div>
           <div>
             <label>E cidade?</label><br/>
@@ -59,5 +61,7 @@ export default function LocalizarAnimaisHomeForm (){
             <button className="purple">LOCALIZAR</button>
           </div>
         </div>
+        <iframe src="https://stackoverflow.com/" onLoad={()=>{loadSelect()}}/>
+      </div>
     )
 }

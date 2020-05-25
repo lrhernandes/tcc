@@ -57,14 +57,14 @@ export default function CadastrarClientForm(){
                             <h2>Cadastre-se</h2>
                             <h4 className="h4">Dados pessoais</h4>
                             <label>Nome</label><br/>
-                            <input id="firstName" placeholder="Nome"/> 
+                            <input type="text" id="firstName" placeholder="Nome"/> 
                     
                             <label>Sobrenome</label><br/>
-                            <input id="lastName" placeholder="Sobrenome"/>
+                            <input type="text" id="lastName" placeholder="Sobrenome"/>
 
                             <div className="form-group-1">
                                 <label>RG</label><br/>
-                                <input id="rg" placeholder="Apenas números"/>
+                                <input type="text" id="rg" placeholder="Apenas números"/>
                             </div>
 
                             <div className="form-group-2">
@@ -92,12 +92,12 @@ export default function CadastrarClientForm(){
 
                     <div className="form-group-3">
                         <label>Logradouro</label><br/>
-                        <input id="street" placeholder="Logradouro"/>
+                        <input type="text" id="street" placeholder="Logradouro"/>
                     </div>
 
                     <div className="form-group-4">
                         <label>Nº</label><br/>
-                        <input id="number" placeholder="Nº"/>
+                        <input type="text" id="number" placeholder="Nº"/>
                     </div>
                     <button className="previous-button" onClick={() => setStep(step - 1) }>🡠 VOLTAR</button>
                     <button className="next-button" onClick={() => setStep(step + 1) }>PRÓXIMO 🡢</button>
@@ -108,11 +108,11 @@ export default function CadastrarClientForm(){
                 <div id="register-step2">
                     <h4 className="h4">Contato</h4>
                     <label>E-mail</label><br/>
-                    <input id="email" placeholder="E-mail"/>
+                    <input type="text"id="email" placeholder="E-mail"/>
 
                     <label>WhatsApp</label><br/>
                     <p className="form-sujest">Com código do país e área</p>
-                    <input id="whatsapp" placeholder="Apenas números"/>
+                    <input type="number" id="whatsapp" placeholder="Apenas números"/>
                     <button className="previous-button" onClick={() => setStep(step - 1) }>🡠 VOLTAR</button>
                     <button className="next-button" onClick={() => setStep(step + 1) }>PRÓXIMO 🡢</button>
                 </div>
@@ -122,11 +122,11 @@ export default function CadastrarClientForm(){
                 <div id="register-step3">
                     <h4 className="h4">Acesso</h4>
                     <label>Nome de usuário</label><br/>
-                    <input id="user" placeholder="Usuário"/>
+                    <input type="text" id="user" placeholder="Usuário"/>
 
                     <label>Senha</label><br/>
                     <p className="form-sujest">Use no mínimo 6 caracteres</p>
-                    <input id="password" placeholder="Senha"/>
+                    <input  type="text" id="password" placeholder="Senha"/>
                     <div className="button-group-space">
                         <Link to="/"><button className="negative-purple">CANCELAR</button></Link>
                         <Link to="/"><button className="purple">CADASTRE-SE</button></Link>

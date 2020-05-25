@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import ClientAnnouncements from './pages/ClientAnnouncements';
 import Favourite from './pages/LikedAnnouncements'
 import ClientSettings from './pages/ClientSettings'
+import NewAnnouncement from './pages/NewAnnouncement'
 
 export default function(){
     return(
@@ -22,6 +23,7 @@ export default function(){
                 <Route path="/myannouncements" component={ClientAnnouncements}/>
                 <Route path="/myfavorites" component={Favourite}/>
                 <Route path="/mysettings" component={ClientSettings}/>
+                <Route path="/newannouncement" component={NewAnnouncement}/>
             </Switch>
         </BrowserRouter>
     )

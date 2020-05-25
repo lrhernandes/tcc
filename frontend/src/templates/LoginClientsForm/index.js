@@ -9,7 +9,7 @@ export default function LoginClientForm(){
                 <h2 id="h2">Entrar</h2>
                 <h4 className="h4">Bem-vindo de volta</h4>
                 <label>User</label><br/>
-                <input id="user" placeholder="User"/> 
+                <input type="text" id="user" placeholder="User"/> 
         
                 <label>Senha</label><br/>
                 <input type="password" id="password" placeholder="••••••••••"/>
