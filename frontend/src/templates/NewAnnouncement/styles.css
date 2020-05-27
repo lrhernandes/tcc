@@ -1,13 +1,9 @@
 .new-announcement{
     padding-top: 50px;
-    padding-bottom: 30px;
     width: 100%;
     position: relative;
     margin-left: 20px;
-}
-
-.new-announcement img{
-    position: absolute;
+    position: relative;
 }
 
 #curls-new-announcement{
@@ -16,3 +12,9 @@
     height: 80%;
 }
 
+.new-announcement #background-new-announcement-cat{
+    position: absolute;
+    height: 300px;
+    bottom: 0;
+    right: 20px;
+}

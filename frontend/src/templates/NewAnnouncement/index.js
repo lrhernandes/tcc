@@ -1,6 +1,8 @@
 import React from 'react';
 import './styles.css';
 
+import cat from '../../assets/cat7.svg';
+
 import ContentNewAnnouncement from '../../templates/ContentNewAnnouncement';
 
 export default function NewAnnouncement(){
@@ -13,6 +15,7 @@ export default function NewAnnouncement(){
                     <ContentNewAnnouncement/>
                 </div>
             </div>
+            <img id="background-new-announcement-cat"src={cat}/>
         </div>
     )
 }
