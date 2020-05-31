@@ -16,24 +16,30 @@ import f from '../../assets/femea.svg'
 import m from '../../assets/fluido-de-genero.svg'
 import u from '../../assets/simbolo-sexual.svg'
 
+import ninho from '../../assets/ninho.svg'
+import pintinho from '../../assets/pintinho.svg'
+import galinha from '../../assets/galinha.svg'
+
+
 export default function ContentNewAnnouncement(){
     const [step, setStep] = useState(0);
     return (
         <div className="content-new-announcement">    
             <form className="form-new-announcement">
                 <div className="form-new-announcement-item" id="form-new-announcement-item-name">
-                    <label>Nome do anúncio</label>
+                    <label classname="form-label-new-announcement">Nome do anúncio</label>
                     <input type="text" placeholder="Ex.: Pedrinho"/>
                 </div>
 
                 <div className="form-new-announcement-item">
-                    <label>Descrição do anúncio</label>
+                    <label classname="form-label-new-announcement">Descrição do anúncio</label>
                     <p className="subtitle-seccion">Qual a história desse bichinho? quais são as suas características?</p>
                     <textarea placeholder="Ex.: Cachorro brincalhão resgatado do antigo tutor por maus tratos..."/>
                 </div>
 
                 <div className="form-new-announcement-item" id="form-new-announcement-item-type">
-                    <label>Tipo</label>
+                    <label classname="form-label-new-announcement">Tipo</label>
+                    <p className="subtitle-seccion">Que tipo de animal é esse?</p>
                     <div className="form-new-announcement-item-type-grid">
                         <div className="form-new-announcement-item-type-content-item">
                             <input type="radio" id="dog" name="animal-type"/>
@@ -62,45 +68,8 @@ export default function ContentNewAnnouncement(){
                     </div>
                 </div>
 
-                <div className="content-item-sex-age-grid">
-                    <div className="form-new-announcement-item" id="form-new-announcement-item-sex">
-                        <label>Sexo</label>
-                        <div className="form-new-announcement-item-sex-grid">
-                            <div className="form-new-announcement-item-sex-content-item">
-                                <input type="radio" id="fem" name="animal-sex"/>
-                                <label id="arredondar-first-radio" className="form-new-announcement-item-sex-label" for="fem"><img src={f}/> <p> FÊMEA </p></label>
-                            </div>
-                            <div className="form-new-announcement-item-sex-content-item">
-                                <input type="radio" id="mas" name="animal-sex"/>
-                                <label className="form-new-announcement-item-sex-label" for="mas"><img src={m}/> <p> MACHO </p></label>
-                            </div>
-                            <div className="form-new-announcement-item-sex-content-item">
-                                <input type="radio" id="undefined" name="animal-sex"/>
-                                <label id="arredondar-last-radio" className="form-new-announcement-item-sex-label" for="undefined"><img src={u}/> <p> INDEFINIDO </p></label>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="form-new-announcement-item" id="form-new-announcement-item-age">
-                        <label>Idade</label>
-                        <div className="form-new-announcement-item-age-grid">
-                            <div className="form-new-announcement-item-age-content-item">
-                                <input type="radio" id="puppy" name="animal-age"/>
-                                <label id="arredondar-first-radio" className="form-new-announcement-item-age-label" for="puppy"><p>FILHOTE</p></label>
-                            </div>
-                            <div className="form-new-announcement-item-age-content-item">
-                                <input type="radio" id="adult" name="animal-age"/>
-                                <label className="form-new-announcement-item-age-label" for="adult"><p>ADULTO</p></label>
-                            </div>
-                            <div className="form-new-announcement-item-age-content-item">
-                                <input type="radio" id="elderly" name="animal-age"/>
-                                <label id="arredondar-last-radio" className="form-new-announcement-item-age-label" for="elderly"><p>IDOSO</p></label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div className="form-new-announcement-item" id="form-new-announcement-item-size">
-                    <label>Porte</label>
+                    <label classname="form-label-new-announcement">Porte</label>
                     <p className="subtitle-seccion">Porte de acordo com o tipo de pet selecionado</p>
                     <div className="form-new-announcement-item-size-grid">
                         <div className="form-new-announcement-item-size-content-item">
@@ -126,8 +95,45 @@ export default function ContentNewAnnouncement(){
                     </div>
                 </div>
 
+                <div className="content-item-sex-age-grid">
+                    <div className="form-new-announcement-item" id="form-new-announcement-item-sex">
+                        <label classname="form-label-new-announcement">Sexo</label>
+                        <div className="form-new-announcement-item-sex-grid">
+                            <div className="form-new-announcement-item-sex-content-item">
+                                <input type="radio" id="fem" name="animal-sex"/>
+                                <label id="arredondar-first-radio" className="form-new-announcement-item-sex-label" for="fem"><img src={f}/> <p> FÊMEA </p></label>
+                            </div>
+                            <div className="form-new-announcement-item-sex-content-item">
+                                <input type="radio" id="mas" name="animal-sex"/>
+                                <label className="form-new-announcement-item-sex-label" for="mas"><img src={m}/> <p> MACHO </p></label>
+                            </div>
+                            <div className="form-new-announcement-item-sex-content-item">
+                                <input type="radio" id="undefined" name="animal-sex"/>
+                                <label id="arredondar-last-radio" className="form-new-announcement-item-sex-label" for="undefined"><img src={u}/> <p> INDEFINIDO </p></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="form-new-announcement-item" id="form-new-announcement-item-age">
+                        <label classname="form-label-new-announcement">Idade</label>
+                        <div className="form-new-announcement-item-age-grid">
+                            <div className="form-new-announcement-item-age-content-item">
+                                <input type="radio" id="puppy" name="animal-age"/>
+                                <label id="arredondar-first-radio" className="form-new-announcement-item-age-label" for="puppy"><img src={ninho}/><p>FILHOTE</p></label>
+                            </div>
+                            <div className="form-new-announcement-item-age-content-item">
+                                <input type="radio" id="adult" name="animal-age"/>
+                                <label className="form-new-announcement-item-age-label" for="adult"><img src={pintinho}/><p>ADULTO</p></label>
+                            </div>
+                            <div className="form-new-announcement-item-age-content-item">
+                                <input type="radio" id="elderly" name="animal-age"/>
+                                <label id="arredondar-last-radio" className="form-new-announcement-item-age-label" for="elderly"><img src={galinha}/><p>IDOSO</p></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div className="form-new-announcement-item" id="form-new-announcement-item-health">
-                    <label>Histórico de saúde</label>
+                    <label classname="form-label-new-announcement">Histórico de saúde</label>
                     <p className="subtitle-seccion">Qual o estado de saúde do pet? descreva suas necessidades especiais na descrição do anúncio</p>
                     <div className="form-new-announcement-item-health-content-item">
                         <input type="checkbox" id="castrado" name="animal-health"/>
@@ -160,23 +166,23 @@ export default function ContentNewAnnouncement(){
                 )}
 
                 <div className="form-new-announcement-item" id="form-new-announcement-item-address">
-                    <label>Endereço</label>
+                    <label classname="form-label-new-announcement">Endereço</label>
                     <p className="subtitle-seccion">Onde o animal está alojado?</p>
                     <div className="form-new-announcement-item-address-grid">
                         <div>
-                            <label>UF</label>
+                            <label classname="form-label-new-announcement">UF</label>
                             <select id="uf"><option defaultValue >Estado</option></select>
                         </div>
                         <div id="second-item-address-grid">
-                            <label>Cidade</label>
+                            <label classname="form-label-new-announcement">Cidade</label>
                             <select id="cidade"> <option defaultValue >Cidade</option></select>
                         </div>
                         <div id="third-item-address-grid">
-                            <label>Logradouro</label>
+                            <label classname="form-label-new-announcement">Logradouro</label>
                             <input type="text" placeholder="Rua" id="street"/>
                         </div>
                         <div>
-                            <label>Número</label>
+                            <label classname="form-label-new-announcement">Número</label>
                             <input type="number" placeholder="Nº" id="number" min="0"/>
                         </div>
                     </div>
@@ -186,7 +192,7 @@ export default function ContentNewAnnouncement(){
                 </div>
 
                 <div className="form-new-announcement-item" id="form-new-announcement-item-pictures">
-                    <label>Fotos</label>
+                    <label classname="form-label-new-announcement">Fotos</label>
                     <p className="subtitle-seccion">Selecione até 5 fotos do seu bichinho</p>
                     <label for="input-file-animal" className="button-charge-files"> <p><MdFileUpload/> CARREGAR ARQUIVOS</p> </label>
                     <input type="file" id="input-file-animal"/>
