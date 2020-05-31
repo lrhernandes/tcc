@@ -143,7 +143,7 @@ export default function ContentNewAnnouncement(){
                     </div>
                     <div className="form-new-announcement-item-health-content-item">
                         <input type="checkbox" id="especial" name="animal-health" onChange={()=>{setStep(step + 1)}}/>
-                        <label className="form-new-announcement-item-health-label" for="especial"><p>Possui necessidades especiais <MdInfo title="Doenças como FIV, FELV, cinomose, hepatite, deficiências físicas, alergigias e afins devem ser indicadas nesse campo" size={15} className="form-new-announcement-item-health-icon"/> </p></label>
+                        <label className="form-new-announcement-item-health-label" for="especial"><p>Possui necessidades especiais <MdInfo title="Doenças como FIV, FELV, cinomose, hepatite, deficiências físicas, alergias e afins devem ser indicadas nesse campo" size={15} className="form-new-announcement-item-health-icon"/> </p></label>
                     </div>
                 </div>
                 
