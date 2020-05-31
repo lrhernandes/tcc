@@ -39,7 +39,6 @@ label:not(.exception){
     position: relative;
     float: left;
     font-size: 14px;
-    padding-bottom: 5px;
     color: #646464;
 }
 
@@ -121,6 +120,11 @@ li{
     right: 0;
     display: flex;
     float: right;
+}
+
+.next-button:hover, .previous-button:hover{
+    transition: filter 0.5s;
+    filter: brightness(50%);
 }
 
 .previous-button{

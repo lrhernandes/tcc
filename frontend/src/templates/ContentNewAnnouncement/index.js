@@ -1,141 +1,203 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './styles.css';
+import { MdInfo, MdFileUpload } from "react-icons/md";
 
 import cachorro from '../../assets/animais (2).svg';
 import gato from '../../assets/gato.svg';
 import reptil from '../../assets/animais (1).svg';
 import hamster from '../../assets/hamster.svg';
+import equino from '../../assets/cavalo.svg';
 import outros from '../../assets/animais-de-estimacao.svg';
 
+import fem from '../../assets/ceres.svg';
+import masc from '../../assets/masculino.svg';
+
+import f from '../../assets/femea.svg'
+import m from '../../assets/fluido-de-genero.svg'
+import u from '../../assets/simbolo-sexual.svg'
+
 export default function ContentNewAnnouncement(){
+    const [step, setStep] = useState(0);
     return (
         <div className="content-new-announcement">    
             <form className="form-new-announcement">
-                <div className="content-form-part">
-                    <h4>Dados do bichinho</h4>
+                <div className="form-new-announcement-item" id="form-new-announcement-item-name">
                     <label>Nome do anúncio</label>
-                    <p className="subtitle-seccion">Qual o nome do seu pet?</p>
                     <input type="text" placeholder="Ex.: Pedrinho"/>
-                    <label>Descrição</label>
-                    <p className="subtitle-seccion">Descreva seu anúncio</p>
-                    <textarea placeholder="Ex.: Cachorro resgatado para adoção. Carinhoso e lida bem com outros cachorros..."/>
+                </div>
+
+                <div className="form-new-announcement-item">
+                    <label>Descrição do anúncio</label>
+                    <p className="subtitle-seccion">Qual a história desse bichinho? quais são as suas características?</p>
+                    <textarea placeholder="Ex.: Cachorro brincalhão resgatado do antigo tutor por maus tratos..."/>
+                </div>
+
+                <div className="form-new-announcement-item" id="form-new-announcement-item-type">
                     <label>Tipo</label>
-                    <p className="subtitle-seccion">Qual o tipo de animal que você deseja doar?</p>
-                    <div className="grid-checkbox-line-animal">
-                        <div>
-                            <input className="checkbox-line-animal" type="radio" name="type" id="cachorro"/>
-                            <label className="radio-tipo-animal" id="first-radio-tipo-animal" for="cachorro"> <p>CACHORRO</p> <img src={cachorro}/></label>
+                    <div className="form-new-announcement-item-type-grid">
+                        <div className="form-new-announcement-item-type-content-item">
+                            <input type="radio" id="dog" name="animal-type"/>
+                            <label id="arredondar-first-radio" className="form-new-announcement-item-type-label" for="dog"><img src={cachorro}/> <p className="label-type-form-new-announcement">CACHORRO</p></label>
                         </div>
-                        <div>
-                            <input className="checkbox-line-animal" type="radio" name="type" id="gato"/>
-                            <label className="radio-tipo-animal" for="gato"> <p>GATO</p> <img src={gato}/></label>
+                        <div className="form-new-announcement-item-type-content-item">
+                            <input type="radio" id="cat" name="animal-type"/>
+                            <label className="form-new-announcement-item-type-label" for="cat"><img src={gato}/> <p className="label-type-form-new-announcement">GATO</p></label>
                         </div>
-                        <div>
-                            <input className="checkbox-line-animal" type="radio" name="type" id="repteirs"/>
-                            <label className="radio-tipo-animal" for="repteirs"> <p>RÉPTIL</p> <img src={reptil}/></label>
+                        <div className="form-new-announcement-item-type-content-item">
+                            <input type="radio" id="reptile" name="animal-type"/>
+                            <label className="form-new-announcement-item-type-label" for="reptile"><img src={reptil}/> <p className="label-type-form-new-announcement">RÉPTIL</p></label>
                         </div>
-                        <div>
-                            <input className="checkbox-line-animal" type="radio" name="type" id="roedores"/>
-                            <label className="radio-tipo-animal" for="roedores"> <p>ROEDOR</p> <img src={hamster}/></label>
+                        <div className="form-new-announcement-item-type-content-item">
+                            <input type="radio" id="rodent" name="animal-type"/>
+                            <label className="form-new-announcement-item-type-label" for="rodent"><img src={hamster}/> <p className="label-type-form-new-announcement">ROEDOR</p></label>
                         </div>
-                        <div>
-                            <input className="checkbox-line-animal" type="radio" name="type" id="outros"/>
-                            <label className="radio-tipo-animal" id="last-radio-tipo-animal" for="outros"> <p>OUTRO</p> <img src={outros}/></label>
+                        <div className="form-new-announcement-item-type-content-item">
+                            <input type="radio" id="equino" name="animal-type"/>
+                            <label className="form-new-announcement-item-type-label" for="equino"><img src={equino}/> <p className="label-type-form-new-announcement">EQUINO</p></label>
+                        </div>
+                        <div className="form-new-announcement-item-type-content-item">
+                            <input type="radio" id="other" name="animal-type"/>
+                            <label id="arredondar-last-radio" className="form-new-announcement-item-type-label" for="other"><img src={outros}/> <p className="label-type-form-new-announcement">OUTRO</p></label>
                         </div>
                     </div>
                 </div>
-                <div className="content-form-part">
-                    <div className="divide-form-new-announcement">
-                        <div className="divide-form-new-announcement-item" id="content-sex">
-                            <label>Sexo</label>
-                            <p className="subtitle-seccion">Selecione o sexo do animal</p>
-                            <div>
-                                <session>
-                                    <input className="checkbox-line" type="radio" name="sex" id="macho"/>
-                                    <label className="radio-padrao" id="first-radio-age-animal"  for="macho">MACHO</label>
-                                </session>
-                                <session>
-                                    <input className="checkbox-line" type="radio" name="sex" id="femea"/>
-                                    <label className="radio-padrao" id="last-radio-age-animal"  for="femea">FÊMEA</label>
-                                </session>
+
+                <div className="content-item-sex-age-grid">
+                    <div className="form-new-announcement-item" id="form-new-announcement-item-sex">
+                        <label>Sexo</label>
+                        <div className="form-new-announcement-item-sex-grid">
+                            <div className="form-new-announcement-item-sex-content-item">
+                                <input type="radio" id="fem" name="animal-sex"/>
+                                <label id="arredondar-first-radio" className="form-new-announcement-item-sex-label" for="fem"><img src={f}/> <p> FÊMEA </p></label>
                             </div>
-                            
-                        </div>
-                        <div className="divide-form-new-announcement-item" id="content-age">
-                            <label>Idade</label>
-                            <p className="subtitle-seccion">Qual a idade dele?</p>
-                            <div>
-                                <session>
-                                    <input className="checkbox-line" type="radio" name="age" id="filhote"/>
-                                    <label className="radio-padrao" id="first-radio-age-animal" for="filhote">FILHOTE</label>
-                                </session>
-                                <session>
-                                    <input className="checkbox-line" type="radio" name="age" id="adulto"/>
-                                    <label className="radio-padrao" for="adulto">ADULTO</label>
-                                </session>
-                                <session>
-                                    <input className="checkbox-line" type="radio" name="age" id="idoso"/>
-                                    <label className="radio-padrao"  id="last-radio-age-animal" for="idoso">IDOSO</label>
-                                </session>
-                            </div>                            
+                            <div className="form-new-announcement-item-sex-content-item">
+                                <input type="radio" id="mas" name="animal-sex"/>
+                                <label className="form-new-announcement-item-sex-label" for="mas"><img src={m}/> <p> MACHO </p></label>
+                            </div>
+                            <div className="form-new-announcement-item-sex-content-item">
+                                <input type="radio" id="undefined" name="animal-sex"/>
+                                <label id="arredondar-last-radio" className="form-new-announcement-item-sex-label" for="undefined"><img src={u}/> <p> INDEFINIDO </p></label>
+                            </div>
                         </div>
                     </div>
-                    <div className="content-grid-checkbox">
-                        <label>Porte</label>
-                        <p className="subtitle-seccion">Selecione o porte de acordo com o tipo de pet selecionado</p>
-                        <div className="grid-checkbox-line-size">
-                            <div>
-                                <input className="checkbox-line" type="radio" name="size" id="mini"/>
-                                <label className="radio-padrao" id="first-radio-age-animal" for="mini">MINI</label>
+                    <div className="form-new-announcement-item" id="form-new-announcement-item-age">
+                        <label>Idade</label>
+                        <div className="form-new-announcement-item-age-grid">
+                            <div className="form-new-announcement-item-age-content-item">
+                                <input type="radio" id="puppy" name="animal-age"/>
+                                <label id="arredondar-first-radio" className="form-new-announcement-item-age-label" for="puppy"><p>FILHOTE</p></label>
                             </div>
-                            <div>
-                                <input className="checkbox-line" type="radio" name="size" id="pequeno"/>
-                                <label className="radio-padrao" for="pequeno">PEQUENO</label>
+                            <div className="form-new-announcement-item-age-content-item">
+                                <input type="radio" id="adult" name="animal-age"/>
+                                <label className="form-new-announcement-item-age-label" for="adult"><p>ADULTO</p></label>
                             </div>
-                            <div>
-                                <input className="checkbox-line" type="radio" name="size" id="medio"/>
-                                <label className="radio-padrao" for="medio">MÉDIO</label>
-                            </div>
-                            <div>
-                                <input className="checkbox-line" type="radio" name="size" id="grande"/>
-                                <label className="radio-padrao" for="grande">GRANDE</label>
-                            </div>
-                            <div>
-                                <input className="checkbox-line" type="radio" name="size" id="gigante"/>
-                                <label className="radio-padrao" id="last-radio-age-animal" for="gigante">GIGANTE</label>
+                            <div className="form-new-announcement-item-age-content-item">
+                                <input type="radio" id="elderly" name="animal-age"/>
+                                <label id="arredondar-last-radio" className="form-new-announcement-item-age-label" for="elderly"><p>IDOSO</p></label>
                             </div>
                         </div>
-                        
                     </div>
-                    
                 </div>
-                <div className="content-form-part">
-                    <h4>Onde o animal está alojado?</h4>
-                    <div className="select-line-address">
-                        <div>
-                            <label>Estado</label><br/>
-                            <select id="uf"><option defaultValue >Selecionar</option></select>
+
+                <div className="form-new-announcement-item" id="form-new-announcement-item-size">
+                    <label>Porte</label>
+                    <p className="subtitle-seccion">Porte de acordo com o tipo de pet selecionado</p>
+                    <div className="form-new-announcement-item-size-grid">
+                        <div className="form-new-announcement-item-size-content-item">
+                            <input type="radio" id="mini" name="animal-size"/>
+                            <label id="arredondar-first-radio" className="form-new-announcement-item-size-label" for="mini" ><p>MINI</p></label>
                         </div>
-                        <div>
-                            <label>Cidade</label><br/>
-                            <select id="cidade"> <option defaultValue >Selecionar</option></select>
+                        <div className="form-new-announcement-item-size-content-item">
+                            <input type="radio" id="small" name="animal-size"/>
+                            <label className="form-new-announcement-item-size-label" for="small" ><p>PEQUENO</p></label>
+                        </div>
+                        <div className="form-new-announcement-item-size-content-item">
+                            <input type="radio" id="medium" name="animal-size"/>
+                            <label className="form-new-announcement-item-size-label" for="medium"><p>MÉDIO</p></label>
+                        </div>
+                        <div className="form-new-announcement-item-size-content-item">
+                            <input type="radio" id="big" name="animal-size"/>
+                            <label className="form-new-announcement-item-size-label" for="big"><p>GRANDE</p></label>
+                        </div>
+                        <div className="form-new-announcement-item-size-content-item">
+                            <input type="radio" id="giant" name="animal-size"/>
+                            <label id="arredondar-last-radio" className="form-new-announcement-item-size-label" for="giant"><p>GIGANTE</p></label>
                         </div>
                     </div>
-                    <div className="add-line-address">
+                </div>
+
+                <div className="form-new-announcement-item" id="form-new-announcement-item-health">
+                    <label>Histórico de saúde</label>
+                    <p className="subtitle-seccion">Qual o estado de saúde do pet? descreva suas necessidades especiais na descrição do anúncio</p>
+                    <div className="form-new-announcement-item-health-content-item">
+                        <input type="checkbox" id="castrado" name="animal-health"/>
+                        <label className="form-new-announcement-item-health-label" for="castrado"><p>Castrado</p></label>
+                    </div>
+                    <div className="form-new-announcement-item-health-content-item">
+                        <input type="checkbox" id="vacinado" name="animal-health"/>
+                        <label className="form-new-announcement-item-health-label" for="vacinado"><p>Vacinado</p></label>
+                    </div>
+                    <div className="form-new-announcement-item-health-content-item">
+                        <input type="checkbox" id="vermifugado" name="animal-health"/>
+                        <label className="form-new-announcement-item-health-label" for="vermifugado"><p>Vermifugado </p></label>
+                    </div>
+                    <div className="form-new-announcement-item-health-content-item">
+                        <input type="checkbox" id="especial" name="animal-health" onChange={()=>{setStep(step + 1)}}/>
+                        <label className="form-new-announcement-item-health-label" for="especial"><p>Possui necessidades especiais <MdInfo title="Doenças como FIV, FELV, cinomose, hepatite, deficiências físicas, alergigias e afins devem ser indicadas nesse campo" size={15} className="form-new-announcement-item-health-icon"/> </p></label>
+                    </div>
+                </div>
+                
+                {step === 1 && (
+                    <div>
+                        <label className="form-new-announcement-description-special-label">Descreva aqui as necessidades especiais apresentadas pelo bichinho</label>
+                        <textarea className="form-new-announcement-description-special-textarea"/>
+                    </div>
+                )}
+                {step != 1 && (
+                    <div className="gambiarra">
+                        <iframe src="https://stackoverflow.com/" onLoad={()=>{setStep(0)}}/>
+                    </div>
+                )}
+
+                <div className="form-new-announcement-item" id="form-new-announcement-item-address">
+                    <label>Endereço</label>
+                    <p className="subtitle-seccion">Onde o animal está alojado?</p>
+                    <div className="form-new-announcement-item-address-grid">
                         <div>
+                            <label>UF</label>
+                            <select id="uf"><option defaultValue >Estado</option></select>
+                        </div>
+                        <div id="second-item-address-grid">
+                            <label>Cidade</label>
+                            <select id="cidade"> <option defaultValue >Cidade</option></select>
+                        </div>
+                        <div id="third-item-address-grid">
                             <label>Logradouro</label>
-                            <input type="text" placeholder="Nome da rua"/>
+                            <input type="text" placeholder="Rua" id="street"/>
                         </div>
                         <div>
                             <label>Número</label>
-                            <input type="number" placeholder="Nº"/>
+                            <input type="number" placeholder="Nº" id="number" min="0"/>
                         </div>
                     </div>
-                    <h4>Fotos</h4>
-                    <p className="subtitle-seccion">Escolha até 5 fotos para fazer parte do anúncio</p>
-                    <input type="file"/>
+                    <div className="form-new-announcement-item-address-grid-second">
+                        
+                    </div>
+                </div>
+
+                <div className="form-new-announcement-item" id="form-new-announcement-item-pictures">
+                    <label>Fotos</label>
+                    <p className="subtitle-seccion">Selecione até 5 fotos do seu bichinho</p>
+                    <label for="input-file-animal" className="button-charge-files"> <p><MdFileUpload/> CARREGAR ARQUIVOS</p> </label>
+                    <input type="file" id="input-file-animal"/>
+                </div>
+
+                <div className="content-buttons-new-announcement">
+                    <button className="negative-purple">CANCELAR</button>
+                    <button className="purple">CADASTRAR</button>
                 </div>
             </form>
+            
         </div>
     )
 }
