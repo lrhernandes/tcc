@@ -9,9 +9,6 @@ import hamster from '../../assets/hamster.svg';
 import equino from '../../assets/cavalo.svg';
 import outros from '../../assets/animais-de-estimacao.svg';
 
-import fem from '../../assets/ceres.svg';
-import masc from '../../assets/masculino.svg';
-
 import f from '../../assets/femea.svg'
 import m from '../../assets/fluido-de-genero.svg'
 import u from '../../assets/simbolo-sexual.svg'

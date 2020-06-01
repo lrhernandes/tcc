@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 
 export default function MyAnnouncementItem(){
     return (
-        <Link to="">
+        <Link to="/announcement">
             <div className="announcement-item-from-list" id="announcement-item-from-list-my-announcement">
                 <div className="image-announcement-item-from-list">
                 </div>

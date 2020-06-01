@@ -1,0 +1,12 @@
+.announcement-sections{
+    margin-right: 50px;
+    height: 70vh;
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+.announcement-sections section{
+    padding: 10px;
+    height: 100%;
+}

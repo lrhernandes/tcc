@@ -10,6 +10,7 @@ import ClientAnnouncements from './pages/ClientAnnouncements';
 import Favourite from './pages/LikedAnnouncements'
 import ClientSettings from './pages/ClientSettings'
 import NewAnnouncement from './pages/NewAnnouncement'
+import Announcement from './pages/Announcement'
 
 export default function(){
     return(
@@ -24,6 +25,7 @@ export default function(){
                 <Route path="/myfavorites" component={Favourite}/>
                 <Route path="/mysettings" component={ClientSettings}/>
                 <Route path="/newannouncement" component={NewAnnouncement}/>
+                <Route path="/announcement" component={Announcement}/>
             </Switch>
         </BrowserRouter>
     )
