@@ -1,5 +1,5 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
 .gallery-announcement{
-    border-radius: 8px;
+    border: 2px solid red;
 }

@@ -22,9 +22,10 @@ export default function ContentAnnouncement(){
     return (
         <div className="content-announcement">
                 <div className="content-announcement-sections">
-                    <p>Que bichinho é esse?</p>
+                    <p className="current-day">INSERIDO EM 01/06/2020 POR @LRHERNANDES</p>
+                    <p className="title-announcement-sections" id="first-title-announcement-section">Que bichinho é esse?</p>
                     <p className="description-announcement-section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis justo augue, ut semper ex dignissim et. Vestibulum et libero nec libero dapibus ultricies et sed est. Nam egestas tortor in nulla cursus, eu semper lectus gravida. Maecenas a tempor turpis. Integer blandit ex sed facilisis ornare. Fusce velit justo, mattis nec auctor at, vulputate sed enim. Donec ullamcorper semper nibh, ut varius urna euismod a. Duis cursus ultrices blandit. In pretium hendrerit nisl nec molestie. Nulla imperdiet dictum orci et tempus.</p>
-                    <p>Quais são suas características?</p>
+                    <p className="title-announcement-sections">Quais são suas características?</p>
                     <div className="caracteristicas-announcement-section">
                         <div id="arredondar-first-radio">
                             <img src={hamster}/>
@@ -44,24 +45,6 @@ export default function ContentAnnouncement(){
                         </div>
                     </div>
 
-                    <div className="histotico-saude-announcement-section">
-                        <p>Histórico de saúde</p>
-                        <div>
-                            <div>
-                                <ul>
-                                    <li>Castrado</li>
-                                    <li>Vacinado</li>
-                                    <li>Vermifugado</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <p className="description-announcement-section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis justo augue, ut semper ex</p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <p>Entrar em contato com o doador</p>
                     <button className="button-whatsapp">WHATSAPP</button>
                     <button className="button-email">E-MAIL</button>
 
