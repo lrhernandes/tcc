@@ -12,15 +12,19 @@ export default function Announcement(){
                 <p className="title-default-page">MALIA</p>
                 <p className="subtitle-default-page">CANOAS/RS</p>
                 <div className="announcement-sections">
-                    <section className="section-gallery-announcement-sections">
-                        <Gallery/>
-                    </section>
-                    <section className="section-content1-announcement-sections">
-                        <ContentAnnouncement/>
-                    </section>
-                    <section className="section-content2-announcement-sections">
-                        <ContentAnnouncementBottom/>
-                    </section>
+                    <div className="announcement-sections-height">
+                        <div className="announcement-sections-grid">
+                            <section className="section-gallery-announcement-sections">
+                                <Gallery/>
+                            </section>
+                            <section className="section-content1-announcement-sections">
+                                <ContentAnnouncement/>
+                            </section>
+                        </div>
+                        <section className="section-content2-announcement-sections">
+                            <ContentAnnouncementBottom/>
+                        </section>
+                    </div>
                 </div>
             </div>
         </div>

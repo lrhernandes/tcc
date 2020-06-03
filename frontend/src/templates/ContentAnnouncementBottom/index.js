@@ -21,22 +21,29 @@ import regua from '../../assets/regua.svg'
 export default function ContentAnnouncementBottom(){
     return (
         <div className="content-announcement-bottom">
-            <div className="histotico-saude-announcement-section">
-                <p className="title-announcement-sections">Histórico de saúde</p>
-                <div className="grid-saude-announcement-section">
-                    <div className="content-list-saude-announcement-section">
-                        <p className="checked-list-item-saude-announcement-section"><div/><p>CASTRADO</p></p>
-                        <p className="checked-list-item-saude-announcement-section"><div/><p>VACINADO</p></p>
-                        <p className="checked-list-item-saude-announcement-section"><div/><p>VERMIFUGADO</p></p>
-                    </div>
-                    <div className="content-description-saude-section">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis justo augue, ut semper exLorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis justo augue, ut semper exLorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis justo augue, ut semper exLorem ipsum dol</p>
+            <div className="left-session-announcement-bottom">
+                <div className="content-donor-announcement">
+                    
+                    <button className="negative-purple">WHATSAPP</button>
+                    <button className="negative-purple">E-MAIL</button>
+                </div>
+            </div>
+            <div className="right-session-announcement-bottom">
+                <div className="historico-saude-announcement-section">
+                    <p className="title-announcement-sections">Histórico de saúde</p>
+                    <div className="saude-announcement-section">
+                        <div className="content-list-saude-announcement-section">
+                            <p className="checked-list-item-announcement-section"><div/><p>CASTRADO</p></p>
+                            <p className="checked-list-item-announcement-section"><div/><p>VACINADO</p></p>
+                            <p className="checked-list-item-announcement-section"><div/><p>VERMIFUGADO</p></p>
+                        </div>
+                        <div className="content-description-saude-section">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis justo augue, ut semper exLorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis justo augue, ut semper exLorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis justo augue, ut semper exLorem ipsum dol</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className="temperamento-announcement-sections">
-                <p className="title-announcement-sections">Temperamento do bichinho</p>
-            </div>
+            
         </div>
     )
 }

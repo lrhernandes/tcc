@@ -162,6 +162,35 @@ export default function ContentNewAnnouncement(){
                     </div>
                 )}
 
+                <div className="form-new-announcement-item" id="form-new-announcement-item-health">
+                    <label classname="form-label-new-announcement">Temperamento</label>
+                    <p className="subtitle-seccion">Como esse bichinho costuma ser?</p>
+                    <div className="form-new-announcement-item-health-content-item">
+                        <input type="checkbox" id="carinhoso" name="animal-temperamento"/>
+                        <label className="form-new-announcement-item-health-label" for="carinhoso"><p>carinhoso</p></label>
+                    </div>
+                    <div className="form-new-announcement-item-health-content-item">
+                        <input type="checkbox" id="brincalhao" name="animal-temperamento"/>
+                        <label className="form-new-announcement-item-health-label" for="brincalhao"><p>brincalhao</p></label>
+                    </div>
+                    <div className="form-new-announcement-item-health-content-item">
+                        <input type="checkbox" id="docil" name="animal-temperamento"/>
+                        <label className="form-new-announcement-item-health-label" for="docil"><p>docil </p></label>
+                    </div>
+                    <div className="form-new-announcement-item-health-content-item">
+                        <input type="checkbox" id="bravo" name="animal-temperamento"/>
+                        <label className="form-new-announcement-item-health-label" for="bravo"><p>bravo </p></label>
+                    </div>
+                    <div className="form-new-announcement-item-health-content-item">
+                        <input type="checkbox" id="ciumento" name="animal-temperamento"/>
+                        <label className="form-new-announcement-item-health-label" for="ciumento"><p>ciumento </p></label>
+                    </div>
+                    <div className="form-new-announcement-item-health-content-item">
+                        <input type="checkbox" id="quieto" name="animal-temperamento"/>
+                        <label className="form-new-announcement-item-health-label" for="quieto"><p>quieto </p></label>
+                    </div>
+                </div>
+
                 <div className="form-new-announcement-item" id="form-new-announcement-item-address">
                     <label classname="form-label-new-announcement">Endereço</label>
                     <p className="subtitle-seccion">Onde o animal está alojado?</p>

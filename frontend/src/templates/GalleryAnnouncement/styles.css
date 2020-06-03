@@ -1,5 +1,9 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
-.gallery-announcement{
-    border: 2px solid red;
+.galery-announcement{
+    max-width: 508px;
+}
+
+.thumbnail{
+    width: 20%;
 }

@@ -44,10 +44,15 @@ export default function ContentAnnouncement(){
                             <p>MÉDIO</p>
                         </div>
                     </div>
-
-                    <button className="button-whatsapp">WHATSAPP</button>
-                    <button className="button-email">E-MAIL</button>
-
+                    
+                    <div className="temperamento-announcement-sections">
+                        <p className="title-announcement-sections">Temperamento do bichinho</p>
+                        <div className="content-list-saude-announcement-section">
+                            <p className="checked-list-item-announcement-section"><div/><p>CARINHOSO</p></p>
+                            <p className="checked-list-item-announcement-section"><div/><p>CALMO</p></p>
+                            <p className="checked-list-item-announcement-section"><div/><p>PROTETOR</p></p>
+                        </div>
+                    </div>
                 </div>
         </div>
     )

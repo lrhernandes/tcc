@@ -1,14 +1,18 @@
 .content-announcement-bottom{
     border: 2px solid red;
-    margin-right: 30px;
-}
-
-.grid-saude-announcement-section{
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 1fr 1fr;
 }
 
-.histotico-saude-announcement-section .checked-list-item-saude-announcement-section div{
+.left-session-announcement-bottom{
+    padding: 10px;
+}
+
+.right-session-announcement-bottom{
+    padding-left: 10px;
+}
+
+.checked-list-item-announcement-section div{
     background-image: url(../../assets/carraca.svg);
     background-size: 60%;
     background-repeat: no-repeat;
@@ -18,7 +22,7 @@
     background-position: center;
 }
 
-.histotico-saude-announcement-section .checked-list-item-saude-announcement-section {
+.checked-list-item-announcement-section {
     font-size: 12px;
     display: flex;
     flex-direction: row;
@@ -33,7 +37,7 @@
     padding-top: 5px;
 }
 
-.histotico-saude-announcement-section .checked-list-item-saude-announcement-section p{
+.checked-list-item-announcement-section p{
     vertical-align: middle;
     display: table-cell;
     width: 100%;
@@ -45,4 +49,13 @@
     color: rgb(109, 109, 109);
     text-align: justify;
     border: 2px solid yellow;
+    width: 100%;
+    padding: 10px;
+}
+
+.content-donor-announcement{
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
 }
