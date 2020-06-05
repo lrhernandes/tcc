@@ -1,15 +1,6 @@
 .content-announcement-bottom{
-    border: 2px solid red;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-.left-session-announcement-bottom{
-    padding: 10px;
-}
-
-.right-session-announcement-bottom{
-    padding-left: 10px;
+    grid-template-columns: 30% 30% 40%;
 }
 
 .checked-list-item-announcement-section div{
@@ -32,7 +23,6 @@
     margin: auto;
     height: calc(100% / 3);
     display: table;
-    border: 2px solid red;
     padding-bottom: 5px;
     padding-top: 5px;
 }
@@ -48,14 +38,6 @@
     font-weight: 200px;
     color: rgb(109, 109, 109);
     text-align: justify;
-    border: 2px solid yellow;
     width: 100%;
     padding: 10px;
-}
-
-.content-donor-announcement{
-    background-color: white;
-    height: 100%;
-    width: 100%;
-    border-radius: 8px;
 }

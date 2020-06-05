@@ -8,7 +8,7 @@ export default function GalleryAnnouncement(){
         {
           original: 'https://picsum.photos/id/1018/1000/600/',
           thumbnail: 'https://picsum.photos/id/1018/250/150/',
-          thumbnailClass: 'thumbnail'
+          thumbnailClass: 'thumbnail',
         },
         {
           original: 'https://picsum.photos/id/1015/1000/600/',

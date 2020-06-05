@@ -1,5 +1,10 @@
 import React from 'react';
 import './styles.css';
+import { MdClose } from "react-icons/md";
+import Modal from '../../modal/AnnouncementAdopt'
+import {Link} from 'react-router-dom';
+
+import ModalAdopt from '../ModalAdopt';
 
 import cachorro from '../../assets/animais (2).svg';
 import gato from '../../assets/gato.svg';
@@ -19,8 +24,24 @@ import galinha from '../../assets/galinha.svg'
 import regua from '../../assets/regua.svg'
 
 export default function ContentAnnouncement(){
+    const modalRef = React.useRef();
+
+    const openModal = () => {
+        modalRef.current.openModal()
+    }
+
+    const closeModal = () => {
+        modalRef.current.closeModal()
+    }
+
     return (
         <div className="content-announcement">
+            <Modal ref={modalRef}>
+                <div onClick={closeModal} className="x-icon"><Link><MdClose size={20}/></Link></div>
+                <div>
+                    <ModalAdopt/>
+                </div>
+            </Modal>
                 <div className="content-announcement-sections">
                     <p className="current-day">INSERIDO EM 01/06/2020 POR @LRHERNANDES</p>
                     <p className="title-announcement-sections" id="first-title-announcement-section">Que bichinho é esse?</p>
@@ -28,8 +49,8 @@ export default function ContentAnnouncement(){
                     <p className="title-announcement-sections">Quais são suas características?</p>
                     <div className="caracteristicas-announcement-section">
                         <div id="arredondar-first-radio">
-                            <img src={hamster}/>
-                            <p>ROEDOR</p>
+                            <img src={cachorro}/>
+                            <p>CACHORRO</p>
                         </div>
                         <div id="arredondar-second-radio">
                             <img src={f}/>
@@ -44,14 +65,8 @@ export default function ContentAnnouncement(){
                             <p>MÉDIO</p>
                         </div>
                     </div>
-                    
-                    <div className="temperamento-announcement-sections">
-                        <p className="title-announcement-sections">Temperamento do bichinho</p>
-                        <div className="content-list-saude-announcement-section">
-                            <p className="checked-list-item-announcement-section"><div/><p>CARINHOSO</p></p>
-                            <p className="checked-list-item-announcement-section"><div/><p>CALMO</p></p>
-                            <p className="checked-list-item-announcement-section"><div/><p>PROTETOR</p></p>
-                        </div>
+                    <div className="content-adopt-button">
+                        <button onClick={openModal} className="negative-purple">QUERO ADOTAR!</button>
                     </div>
                 </div>
         </div>

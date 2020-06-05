@@ -9,9 +9,9 @@ export default function Announcement(){
     return (
         <div className="new-announcement">
             <div>
-                <p className="title-default-page">MALIA</p>
-                <p className="subtitle-default-page">CANOAS/RS</p>
                 <div className="announcement-sections">
+                    <p className="title-default-page">MALIA</p>
+                    <p className="subtitle-default-page">CANOAS/RS</p>
                     <div className="announcement-sections-height">
                         <div className="announcement-sections-grid">
                             <section className="section-gallery-announcement-sections">

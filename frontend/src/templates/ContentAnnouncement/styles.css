@@ -3,6 +3,7 @@
     position: relative;
     padding-bottom: 20px;
     height: 100%;
+    margin-left: 20px;
 }
 
 .content-announcement .content-announcement-sections .current-day{
@@ -11,11 +12,6 @@
     text-align: left;
     width: 100%;
     margin-bottom: 15px;
-}
-
-.content-announcement .content-announcement-sections button{
-    margin-top: 20px;
-    margin-right: 10px;
 }
 
 .content-announcement .content-announcement-sections hr{
@@ -89,11 +85,28 @@
 }
 
 .title-announcement-sections{
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-size: 14px;
     font-weight: 400;
-    color: rgb(66, 66, 66);
+    margin-top: 20px;
 }
 .title-announcement-sections:not(#first-title-announcement-section){
-    margin-top: 15px;
+    margin-top: 30px;
+}
+
+.checked-list-item-announcement-section{
+    width: 100%;
+}
+
+.content-adopt-button{
+    width: 130px;
+    margin: auto;
+    margin-top: 35px;
+}
+
+.content-adopt-button .negative-purple{
+    margin: auto;
+    align-self: center;
+    width: 130px;
+    box-shadow: 5px 10px 10px #e2e2e2;
 }

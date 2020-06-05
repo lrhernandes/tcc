@@ -1,40 +1,48 @@
 .section-content2-announcement-sections {
-    border: 2px solid red;
     height: 70vh;
     background-color: whitesmoke;
 }
 
 .announcement-sections{
-    margin-top: 30px;
     margin-bottom: 50px;
     overflow-y: scroll;
     background-color: whitesmoke;
     border-radius: 8px;
     padding: 30px;
     margin-right: 50px;
-    height: 450px;
-    border: 2px solid purple;
+    height: 550px;
+    z-index: 50;
 }
 
-.announcement-sections-height{
-    
+.announcement-sections .subtitle-default-page{
+    margin-bottom: 20px;
+}
+
+.announcement-sections .title-default-page{
+    margin-bottom: 10px;
+    line-height: 20px;
 }
 
 .announcement-sections-grid{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+
 /* scroll */
-.announcement-sections:-webkit-scrollbar {
+
+.announcement-sections :-webkit-scrollbar {
     width: 0.4em;
-}.announcement-sections:-webkit-scrollbar-track {
+}
+.announcement-sections :-webkit-scrollbar-track {
     background: #cecdcd;
     border-radius: 8px;
-}.announcement-sections:-webkit-scrollbar-thumb {
+}
+.announcement-sections :-webkit-scrollbar-thumb {
     background-color: #b4b4b4;
     border-radius: 8px;
 }	
-.announcement-sections section{
+
+.new-announcement .announcement-sections section{
     padding: 10px;
     height: 100%;
 }

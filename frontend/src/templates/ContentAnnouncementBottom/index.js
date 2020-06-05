@@ -21,25 +21,38 @@ import regua from '../../assets/regua.svg'
 export default function ContentAnnouncementBottom(){
     return (
         <div className="content-announcement-bottom">
-            <div className="left-session-announcement-bottom">
-                <div className="content-donor-announcement">
-                    
-                    <button className="negative-purple">WHATSAPP</button>
-                    <button className="negative-purple">E-MAIL</button>
+            <div>
+                <p className="title-announcement-sections">Temperamento do bichinho</p>
+                <div className="content-list-saude-announcement-section">
+                    <p className="checked-list-item-announcement-section"><div/><p>CARINHOSO</p></p>
+                    <p className="checked-list-item-announcement-section"><div/><p>CALMO</p></p>
+                    <p className="checked-list-item-announcement-section"><div/><p>PROTETOR</p></p>
+                    <p className="checked-list-item-announcement-section"><div/><p>BRINCALHÃO</p></p>
+                    <p className="checked-list-item-announcement-section"><div/><p>GOSTA DE CRIANÇAS</p></p>
+                    <p className="checked-list-item-announcement-section"><div/><p>INTELIGENTE</p></p>
                 </div>
             </div>
-            <div className="right-session-announcement-bottom">
-                <div className="historico-saude-announcement-section">
-                    <p className="title-announcement-sections">Histórico de saúde</p>
-                    <div className="saude-announcement-section">
-                        <div className="content-list-saude-announcement-section">
-                            <p className="checked-list-item-announcement-section"><div/><p>CASTRADO</p></p>
-                            <p className="checked-list-item-announcement-section"><div/><p>VACINADO</p></p>
-                            <p className="checked-list-item-announcement-section"><div/><p>VERMIFUGADO</p></p>
-                        </div>
-                        <div className="content-description-saude-section">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis justo augue, ut semper exLorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis justo augue, ut semper exLorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis justo augue, ut semper exLorem ipsum dol</p>
-                        </div>
+            <div>
+                <p className="title-announcement-sections">Temperamento do bichinho</p>
+                <div className="content-list-saude-announcement-section">
+                    <p className="checked-list-item-announcement-section"><div/><p>CARINHOSO</p></p>
+                    <p className="checked-list-item-announcement-section"><div/><p>CALMO</p></p>
+                    <p className="checked-list-item-announcement-section"><div/><p>PROTETOR</p></p>
+                    <p className="checked-list-item-announcement-section"><div/><p>BRINCALHÃO</p></p>
+                    <p className="checked-list-item-announcement-section"><div/><p>GOSTA DE CRIANÇAS</p></p>
+                    <p className="checked-list-item-announcement-section"><div/><p>INTELIGENTE</p></p>
+                </div>
+            </div>
+            <div className="historico-saude-announcement-section">
+                <p className="title-announcement-sections">Histórico de saúde</p>
+                <div className="saude-announcement-section">
+                    <div className="content-list-saude-announcement-section">
+                        <p className="checked-list-item-announcement-section"><div/><p>CASTRADO</p></p>
+                        <p className="checked-list-item-announcement-section"><div/><p>VACINADO</p></p>
+                        <p className="checked-list-item-announcement-section"><div/><p>VERMIFUGADO</p></p>
+                    </div>
+                    <div className="content-description-saude-section">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis justo augue, ut semper ex dignissim et. Vestibulum et libero nec libero dapibus ultricies et sed est. Nam egestas tortor in nulla cursus, eu semper lectus gravida. Maecenas a tempor turpis. Integer blandit ex sed facilisis ornare. Fusce velit justo, mattis nec auctor at, vulputate sed enim.</p>    
                     </div>
                 </div>
             </div>
