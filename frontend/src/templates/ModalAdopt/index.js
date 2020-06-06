@@ -10,7 +10,7 @@ export default function ModalAdopt(){
                 <div className="modal-adopt-content-wrapper">
                     <p className="modal-adopt-title"><strong>Quer adotar esse bichinho?</strong></p>
                     <p className="modal-adopt-subtitle">Entre em contato com o doador:</p>
-                    <p className="modal-adopt-content">Utilize os botões abaixo para entrar em contato com Lara Hernandes.</p>
+                    <p className="modal-adopt-content">Utilize os botões abaixo para falar com Lara Hernandes.</p>
                     <div className="modal-adopt-contact-wrappper">
                         <div className="modal-adoption-contact">
                             <p><MdPhoneIphone className="icon-modal-adoption-contact" size={20}/>
@@ -22,7 +22,7 @@ export default function ModalAdopt(){
                         </div>
                     </div>
                     <p id="second-title-modal" className="modal-adopt-title"><strong>Não se esqueça:</strong></p>
-                    <p className="modal-adopt-subtitle">Faça download do arquivo e o leia com atenção</p>
+                    <p className="modal-adopt-subtitle">Leia os termos com atenção</p>
                     <p className="modal-adopt-content">Ao adotar um pet na plataforma GetPet você concorda com os termos de adoção responsável.</p>
                     <div className="modal-adoption-file">
                         <p><MdInsertDriveFile className="icon-modal-adoption-contact" size={20}/>
