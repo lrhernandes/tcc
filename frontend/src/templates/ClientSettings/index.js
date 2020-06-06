@@ -4,6 +4,8 @@ import './styles.css';
 import elipse7 from '../../assets/Ellipse 7.1.svg'
 import dots from '../../assets/whitedots.svg'
 
+import ContentClientSettings from '../../templates/ContentClientSettings'
+
 export default function ClientSettings(){
     return (
         <div className="client-settings">
@@ -14,6 +16,10 @@ export default function ClientSettings(){
             <div>
                 <p className="title-default-page">MEU PERFIL</p>
                 <p className="subtitle-default-page">Meus dados cadastrados</p>
+            </div>
+
+            <div className="client-settings-content-wrapper">
+                <ContentClientSettings/>
             </div>
         </div>
     )
