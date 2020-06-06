@@ -52,20 +52,6 @@
     text-transform: uppercase;
 }
 
-.modal-adoption-file{
-    background-color: rgb(199, 199, 199);
-    border-radius: 8px;
-    width: 60%;
-    text-align: center;
-    display: flex;
-    height: 40px;
-    line-height: 40px;
-    flex-direction: row;
-    text-transform: uppercase;
-    font-size: 14px;
-    box-shadow: 5px 10px 10px #e2e2e2;
-}
-
 .modal-adoption-file:hover{
     cursor: pointer;
     filter: brightness(90%);
@@ -80,16 +66,44 @@
     background-color: rgb(199, 199, 199);
     border-radius: 8px;
     width: 40%;
-    text-align: center;
-    display: flex;
     height: 40px;
     line-height: 40px;
-    flex-direction: row;
+    text-align: center;
     text-transform: uppercase;
     font-size: 14px;
     box-shadow: 5px 10px 10px #e2e2e2;
     float: left;
     margin-right: 13px;
+    display: table;
+}
+
+.modal-adoption-file{
+    background-color: rgb(199, 199, 199);
+    border-radius: 8px;
+    width: 60%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    box-shadow: 5px 10px 10px #e2e2e2;
+    float: left;
+    margin-right: 13px;
+    display: table;
+}
+
+.modal-adoption-file p{
+    width: fit-content;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.modal-adoption-contact p{
+    width: min-content;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
 }
 
 #second-modal-title{
@@ -97,7 +111,9 @@
 }
 
 .icon-modal-adoption-contact{
-    margin: 10px;
+    margin-top: 10px;
+    margin-right: 3px;
+    margin-bottom: 10px;
 }
 
 .modal-adopt-contact-wrappper{
