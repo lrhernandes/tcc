@@ -10,6 +10,8 @@
     position: absolute;
 }
 
-#content-itens-my-favourite-announcements{
-    margin-top: 100px;
+.liked-announcements button{
+    width: 200px;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }

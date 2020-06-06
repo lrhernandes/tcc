@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles.css';
 
+import {Link} from 'react-router-dom';
 import elipse7 from '../../assets/Ellipse 7.1.svg'
 import dots from '../../assets/whitedots.svg'
 
@@ -17,7 +18,7 @@ export default function ClientSettings(){
                 <p className="title-default-page">MEU PERFIL</p>
                 <p className="subtitle-default-page">Meus dados cadastrados</p>
             </div>
-
+            <Link to="/"><button className="purple">TERMO DE ADOÇÃO</button></Link>
             <div className="client-settings-content-wrapper">
                 <ContentClientSettings/>
             </div>
