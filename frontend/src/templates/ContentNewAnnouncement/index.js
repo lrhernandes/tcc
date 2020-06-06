@@ -19,7 +19,53 @@ import galinha from '../../assets/galinha.svg'
 
 
 export default function ContentNewAnnouncement(){
+
+    function loadSelect(){
+        setStep(0)
+        return (function(uf, city, api) {
+        function createOption (value, text) {
+          const option = document.createElement('option')
+          option.value = value
+          option.innerHTML = text
+          return option
+        }
+        function pushSelect (item, el) {
+          const opt = createOption(item.geonameId, item.toponymName)
+          el.append(opt)
+        } 
+        function handleAjax (res, el) {   
+         res.geonames.forEach(each => {
+           pushSelect(each, el)
+         })
+        } 
+        function getinfo (geoid, hasUf = false) {
+          fetch(`https://www.geonames.org/childrenJSON?geonameId=${geoid}`)
+            .then(res => res.json())
+            .then(res => {
+              if(hasUf) {
+                city.length = 1; //clear
+                handleAjax(res, city)
+              } else {
+                handleAjax(res, uf)
+              }
+          });
+        }
+        function init () {
+          uf.addEventListener('change', function() {
+            getinfo(this.value, true)
+          })
+          getinfo(api)
+        }
+        init()
+      })(
+        document.getElementById('uf'),
+        document.getElementById('cidade'),
+        3469034
+      );
+    }
+
     const [step, setStep] = useState(0);
+    
     return (
         <div className="content-new-announcement">    
             <form className="form-new-announcement">
@@ -158,7 +204,7 @@ export default function ContentNewAnnouncement(){
                 )}
                 {step != 1 && (
                     <div className="gambiarra">
-                        <iframe src="https://stackoverflow.com/" onLoad={()=>{setStep(0)}}/>
+                        <iframe src="https://stackoverflow.com/" onLoad={()=>{loadSelect()}}/>
                     </div>
                 )}
 
