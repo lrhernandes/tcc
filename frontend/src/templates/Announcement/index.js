@@ -3,7 +3,6 @@ import './styles.css';
 
 import Gallery from '../../templates/GalleryAnnouncement'
 import ContentAnnouncement from '../../templates/ContentAnnouncement'
-import ContentAnnouncementBottom from '../../templates/ContentAnnouncementBottom'
 
 export default function Announcement(){
     return (
@@ -21,9 +20,6 @@ export default function Announcement(){
                                 <ContentAnnouncement/>
                             </section>
                         </div>
-                        <section className="section-content2-announcement-sections">
-                            <ContentAnnouncementBottom/>
-                        </section>
                     </div>
                 </div>
             </div>

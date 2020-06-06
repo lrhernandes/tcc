@@ -5,7 +5,6 @@
 
 .announcement-sections{
     margin-bottom: 50px;
-    overflow-y: scroll;
     background-color: whitesmoke;
     border-radius: 8px;
     padding: 30px;
@@ -30,17 +29,7 @@
 
 /* scroll */
 
-.announcement-sections :-webkit-scrollbar {
-    width: 0.4em;
-}
-.announcement-sections :-webkit-scrollbar-track {
-    background: #cecdcd;
-    border-radius: 8px;
-}
-.announcement-sections :-webkit-scrollbar-thumb {
-    background-color: #b4b4b4;
-    border-radius: 8px;
-}	
+
 
 .new-announcement .announcement-sections section{
     padding: 10px;

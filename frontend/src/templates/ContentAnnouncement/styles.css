@@ -2,8 +2,25 @@
 .content-announcement .content-announcement-sections{
     position: relative;
     padding-bottom: 20px;
-    height: 100%;
+    height: 400px;
     margin-left: 20px;
+    overflow-y: scroll;
+}
+
+.content-announcement .content-announcement-sections::-webkit-scrollbar {
+    width: 0.4em;
+}
+.content-announcement .content-announcement-sections::-webkit-scrollbar-track {
+    background: #cecdcd;
+    border-radius: 8px;
+}
+.content-announcement .content-announcement-sections::-webkit-scrollbar-thumb {
+    background-color: #b4b4b4;
+    border-radius: 8px;
+}	
+
+.content-announcement-sections .space-scroll{
+    margin-right: 20px;
 }
 
 .content-announcement .content-announcement-sections .current-day{
@@ -85,10 +102,13 @@
 }
 
 .title-announcement-sections{
+    font-family: 'Quicksand', sans-serif;
     margin-bottom: 10px;
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(90, 90, 90);
     margin-top: 30px;
+    text-transform: uppercase;
 }
 
 .checked-list-item-announcement-section{
@@ -106,4 +126,61 @@
     align-self: center;
     width: 130px;
     box-shadow: 5px 10px 10px #e2e2e2;
+}
+
+
+
+
+
+
+
+.content-announcement-bottom{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.checked-list-item-announcement-section div{
+    background-image: url(../../assets/carraca.svg);
+    background-size: 60%;
+    background-repeat: no-repeat;
+    height: 100%;
+    box-sizing: border-box;
+    padding-right: 25px;
+    background-position: center;
+}
+
+.checked-list-item-announcement-section {
+    font-size: 12px;
+    display: flex;
+    flex-direction: row;
+    color: rgb(88, 88, 88);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    margin: auto;
+    height: calc(100% / 3);
+    display: table;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.checked-list-item-announcement-section p{
+    vertical-align: middle;
+    display: table-cell;
+    width: 100%;
+}
+
+.content-description-saude-section{
+    font-size: 12px;
+    font-weight: 200px;
+    color: rgb(109, 109, 109);
+    text-align: justify;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.content-list-temperamento-announcement-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-flow: column;
 }
