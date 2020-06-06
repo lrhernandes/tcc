@@ -66,7 +66,7 @@ export default function ContentAnnouncement(){
                         </div>
                     </div>
                     <div className="content-adopt-button">
-                        <button onClick={openModal} className="negative-purple">QUERO ADOTAR!</button>
+                        <button onClick={openModal} className="purple">QUERO ADOTAR!</button>
                     </div>
                 </div>
         </div>

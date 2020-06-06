@@ -22,13 +22,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 70%;
     width: 50%;
     background-color: whitesmoke;
     z-index: 102;
     padding: 10px;
     border-radius: 8px;
     color: black;
-    text-align: justify;
     overflow-y: auto;
 }

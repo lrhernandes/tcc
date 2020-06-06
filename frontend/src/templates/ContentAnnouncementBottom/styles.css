@@ -1,6 +1,10 @@
 .content-announcement-bottom{
     display: grid;
-    grid-template-columns: 30% 30% 40%;
+    grid-template-columns: 1fr 1fr;
+}
+
+.temperamento-announcement-section{
+    margin-left: 30px;
 }
 
 .checked-list-item-announcement-section div{
@@ -40,4 +44,11 @@
     text-align: justify;
     width: 100%;
     padding: 10px;
+}
+
+.content-list-temperamento-announcement-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-flow: column;
 }
