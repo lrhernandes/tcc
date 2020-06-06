@@ -14,13 +14,14 @@ export default function ClientSettings(){
             <img id="dots-my-announcements" src={dots}/>
             <img id="elipse7-my-announcements" src={elipse7}/>
 
-            <div>
-                <p className="title-default-page">MEU PERFIL</p>
-                <p className="subtitle-default-page">Meus dados cadastrados</p>
-            </div>
-            <Link to="/"><button className="purple">TERMO DE ADOÇÃO</button></Link>
-            <div className="client-settings-content-wrapper">
-                <ContentClientSettings/>
+            <div className="client-settings-content-title-content">
+                <div>
+                    <p className="title-default-page">MEU PERFIL</p>
+                    <p className="subtitle-default-page">Meus dados cadastrados</p>
+                </div>
+                <div className="client-settings-content-wrapper">
+                    <ContentClientSettings/>
+                </div>
             </div>
         </div>
     )

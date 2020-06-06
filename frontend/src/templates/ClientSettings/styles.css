@@ -1,9 +1,14 @@
 .client-settings{
     padding-top: 50px;
-    padding-bottom: 30px;
+    padding-bottom: 50px;
     width: 100%;
     position: relative;
     margin-left: 20px;
+    height: 100%;
+}
+
+.client-settings-content-title-content{
+    height: 100%;
 }
 
 .client-settings img{
@@ -13,14 +18,10 @@
 .client-settings-content-wrapper{
     background-color: whitesmoke;
     border-radius: 8px;
-    height: 350px;
     margin-right: 50px;
+    margin-top: 50px;
     position: relative;
     padding: 30px;
-}
-
-.client-settings button{
-    width: 200px;
-    margin-top: 20px;
-    margin-bottom: 40px;
+    float: bottom;
+    height: calc(100% - 120px);
 }
