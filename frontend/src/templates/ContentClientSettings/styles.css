@@ -1,0 +1,40 @@
+.content-client-settings{
+    border: 2px solid orange;
+    height: 100%;
+}
+
+.content-client-settings-left-wrapper{
+    border: 2px solid blue;
+    height: 100%;
+    position: relative;
+    width: min-content;
+    float: left;
+}
+
+.content-client-settings .content-client-settings-left-wrapper .profile-pic-client-settings{
+    border: 2px solid red;
+    height: 250px;
+    position: relative;
+}
+
+.content-client-settings .content-client-settings-left-wrapper .name-client-settings{
+    font-size: 18px;
+    color: rgb(46, 46, 46);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.content-client-settings .content-client-settings-left-wrapper .username-client-settings{
+    font-size: 14px;
+    color: rgb(92, 92, 92);
+    line-height: 20px;
+}
+
+.content-client-settings-right-wrapper{
+    border: 2px solid blue;
+    height: 100%;
+    display: flex;
+    float: left;
+    position: relative;
+}
