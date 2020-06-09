@@ -1,23 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
 .content-client-settings{
-    border: 2px solid orange;
     height: 100%;
 }
 
 .content-client-settings-left-wrapper{
-    border: 2px solid blue;
     height: 100%;
     position: relative;
-    width: min-content;
     float: left;
+    background-image: url('../../images/profile 2.jpg');
+    width: 35%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
-.content-client-settings .content-client-settings-left-wrapper .profile-pic-client-settings{
-    border: 2px solid red;
-    height: 250px;
-    position: relative;
-}
-
-.content-client-settings .content-client-settings-left-wrapper .name-client-settings{
+.content-client-settings .content-client-settings-right-wrapper .name-client-settings{
     font-size: 18px;
     color: rgb(46, 46, 46);
     font-family: 'Quicksand', sans-serif;
@@ -25,16 +23,137 @@
     text-transform: uppercase;
 }
 
-.content-client-settings .content-client-settings-left-wrapper .username-client-settings{
+.content-client-settings .content-client-settings-right-wrapper .username-client-settings{
     font-size: 14px;
     color: rgb(92, 92, 92);
     line-height: 20px;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .content-client-settings-right-wrapper{
-    border: 2px solid blue;
     height: 100%;
-    display: flex;
+    width: 65%;
+    padding-left: 20px;
     float: left;
     position: relative;
+    overflow-y: auto;
+}
+
+.content-client-settings-right-wrapper::-webkit-scrollbar {
+    width: 0.4em;
+}.content-client-settings-right-wrapper::-webkit-scrollbar-track {
+    background: #cecdcd;
+    border-radius: 8px;
+}.content-client-settings-right-wrapper::-webkit-scrollbar-thumb {
+    background-color: #b4b4b4;
+    border-radius: 8px;
+}	
+
+.profile-edit{
+    text-transform: uppercase;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    width: 120px;
+    text-align: center;
+    height: 34px;
+    line-height: 34px;
+    border-radius: 8px;
+    color: rgb(172, 172, 172);
+    background-color: rgb(228, 228, 228);
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.profile-edit:hover{
+    filter: brightness(90%);
+    transition: filter 0.5s;
+    cursor: pointer;
+}
+
+.modal-client-settings-wrapper{
+    border-radius: 8px;
+    width: 100%;
+    padding: 20px;
+    height: 400px;
+    background-color: white;
+    box-shadow: 5px 10px 10px #e2e2e2;
+    overflow-y: scroll;
+}
+
+.modal-client-settings-address-wrapper{
+    width: 100%;
+}
+
+.modal-client-settings-address-wrapper select{
+    height: 50px;
+}
+
+.modal-client-settings-address-wrapper .modal-client-settings-address-uf,
+.modal-client-settings-address-wrapper .modal-client-settings-address-city{
+    width: 50%;
+    float: left;
+}
+
+.modal-client-settings-address-wrapper .modal-client-settings-address-uf{
+    padding-right: 7px;
+}
+
+.modal-client-settings-address-wrapper .modal-client-settings-address-city{
+    padding-left: 7px;
+}
+
+.modal-client-settings-address-wrapper .modal-client-settings-address-street{
+    width: 80%;
+    padding-right: 7px;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.modal-client-settings-address-wrapper .modal-client-settings-address-number{
+    width: 20%;
+    padding-left: 7px;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.modal-client-settings-contact-whatsapp{
+    width: 30%;
+}
+
+.modal-client-settings-contact-email{
+    width: 70%;
+}
+
+.edit-client-settings-form{
+    margin-right: 20px;
+}
+
+.edit-client-settings-form .bichinhos-regiao{
+    cursor: pointer;
+}
+
+.edit-client-settings-form .modal-adopt-subtitle{
+    margin-top: 20px;
+}
+
+.modal-client-settings-my-password{
+    width: 50%;
+    float: left;
+    padding-right: 7px;
+}
+
+.modal-client-settings-new-password{
+    width: 50%;
+    float: left;
+    padding-left: 7px;
+}
+
+.content-buttons-client-settings{
+    padding-top: 110px;
+}
+
+.content-buttons-client-settings .negative-purple{
+    margin-right: 10px;
 }
