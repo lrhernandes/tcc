@@ -50,8 +50,7 @@ export default function ContentClientSettings(){
     return (
         <div className="content-client-settings">
             <div className="content-client-settings-left-wrapper" onMouseEnter={()=>{setStep2(1)}} onMouseLeave={()=>{setStep2(0)}}>
-                {step2 == 0 && ( <div></div>)}
-                {step2 == 1 && (
+                {step === 1 && step2 == 1 && (
                     <div className="change-profile-pic-box" type="image">
                         <label for="change-profile-pic-label"><p>trocar foto de perfil</p></label>
                         <input type="file" id="change-profile-pic-label"/>
