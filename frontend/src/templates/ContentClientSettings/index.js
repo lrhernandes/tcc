@@ -53,7 +53,7 @@ export default function ContentClientSettings(){
                 {step2 == 0 && ( <div></div>)}
                 {step2 == 1 && (
                     <div className="change-profile-pic-box" type="image">
-                        <label for="change-profile-pic-label" title="Trocar foto de perfil"/>
+                        <label for="change-profile-pic-label"><p>trocar foto de perfil</p></label>
                         <input type="file" id="change-profile-pic-label"/>
                     </div>
                 )}
