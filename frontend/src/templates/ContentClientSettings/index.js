@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './styles.css';
+import {MdPerson} from 'react-icons/md'
 
 export default function ContentClientSettings(){
     function loadSelect(){
@@ -45,9 +46,17 @@ export default function ContentClientSettings(){
       );
     }
     const [step, setStep] = useState(0);
+    const [step2, setStep2] = useState(0);
     return (
         <div className="content-client-settings">
-            <div className="content-client-settings-left-wrapper">
+            <div className="content-client-settings-left-wrapper" onMouseEnter={()=>{setStep2(1)}} onMouseLeave={()=>{setStep2(0)}}>
+                {step2 == 0 && ( <div></div>)}
+                {step2 == 1 && (
+                    <div className="change-profile-pic-box" type="image">
+                        <label for="change-profile-pic-label" title="Trocar foto de perfil"/>
+                        <input type="file" id="change-profile-pic-label"/>
+                    </div>
+                )}
             </div>
             {step === 0 && (
                 <div className="content-client-settings-right-wrapper">
