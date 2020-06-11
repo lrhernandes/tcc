@@ -24,10 +24,10 @@ export default function ModalAdopt(){
                     <p id="second-title-modal" className="modal-adopt-title"><strong>Não se esqueça:</strong></p>
                     <p className="modal-adopt-subtitle">Leia os termos com atenção</p>
                     <p className="modal-adopt-content">Ao adotar um pet na plataforma GetPet você concorda com os termos de adoção responsável.</p>
-                    <div className="modal-adoption-file">
+                    <Link className="default-link" to="/termo" target="_blank"><div className="modal-adoption-file">
                         <p><MdInsertDriveFile className="icon-modal-adoption-contact" size={20}/>
                         Termo de Adoção</p>
-                    </div>
+                    </div></Link>
                     </div>
                 <div className="modal-adopt-image-wrapper">
                 </div>

@@ -53,6 +53,10 @@
     text-transform: uppercase;
 }
 
+.modal-adoption-file{
+    color: black;
+}
+
 .modal-adoption-file:hover{
     cursor: pointer;
     filter: brightness(90%);
