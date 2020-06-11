@@ -2,9 +2,13 @@
 .content-announcement .content-announcement-sections{
     position: relative;
     padding-bottom: 20px;
-    height: 400px;
+    height: calc(70vh - 80px);
     margin-left: 20px;
     overflow-y: scroll;
+}
+
+#first-title-announcement-section{
+    margin-top: -5px;
 }
 
 .content-announcement .content-announcement-sections::-webkit-scrollbar {

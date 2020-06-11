@@ -1,16 +1,5 @@
-.section-content2-announcement-sections {
-    height: 70vh;
-    background-color: whitesmoke;
-}
-
-.announcement-sections{
-    margin-bottom: 50px;
-    background-color: whitesmoke;
-    border-radius: 8px;
-    padding: 30px;
-    margin-right: 50px;
-    height: 550px;
-    z-index: 50;
+.section-content1-announcement-sections {
+    height: calc(70vh - 80px);
 }
 
 .announcement-sections .subtitle-default-page{
@@ -25,13 +14,19 @@
 .announcement-sections-grid{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    height: calc(70vh - 80px);
 }
 
-/* scroll */
-
-
-
-.new-announcement .announcement-sections section{
+.announcement-sections section{
     padding: 10px;
     height: 100%;
+}
+
+#announcement-page .default-page-content-wrapper{
+    padding: 40px;
+    overflow: hidden;
+}
+
+.section-gallery-announcement-sections{
+    height: calc(70vh - 80px);
 }

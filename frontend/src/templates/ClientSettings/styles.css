@@ -25,3 +25,7 @@
     float: bottom;
     height: 400px;
 }
+
+.client-settings .default-page-content-wrapper{
+    overflow-y: hidden;
+}

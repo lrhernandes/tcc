@@ -47,6 +47,7 @@ export default function ContentAnnouncement(){
                         <p className="current-day">INSERIDO EM 01/06/2020 POR @LRHERNANDES</p>
                         <p className="title-announcement-sections" id="first-title-announcement-section">Que bichinho é esse?</p>
                         <p className="description-announcement-section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis justo augue, ut semper ex dignissim et. Vestibulum et libero nec libero dapibus ultricies et sed est. Nam egestas tortor in nulla cursus, eu semper lectus gravida. Maecenas a tempor turpis. Integer blandit ex sed facilisis ornare. Fusce velit justo, mattis nec auctor at, vulputate sed enim. Donec ullamcorper semper nibh, ut varius urna euismod a. Duis cursus ultrices blandit. In pretium hendrerit nisl nec molestie. Nulla imperdiet dictum orci et tempus.</p>
+                        
                         <p className="title-announcement-sections">Quais são suas características?</p>
                         <div className="caracteristicas-announcement-section">
                             <div id="arredondar-first-radio">
