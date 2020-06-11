@@ -19,7 +19,7 @@ export default function ClientSettings(){
                     <p className="title-default-page">MEU PERFIL</p>
                     <p className="subtitle-default-page">Meus dados cadastrados</p>
                 </div>
-                <div className="client-settings-content-wrapper">
+                <div className="default-page-content-wrapper">
                     <ContentClientSettings/>
                 </div>
             </div>

@@ -1,35 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 
-.form-new-announcement{
-    margin-top: 20px;
-    margin-right: 50px;
-    background-color: rgba(245, 245, 245, 0.822);
-    border-radius: 8px;
-    padding: 40px;
-    position: relative;
-    height: 70vh;
-    overflow-y: scroll;
-}
-.form-new-announcement::-webkit-scrollbar {
-    width: 0.4em;
-}
-.form-new-announcement::-webkit-scrollbar-track {
-    background: #cecdcd;
-    border-radius: 8px;
-}
-.form-new-announcement::-webkit-scrollbar-thumb {
-    background-color: #b4b4b4;
-    border-radius: 8px;
-}	
-.form-new-announcement .subtitle-seccion{
-    font-size: 14px;
-    margin-bottom: 10px;
-    width: 100%;
-    text-align: left;
-}
-.form-new-announcement .form-new-announcement-item{
-    position: relative;
-}
 #arredondar-first-radio{
     border-radius: 8px 0px 0px 8px;
 }
@@ -306,7 +276,7 @@
     float: right;
 }
 
-.form-new-announcement .purple{
+.default-page-content-wrapper .purple{
     margin-left: 10px;
 }
 

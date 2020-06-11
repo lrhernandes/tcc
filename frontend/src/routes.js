@@ -11,6 +11,7 @@ import Favourite from './pages/LikedAnnouncements'
 import ClientSettings from './pages/ClientSettings'
 import NewAnnouncement from './pages/NewAnnouncement'
 import Announcement from './pages/Announcement'
+import Termo from './pages/TermoAdocao'
 
 export default function(){
     return(
@@ -26,6 +27,7 @@ export default function(){
                 <Route path="/mysettings" component={ClientSettings}/>
                 <Route path="/newannouncement" component={NewAnnouncement}/>
                 <Route path="/announcement" component={Announcement}/>
+                <Route path="/termo" component={Termo}/>
             </Switch>
         </BrowserRouter>
     )

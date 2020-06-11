@@ -115,3 +115,41 @@ html, body{
     font-weight: 300;
     font-size: 18px;
 }
+
+.default-page-content-wrapper{
+    margin-top: 20px;
+    margin-right: 50px;
+    background-color: rgba(245, 245, 245, 0.822);
+    border-radius: 8px;
+    padding: 40px;
+    position: relative;
+    height: 70vh;
+    overflow-y: scroll;
+}
+
+.default-page-content-wrapper::-webkit-scrollbar {
+    width: 0.4em;
+}
+.default-page-content-wrapper::-webkit-scrollbar-track {
+    background: #cecdcd;
+    border-radius: 8px;
+}
+.default-page-content-wrapper::-webkit-scrollbar-thumb {
+    background-color: #b4b4b4;
+    border-radius: 8px;
+}
+
+.default-page-content-wrapper .subtitle-seccion{
+    font-size: 14px;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: left;
+}
+
+.default-wrapper{
+    padding-top: 50px;
+    width: 100%;
+    position: relative;
+    margin-left: 20px;
+    position: relative;
+}

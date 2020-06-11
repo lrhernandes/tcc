@@ -5,7 +5,7 @@ import ContentNewAnnouncement from '../../templates/ContentNewAnnouncement';
 
 export default function NewAnnouncement(){
     return (
-        <div className="new-announcement">
+        <div className="default-wrapper">
             <div>
                 <p className="title-default-page">NOVO ANÚNCIO</p>
                 <p className="subtitle-default-page">Como é o bichinho que preciso doar?</p>

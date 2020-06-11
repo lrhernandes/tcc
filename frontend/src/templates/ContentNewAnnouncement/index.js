@@ -67,8 +67,8 @@ export default function ContentNewAnnouncement(){
     const [step, setStep] = useState(0);
     
     return (
-        <div className="content-new-announcement">    
-            <form className="form-new-announcement">
+        <div>    
+            <div className="default-page-content-wrapper">
                 <div className="form-new-announcement-item" id="form-new-announcement-item-name">
                     <label classname="form-label-new-announcement">Nome do anúncio</label>
                     <input type="text" placeholder="Ex.: Pedrinho"/>
@@ -274,7 +274,7 @@ export default function ContentNewAnnouncement(){
                     <button className="negative-purple">CANCELAR</button>
                     <button className="purple">CADASTRAR</button>
                 </div>
-            </form>
+            </div>
             
         </div>
     )
