@@ -20,15 +20,23 @@ export default function ContentNewAnnouncement(){
     const [items, setItems] = useState([]);
     const [itemsCpy, setItemsCpy] = useState([]);
 
+    const [errorMessages, setErrorMessages] = useState([]);
+
     const handleKeyPress = (event) => {
         if(event.key === "Enter"){
             if(items.length < 9){    
                 setItems([ ... items, {
-                    id: items.length,
+                    id: Math.floor(Math.random()*1000+1),
                     value: event.target.value
                 }])
                 event.target.value = "";
                 console.log("Tamanho: " + [items.length+1])
+            }else{
+                setErrorMessages([... errorMessages, {
+                    id: Math.floor(Math.random()*1000+1),
+                    message: "É possível inserir até 9 itens de temperamento do bichinho",
+                    tag: "temperamento"
+                }])
             }
         }
     }
@@ -36,21 +44,15 @@ export default function ContentNewAnnouncement(){
         console.log(JSON.stringify(items))
         const _items = items;
         const index = _items.map((el) => el.id).indexOf(id);
-        console.log("ID: " + index);
         if (index > -1) {
             items.splice(index, 1);
-            console.log(JSON.stringify(items))
+            //NÃO SEI PQ, MAS FUNCIONA
             for(let cont=0; cont<9; cont++){
                 setItemsCpy([ ... itemsCpy, items[cont]])
             }
-            console.log("cpy: ")
-            console.log(JSON.stringify(itemsCpy))
         }
+        setItems(items)
     }
-
-    useEffect(() => {
-        document.title = items.length 
-    }, [items, setItems]);
 
     return (
         <div>    
@@ -186,7 +188,7 @@ export default function ContentNewAnnouncement(){
                         <ul className="list-temperament">
                             {items.map( item => 
                                 <li className="list-item-temperament" key={item.id}>
-                                    {item.id}{item.value} <MdClose onClick={()=> removeItem(item.id)}/>
+                                    {item.value}<MdClose onClick={()=> removeItem(item.id)}/>
                                 </li>
                             )}
                         </ul>
