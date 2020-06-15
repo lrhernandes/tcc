@@ -16,6 +16,7 @@
 /* TEXT AREA */
 .form-new-announcement-item textarea{
     height: 120px;
+    width: 60%;
     resize: vertical;
     max-height: 300px;
     min-height: 120px;
@@ -316,4 +317,8 @@
 .list-temperament .list-item-temperament svg{
     margin-left: 5px;
     cursor: pointer;    
+}
+
+.form-new-announcement-item .default-input-new-announcement{
+    width: 40%;
 }

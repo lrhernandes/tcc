@@ -59,7 +59,7 @@ export default function ContentNewAnnouncement(){
             <div className="default-page-content-wrapper">
                 <div className="form-new-announcement-item" id="form-new-announcement-item-name">
                     <label classname="form-label-new-announcement">Nome do anúncio</label>
-                    <input type="text" placeholder="Ex.: Pedrinho"/>
+                    <input className="default-input-new-announcement" type="text" placeholder="Ex.: Pedrinho"/>
                 </div>
                 <div className="form-new-announcement-item">
                     <label classname="form-label-new-announcement">Descrição do anúncio</label>
@@ -179,12 +179,25 @@ export default function ContentNewAnnouncement(){
                     </div>
                 </div>         
 
+                {step === 1 && (
+                    <div>
+                        <label className="form-new-announcement-description-special-label">Descreva aqui as necessidades especiais apresentadas pelo bichinho</label>
+                        <textarea className="form-new-announcement-description-special-textarea"/>
+                    </div>
+                )}
+                {step != 1 && (
+                    <div className="gambiarra">
+                        <iframe src="https://stackoverflow.com/" onLoad={()=>{loadSelect()}}/>
+                    </div>
+                )}
+
+
                 <div className="form-new-announcement-item" id="form-new-announcement-item-health">
                     <label classname="form-label-new-announcement">Temperamento</label>
                     <p className="subtitle-seccion">Como esse bichinho costuma ser?</p>
 
                     <div>
-                        <input onKeyPress={handleKeyPress} type="text"/>
+                        <input onKeyPress={handleKeyPress} className="default-input-new-announcement" type="text"/>
                         <ul className="list-temperament">
                             {items.map( item => 
                                 <li className="list-item-temperament" key={item.id}>
