@@ -307,9 +307,6 @@
     cursor: pointer;    
 }
 
-.form-new-announcement-item .default-input-new-announcement{
-}
-
 .new-announcement-background-cat{
     background-image: url('../../assets/cat6.svg');
     height: 70vh;
