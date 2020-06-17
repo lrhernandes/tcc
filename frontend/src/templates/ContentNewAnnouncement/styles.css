@@ -16,7 +16,6 @@
 /* TEXT AREA */
 .form-new-announcement-item textarea{
     height: 120px;
-    width: 60%;
     resize: vertical;
     max-height: 300px;
     min-height: 120px;
@@ -33,12 +32,6 @@
 .form-new-announcement-item-size-content-item input[type=radio], .form-new-announcement-item-type-content-item input[type=radio], .form-new-announcement-item-sex-content-item input[type=radio], .form-new-announcement-item-age-content-item input[type=radio], #form-new-announcement-item-pictures input[type=file]{
     height: 0;
     width: 0;
-}
-.form-new-announcement-item-type-content-item input[type=radio]:checked + label{
-    background-color: rgb(141, 141, 141);
-}
-.form-new-announcement-item-type-content-item input[type=radio]:checked + label p{
-    color: #E8E8E8;
 }
 .form-new-announcement-item-type-grid{
     display: grid;
@@ -71,7 +64,7 @@
 .content-item-sex-age-grid{
     margin-top: 40px;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 2fr 3fr;
     border: 2px solid transparent;
 }
 
@@ -106,19 +99,13 @@
     font-family: 'Quicksand', sans-serif;
     font-weight: 600;
 }
-.form-new-announcement-item-sex-content-item input[type=radio]:checked + label{
-    background-color: rgb(141, 141, 141);
-}
-.form-new-announcement-item-sex-content-item input[type=radio]:checked + label p{
-    color: #E8E8E8;
+.form-new-announcement-item-sex-content-item input[type=radio]:checked + label,
+.form-new-announcement-item-age-content-item input[type=radio]:checked + label,
+.form-new-announcement-item-size-content-item input[type=radio]:checked + label,
+.form-new-announcement-item-type-content-item input[type=radio]:checked + label{
+    filter: brightness(90%);
 }
 /* AGE */
-.form-new-announcement-item-age-content-item input[type=radio]:checked + label{
-    background-color: rgb(141, 141, 141);
-}
-.form-new-announcement-item-age-content-item input[type=radio]:checked + label p{
-    color: #E8E8E8;
-}
 #form-new-announcement-item-age{
     height: 100%;
 }
@@ -163,12 +150,6 @@
 #form-new-announcement-item-size{
     margin-top: 40px;
     margin-bottom: 20px;
-}
-.form-new-announcement-item-size-content-item input[type=radio]:checked + label{
-    background-color: rgb(141, 141, 141);
-}
-.form-new-announcement-item-size-content-item input[type=radio]:checked + label p{
-    color: #E8E8E8;
 }
 .form-new-announcement-item-size-label{
     cursor: pointer;
@@ -258,12 +239,17 @@
 }
 .form-new-announcement-item-address-grid{
     display: grid;
-    grid-template-columns: 3fr 3fr 4fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    border: 2px solid transparent;
+}
+
+.form-new-announcement-item-address-second-grid{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
     border: 2px solid transparent;
 }
 #second-item-address-grid{
     margin-left: 10px;
-    margin-right: 10px;
 }
 #third-item-address-grid{
     margin-right: 10px;
@@ -286,8 +272,10 @@
     color: red;
     margin-bottom: 10px;
 }
-
-
+.content-new-announcement .default-page-content-wrapper{
+    margin-right: 0px;
+    width: 60%;
+}
 
 
 
@@ -320,5 +308,24 @@
 }
 
 .form-new-announcement-item .default-input-new-announcement{
+}
+
+.new-announcement-background-cat{
+    background-image: url('../../assets/cat6.svg');
+    height: 70vh;
+    background-size: 50vh;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.content-new-announcement .new-announcement-background-cat-wrapper{
+    position: absolute;
+    bottom: 50px;
+    right: 0;
     width: 40%;
+    height: 70vh;
+    background-image: url('../../assets/Ellipse\ 7.png');
+    background-size: 60vh;
+    background-repeat: no-repeat;
+    background-position: center;
 }

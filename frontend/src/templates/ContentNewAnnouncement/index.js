@@ -14,6 +14,7 @@ import u from '../../assets/simbolo-sexual.svg'
 import ninho from '../../assets/ninho.svg'
 import pintinho from '../../assets/pintinho.svg'
 import galinha from '../../assets/galinha.svg'
+import backgroundCat from '../../assets/cat6.svg'
 
 export default function ContentNewAnnouncement(){
     const [step, setStep] = useState(0);
@@ -55,7 +56,7 @@ export default function ContentNewAnnouncement(){
     }
 
     return (
-        <div>    
+        <div className="content-new-announcement">    
             <div className="default-page-content-wrapper">
                 <div className="form-new-announcement-item" id="form-new-announcement-item-name">
                     <label classname="form-label-new-announcement">Nome do anúncio</label>
@@ -136,7 +137,7 @@ export default function ContentNewAnnouncement(){
                             </div>
                             <div className="form-new-announcement-item-sex-content-item">
                                 <input type="radio" id="undefined" name="animal-sex"/>
-                                <label id="arredondar-last-radio" className="form-new-announcement-item-sex-label" for="undefined"><img src={u}/> <p> INDEFINIDO </p></label>
+                                <label title="Não sabe o sexo desse animal? Selecione esta opção" id="arredondar-last-radio" className="form-new-announcement-item-sex-label" for="undefined"><img src={u}/> <p> INDEFINIDO </p></label>
                             </div>
                         </div>
                     </div>
@@ -197,7 +198,7 @@ export default function ContentNewAnnouncement(){
                     <p className="subtitle-seccion">Como esse bichinho costuma ser?</p>
 
                     <div>
-                        <input onKeyPress={handleKeyPress} className="default-input-new-announcement" type="text"/>
+                        <input onKeyPress={handleKeyPress} className="default-input-new-announcement" type="text" placeholder="Separe com Enter as características do seu pet"/>
                         <ul className="list-temperament">
                             {items.map( item => 
                                 <li className="list-item-temperament" key={item.id}>
@@ -221,6 +222,8 @@ export default function ContentNewAnnouncement(){
                             <label classname="form-label-new-announcement">Cidade</label>
                             <select id="cidade"> <option defaultValue >Cidade</option></select>
                         </div>
+                    </div>
+                    <div className="form-new-announcement-item-address-second-grid">
                         <div id="third-item-address-grid">
                             <label classname="form-label-new-announcement">Logradouro</label>
                             <input type="text" placeholder="Rua" id="street"/>
@@ -244,6 +247,9 @@ export default function ContentNewAnnouncement(){
                     <button className="negative-purple">CANCELAR</button>
                     <button className="purple">CADASTRAR</button>
                 </div>
+            </div>
+            <div className="new-announcement-background-cat-wrapper">
+                <div className="new-announcement-background-cat"/>
             </div>
         </div>
     )
