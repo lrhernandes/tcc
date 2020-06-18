@@ -17,6 +17,7 @@ db.client = require('../database/models/ClientModel')(sequelize, Sequelize);
 db.announcement = require('../database/models/AnnouncementModel')(sequelize, Sequelize);
 db.animal_pictures = require('../database/models/AnimalPicturesModel')(sequelize, Sequelize);
 db.adoption = require('../database/models/AdoptionModel')(sequelize, Sequelize);
+db.favouriteAnnouncements = require('../database/models/FavouriteAnnouncements')(sequelize, Sequelize);
 
 //client
 db.adress.hasOne(db.client);
@@ -33,7 +34,6 @@ db.client.hasMany(db.adoption);
 db.adoption.belongsTo(db.client);
 db.announcement.hasOne(db.adoption);
 db.adoption.belongsTo(db.announcement);
-
 
 //MENSAGEM DE AUTENTICAÇÃO
 db.sequelize.authenticate().then(function(){
