@@ -21,7 +21,7 @@ module.exports = {
             userId: userId,
             announcementId: announcementId,
         });
-        console.log("Announcement inserido!!");
+        console.log("Announcement favorito registrado!!");
         return announcement;
     }
 }
