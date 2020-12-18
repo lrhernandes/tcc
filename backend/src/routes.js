@@ -4,11 +4,12 @@ const routes = express.Router();
 const connection = require('./database/connection');
 
 //CONTROLLERS
+const AuthController = require('./controllers/AuthController');
 const ClientController = require('./controllers/ClientController');
 const AnnouncementController = require('./controllers/AnnouncementController');
 const AnimalPicturesController = require('./controllers/AnimalPicturesController');
-const AdoptionController = require('./controllers/AdoptionController');
 const FavouriteAnnouncementsController = require('./controllers/FavouriteAnnouncementsController');
+const { Router } = require('express');
 
 //ROTA RAIZ
 routes.get('/', (req, res)=>{
@@ -16,6 +17,9 @@ routes.get('/', (req, res)=>{
         mensagem: "tela inicial socorro"
     });
 });
+
+//ROTAS DE AUTENTICACAO]
+routes.post('/auth/login', AuthController.login);
 
 //ROTAS CLIENT
 routes.post('/client', ClientController.create);
@@ -34,10 +38,6 @@ routes.delete('/announcements/delete/:id', AnnouncementController.delete);
 //ROTAS ANIMAL PICTURES
 routes.post('/pictures/:id', AnimalPicturesController.create);
 routes.get('/pictures', AnimalPicturesController.index);
-
-//ROTAS ADOPTION
-routes.get('/adoptions', AdoptionController.index);
-routes.post('/adoption/:id', AdoptionController.create);
 
 //ROTAS FAVOURITES
 routes.get('/myfavourites', FavouriteAnnouncementsController.index);

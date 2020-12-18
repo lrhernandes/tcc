@@ -1,6 +1,5 @@
 import React from 'react';
 import elipse1 from '../../assets/Ellipse 1.svg';
-import elipse2 from '../../assets/Ellipse 2.svg';
 import cat1 from '../../assets/cat5.svg';
 
 export default function BannerPrincipal(){
@@ -9,7 +8,6 @@ export default function BannerPrincipal(){
             <h1 className="big">
                 <p>Encontre quem faltava na sua família</p>
                 <img id="elipse1" src={elipse1}/>
-                <img id="elipse2" src={elipse2}/>
                 <img id="cat1" src={cat1}/>
             </h1>
         </div>

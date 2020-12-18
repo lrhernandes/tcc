@@ -6,6 +6,8 @@ const strEmail = require('../mail templates/register');
 const strEmailDeleteAccount = require('../mail templates/deleteAccount');
 const nodemailer = require('nodemailer');
 const bcrypt = require('bcryptjs');
+const dotenv = require('dotenv');
+const jwt = require('jsonwebtoken');
 
 // Pronto
 
@@ -16,6 +18,11 @@ module.exports = {
         return getClients;
     },
     
+    async getByUser(user) {
+        const client = await connection.client.findOne({ where: { user }});
+        return client;
+    },
+
     //DELETAR CLIENT
     async delete (client_id){
         //DELETE ADDRESSES FROM CLIENT
@@ -43,7 +50,6 @@ module.exports = {
             console.log(adressId);
         }
     },
-
 
     //ATUALIZAR CLIENT
     async update(req, id_par){
@@ -84,13 +90,16 @@ module.exports = {
                 bcrypt.hash(password, salt, async function(err, hash) {
                     cli.password = hash;
                     await cli.save({
-                        password: password
+                        password: cli.password
                     })
                 });
             });
         }
         const pass = hashing();
         const mail = this.register(firstName, lastName, email);
+        const jwtToken = await jwt.sign({ sub: cli.id }, process.env.PRIVATE_KEY);
+        localStorage.setItem("TOKEN", jwtToken);
+        console.log("Token: ", jwtToken);
         return cli;
     },
 

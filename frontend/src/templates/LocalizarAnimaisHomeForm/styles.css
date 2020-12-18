@@ -1,19 +1,21 @@
 .localizar-animais-home-form{
-    display: grid;
-    position: relative;
-    grid-template-columns: 2fr 2fr 1fr;
+    display: flex;
 }
 
 .localizar-animais-home-form select{
     height: 40px;
     font-size: 12px;
     padding: 0px;
-    padding-left: 5px;
-    width: 90%;
+    width: 200px;
+}
+
+.localizar-animais-home-form div{
+    margin-right: 20px;
 }
 
 #filtrar-button-box{
     display: flex;
+    width: 150px;
 }
 
 .localizar-animais-home-form button {

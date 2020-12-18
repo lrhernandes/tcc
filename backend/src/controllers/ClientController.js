@@ -12,6 +12,7 @@ module.exports = {
     
     //SALVAR CLIENT NO BANCO
     async create (req, res) {
+        // TIRAR TUDO ISSO AQUI, MAS ANTES CONFIRMA COM O GUS 
         const idAdress = await adress.create(req.body);
         const us = await client.create(req.body, idAdress);
         if(us){

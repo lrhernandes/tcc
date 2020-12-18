@@ -16,7 +16,7 @@ export default function ContentFindAnnouncement(){
     const [step, setStep] = useState(0);
         
     return (
-        <div className="arrendondar-right-session">
+        <div className="content-right">
             <div className="content-find-announcement">
                 <div className="date-title">
                     <p className="title-default-page" id="title-from-title-date">ENCONTRE SEU NOVO AMIGO</p>
@@ -56,10 +56,10 @@ export default function ContentFindAnnouncement(){
                             <p className="filtrar-announcements"> <Link className="content-find-announcement-filtrar" onClick={() => {setStep(0)}} > <FaFilter size={10}/> FILTRAR</Link></p>
                         </div>
                         <form>
-                            <div>
+                            {/*<div>
                                 <label>Nome do anúncio</label>
                                 <input type="text" placeholder="Você está procurando um anúncio específico?"/>  
-                            </div>
+                            </div>*/}
 
                             <div className="animal-options">
                                 <div className="animal-types">

@@ -78,23 +78,26 @@
     height: 30px;
 }
 
-.caracteristicas-announcement-section #arredondar-second-radio{
+.caracteristicas-announcement-section #arredondar-second-radio, .caracteristicas-announcement #arredondar-second-radio{
     border: 1px solid rgb(219, 219, 219);
+    width: 100%;
 }
 .caracteristicas-announcement-section #arredondar-third-radio{
     border-top: 1px solid rgb(219, 219, 219);
     border-bottom: 1px solid rgb(219, 219, 219);
+    width: 100%;
 }
-.caracteristicas-announcement-section #arredondar-last-radio{
+.caracteristicas-announcement-section #arredondar-last-radio, .caracteristicas-announcement #arredondar-last-radio{
     border-top: 1px solid rgb(219, 219, 219);
     border-bottom: 1px solid rgb(219, 219, 219);
     border-left: 1px solid rgb(219, 219, 219);
     border-right: 1px solid rgb(219, 219, 219);
 }
-.caracteristicas-announcement-section #arredondar-first-radio{
+.caracteristicas-announcement-section #arredondar-first-radio, .caracteristicas-announcement #arredondar-first-radio{
     border-top: 1px solid rgb(219, 219, 219);
     border-bottom: 1px solid rgb(219, 219, 219);
     border-left: 1px solid rgb(219, 219, 219);
+    width: 100%;
 }
 #alinhar-p-announcement-section{
     padding-top: 18px;

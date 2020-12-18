@@ -4,11 +4,12 @@ import { MdHome, MdExitToApp, MdSettings, MdPets, MdFavorite } from "react-icons
 import {Link} from 'react-router-dom';
 
 import icon from '../../assets/icon.png'
+import cat from '../../assets/cat.ico'
 
 export default function ContentClientLeftMenu(){
     return (
         <div className="content-client-left-menu">
-            <h3 id="icon">GP</h3>
+            <div id="icon"><img src={cat}/></div>
             <ul>
                 <div className="left-menu-item-group-center">
                     <li className="left-menu-item-center">

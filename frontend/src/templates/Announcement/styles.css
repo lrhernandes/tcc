@@ -25,6 +25,7 @@
 #announcement-page .default-page-content-wrapper{
     padding: 40px;
     overflow: hidden;
+    background-color: white;
 }
 
 .section-gallery-announcement-sections{

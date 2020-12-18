@@ -55,13 +55,6 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: { msg: "Este campo não pode estar vazio" },
             }
         },
-        born: {
-            type: DataTypes.DATEONLY,
-            allowNull: false,
-            validate: {
-                notEmpty: { msg: "Este campo não pode estar vazio" }
-            }
-        },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
