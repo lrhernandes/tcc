@@ -28,15 +28,15 @@ export default function AnnouncementItemFromList(){
                     <p className="description-announcement-item-from-list-descript"> <MdLocationOn size={12}/> Canoas, RS</p>
                     <div className="caracteristicas-announcement">
                         <div id="arredondar-first-radio">
-                            <img src={f}/>
+                            <img alt="icon sex" src={f}/>
                             <p>FÊMEA</p>
                         </div>
                         <div id="arredondar-second-radio">
-                            <img src={pintinho}/>
+                            <img alt="icon age" src={pintinho}/>
                             <p>ADULTO</p>
                         </div>
                         <div id="arredondar-last-radio">
-                            <img src={regua}/>
+                            <img alt="icon size" src={regua}/>
                             <p>MÉDIO</p>
                         </div>
                     </div>

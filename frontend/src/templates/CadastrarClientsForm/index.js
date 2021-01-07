@@ -1,9 +1,14 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles.css'
 import {Link} from 'react-router-dom';
 
 export default function CadastrarClientForm(){
     const [step, setStep] = useState(0);
+    useEffect(() => {
+      if(step === 1){
+          loadSelect();
+      }
+    },[step]);
 
     function loadSelect(){
         return (function(uf, city, api) {
@@ -62,16 +67,6 @@ export default function CadastrarClientForm(){
                             <label>Sobrenome</label><br/>
                             <input type="text" id="lastName" placeholder="Sobrenome"/>
 
-                            <div className="form-group-1">
-                                <label>RG</label><br/>
-                                <input type="text" id="rg" placeholder="Apenas números"/>
-                            </div>
-
-                            <div className="form-group-2">
-                                <label>Data de nascimento</label><br/>
-                                <input id="born" type="date"/>
-                            </div>
-
                             </div>
                         </form>
                         <button className="next-button" onClick={() => {setStep(step + 1)} }>PRÓXIMO 🡢</button>
@@ -85,20 +80,11 @@ export default function CadastrarClientForm(){
                 <div id="register-step1">
                     <h4 className="h4">Endereço</h4>
                     <label>UF</label><br/>
-                    <select id="uf" onClick={()=>{loadSelect()}}><option defaultValue >Estado</option></select>
+                    <select id="uf"><option defaultValue >Estado</option></select>
 
                     <label>Cidade</label><br/>
                     <select id="cidade"> <option defaultValue >Cidade</option></select>
 
-                    <div className="form-group-3">
-                        <label>Logradouro</label><br/>
-                        <input type="text" id="street" placeholder="Logradouro"/>
-                    </div>
-
-                    <div className="form-group-4">
-                        <label>Nº</label><br/>
-                        <input type="text" id="number" placeholder="Nº"/>
-                    </div>
                     <button className="previous-button" onClick={() => setStep(step - 1) }>🡠 VOLTAR</button>
                     <button className="next-button" onClick={() => setStep(step + 1) }>PRÓXIMO 🡢</button>
                 </div>

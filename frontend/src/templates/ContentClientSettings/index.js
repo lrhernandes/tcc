@@ -1,56 +1,61 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './styles.css';
-import {MdPerson} from 'react-icons/md'
 
 export default function ContentClientSettings(){
-    function loadSelect(){
-        return (function(uf, city, api) {
-        function createOption (value, text) {
-          const option = document.createElement('option')
-          option.value = value
-          option.innerHTML = text
-          return option
-        }
-        function pushSelect (item, el) {
-          const opt = createOption(item.geonameId, item.toponymName)
-          el.append(opt)
-        } 
-        function handleAjax (res, el) {   
-         res.geonames.forEach(each => {
-           pushSelect(each, el)
-         })
-        } 
-        function getinfo (geoid, hasUf = false) {
-          fetch(`https://www.geonames.org/childrenJSON?geonameId=${geoid}`)
-            .then(res => res.json())
-            .then(res => {
-              if(hasUf) {
-                city.length = 1; //clear
-                handleAjax(res, city)
-              } else {
-                handleAjax(res, uf)
-              }
-          });
-        }
-        function init () {
-          uf.addEventListener('change', function() {
-            getinfo(this.value, true)
-          })
-          getinfo(api)
-        }
-        init()
-      })(
-        document.getElementById('uf'),
-        document.getElementById('cidade'),
-        3469034
-      );
-    }
     const [step, setStep] = useState(0);
     const [step2, setStep2] = useState(0);
+
+    useEffect(() => {
+        if(step === 1){
+            loadSelect();
+        }
+    },[step]);
+
+    function loadSelect(){
+        return (function(uf, city, api) {
+            function createOption (value, text) {
+                const option = document.createElement('option')
+                option.value = value
+                option.innerHTML = text
+                return option
+            }
+            function pushSelect (item, el) {
+                const opt = createOption(item.geonameId, item.toponymName)
+                el.append(opt)
+            } 
+            function handleAjax (res, el) {   
+                res.geonames.forEach(each => {
+                pushSelect(each, el)
+            })
+        } 
+        function getinfo (geoid, hasUf = false) {
+            fetch(`https://www.geonames.org/childrenJSON?geonameId=${geoid}`)
+                .then(res => res.json())
+                .then(res => {
+                if(hasUf) {
+                    city.length = 1; //clear
+                    handleAjax(res, city)
+                } else {
+                    handleAjax(res, uf)
+                }
+            });
+        }
+        function init () {
+            uf.addEventListener('change', function() {
+                getinfo(this.value, true)
+            })
+            getinfo(api)
+        }init()})(
+            document.getElementById('uf'),
+            document.getElementById('cidade'),
+            3469034
+        );
+    }
+
     return (
         <div className="content-client-settings">
             <div className="content-client-settings-left-wrapper" onMouseEnter={()=>{setStep2(1)}} onMouseLeave={()=>{setStep2(0)}}>
-                {step === 1 && step2 == 1 && (
+                {step === 1 && step2 === 1 && (
                     <div className="change-profile-pic-box" type="image">
                         <label for="change-profile-pic-label"><p>trocar foto de perfil</p></label>
                         <input type="file" id="change-profile-pic-label"/>
@@ -77,11 +82,8 @@ export default function ContentClientSettings(){
                 </div>
             )}
             
-            {step == 1 && (
+            {step === 1 && (
                 <div className="content-client-settings-right-wrapper">
-                    <div className="gambiarra">
-                        <iframe src="https://stackoverflow.com/" onLoad={()=>{loadSelect()}}/>
-                    </div>
                     <div className="edit-client-settings-form">
                         <p className="name-client-settings">Lara Cardoso Hernandes</p>
                         <p className="username-client-settings">@lrhernandes</p>
@@ -93,26 +95,18 @@ export default function ContentClientSettings(){
                                 <select id="uf"><option defaultValue >Estado</option></select>
                             </div>
                             <div className="modal-client-settings-address-city">
-                                <label classname="form-label-new-announcement">Cidade</label>
+                                <label className="form-label-new-announcement">Cidade</label>
                                 <select id="cidade"> <option defaultValue >Cidade</option></select>
-                            </div>
-                            <div className="modal-client-settings-address-street">
-                                <label classname="form-label-new-announcement">Logradouro</label>
-                                <input type="text" placeholder="Rua" id="street"/>
-                            </div>
-                            <div className="modal-client-settings-address-number">
-                                <label classname="form-label-new-announcement">Número</label>
-                                <input type="number" placeholder="Nº" id="number" min="0"/>
                             </div>
                         </div>
 
                         <p className="modal-adopt-subtitle">Contato</p>
                         <div className="modal-client-settings-contact-whatsapp">
-                            <label classname="form-label-new-announcement">WhatsApp</label>
+                            <label className="form-label-new-announcement">WhatsApp</label>
                             <input type="number" id="whatsapp" placeholder="51992184825"/>
                         </div>
                         <div className="modal-client-settings-contact-email">
-                            <label classname="form-label-new-announcement">E-mail</label>
+                            <label className="form-label-new-announcement">E-mail</label>
                             <input type="text" id="mail" placeholder="larachernandes@gmail.com"/>
                         </div>
 

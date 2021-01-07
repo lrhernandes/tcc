@@ -67,27 +67,27 @@ export default function ContentFindAnnouncement(){
                                     <div>
                                         <div>
                                             <input type="checkbox" name="animal-types" value="cachorros" id="cachorros" />
-                                            <label for="cachorros" className="exception">Cachorros</label>
+                                            <label htmlFor="cachorros" className="exception">Cachorros</label>
                                         </div>
 
                                         <div>
                                             <input type="checkbox" name="animal-types" value="gatos" id="gatos" />
-                                            <label for="gatos" className="exception">Gatos</label>
+                                            <label htmlFor="gatos" className="exception">Gatos</label>
                                         </div>
 
                                         <div>
                                             <input type="checkbox" name="animal-types" value="roedores" id="roedores" />
-                                            <label for="roedores" className="exception">Roedores</label>
+                                            <label htmlFor="roedores" className="exception">Roedores</label>
                                         </div>
 
                                         <div>
                                             <input type="checkbox" name="animal-types" value="repteis" id="repteis" />
-                                            <label for="repteis" className="exception">Répteis</label>
+                                            <label htmlFor="repteis" className="exception">Répteis</label>
                                         </div>
 
                                         <div>
                                             <input type="checkbox" name="animal-types" value="outros" id="outros" />
-                                            <label for="outros" className="exception">Outros</label>
+                                            <label htmlFor="outros" className="exception">Outros</label>
                                         </div>
                                     </div>
                                 </div>
@@ -97,12 +97,12 @@ export default function ContentFindAnnouncement(){
                                     <div>
                                         <div>
                                             <input type="checkbox" name="animal-types" value="macho" id="macho" />
-                                            <label for="macho" className="exception">Macho</label>
+                                            <label htmlFor="macho" className="exception">Macho</label>
                                         </div>
 
                                         <div>
                                             <input type="checkbox" name="animal-types" value="femea" id="femea" />
-                                            <label for="femea" className="exception">Fêmea</label>
+                                            <label htmlFor="femea" className="exception">Fêmea</label>
                                         </div>
 
                                     </div>
@@ -113,17 +113,17 @@ export default function ContentFindAnnouncement(){
                                     <div>
                                         <div>
                                             <input type="checkbox" name="animal-types" value="filhote" id="filhote" />
-                                            <label for="filhote" className="exception">Filhote</label>
+                                            <label htmlFor="filhote" className="exception">Filhote</label>
                                         </div>
 
                                         <div>
                                             <input type="checkbox" name="animal-types" value="adulto" id="adulto" />
-                                            <label for="adulto" className="exception">Adulto</label>
+                                            <label htmlFor="adulto" className="exception">Adulto</label>
                                         </div>
 
                                         <div>
                                             <input type="checkbox" name="animal-types" value="idoso" id="idoso" />
-                                            <label for="idoso" className="exception">Idoso</label>
+                                            <label htmlFor="idoso" className="exception">Idoso</label>
                                         </div>
                                     </div>
                                 </div>
@@ -133,22 +133,22 @@ export default function ContentFindAnnouncement(){
                                     <div>
                                         <div>
                                             <input type="checkbox" name="animal-types" value="castrado" id="castrado" />
-                                            <label for="castrado" className="exception">Castrado</label>
+                                            <label htmlFor="castrado" className="exception">Castrado</label>
                                         </div>
 
                                         <div>
                                             <input type="checkbox" name="animal-types" value="vacinado" id="vacinado" />
-                                            <label for="vacinado" className="exception">Vacinado</label>
+                                            <label htmlFor="vacinado" className="exception">Vacinado</label>
                                         </div>
 
                                         <div>
                                             <input type="checkbox" name="animal-types" value="vermifugado" id="vermifugado" />
-                                            <label for="vermifugado" className="exception">Vermifugado</label>
+                                            <label htmlFor="vermifugado" className="exception">Vermifugado</label>
                                         </div>
 
                                         <div>
                                             <input type="checkbox" name="animal-types" value="especial" id="especial" />
-                                            <label for="especial" className="exception">Especial</label>
+                                            <label htmlFor="especial" className="exception">Especial</label>
                                         </div>
                                     </div>
                                 </div>
@@ -158,12 +158,12 @@ export default function ContentFindAnnouncement(){
                                     <div>
                                         <div>
                                             <input type="checkbox" name="animal-types" value="individual" id="individual" />
-                                            <label for="individual" className="exception">Individual</label>
+                                            <label htmlFor="individual" className="exception">Individual</label>
                                         </div>
 
                                         <div>
                                             <input type="checkbox" name="animal-types" value="conjunta" id="conjunta" />
-                                            <label for="conjunta" className="exception">Conjunta</label>
+                                            <label htmlFor="conjunta" className="exception">Conjunta</label>
                                         </div>
                                     </div>
                                 </div>
@@ -178,7 +178,7 @@ export default function ContentFindAnnouncement(){
                     </div>
                 )}
 
-                {step ==2 && (
+                {step === 2 && (
                     <div className="box-home-announcements-animals">
                         <ul className="home-announcements-animals">
                             <li> <Announcement/> </li>
