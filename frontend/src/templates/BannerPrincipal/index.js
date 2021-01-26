@@ -7,8 +7,8 @@ export default function BannerPrincipal(){
         <div className="banner">
             <h1 className="big">
                 <p>Encontre quem faltava na sua família</p>
-                <img id="elipse1" src={elipse1}/>
-                <img id="cat1" src={cat1}/>
+                <img alt="elipse" id="elipse1" src={elipse1}/>
+                <img alt="hat cat" id="cat1" src={cat1}/>
             </h1>
         </div>
         

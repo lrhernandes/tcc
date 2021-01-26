@@ -2,7 +2,7 @@ import React, {useState, forwardRef, useImperativeHandle} from 'react';
 import './styles.css';
 import ReactDOM from 'react-dom';
 
-const AnnouncementAdopt = forwardRef(
+const Notify = forwardRef(
     (props, ref) => {
         const [display, setDisplay] = React.useState(false);
 
@@ -36,4 +36,4 @@ const AnnouncementAdopt = forwardRef(
 
 )
 
-export default AnnouncementAdopt
+export default Notify

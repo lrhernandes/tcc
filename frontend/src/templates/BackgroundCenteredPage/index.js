@@ -9,10 +9,10 @@ export default function BackgroundCenteredPage({content}){
     const Content = content;
     return (
         <div className="center-page">
-            <img id="elipse5" src={elipse5}/>
-            <img id="elipse6" src={elipse6}/>
-            <img id="dots3" src={dots3}/>
-            <img id="curls" src={curls}/>
+            <img alt="elipse" id="elipse5" src={elipse5}/>
+            <img alt="elipse" id="elipse6" src={elipse6}/>
+            <img alt="dots" id="dots3" src={dots3}/>
+            <img alt="curls" id="curls" src={curls}/>
             <div className="camada">
                 <Content/>
             </div>

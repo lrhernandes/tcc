@@ -7,9 +7,15 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: DataTypes.UUIDV4,
             allowNull: false
         },
-        adressId: {
-            type: DataTypes.UUID,
-            allowNull: false
+        uf:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+        },
+        city:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
         },
         userId: {
             type: DataTypes.UUID,
@@ -53,11 +59,6 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: { msg: "Este campo não pode estar vazio" }
             }
         },
-        group:{
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
-        },
         size:{
             type: DataTypes.STRING,
             allowNull: false,
@@ -67,6 +68,21 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BOOLEAN,
             allowNull: false,
             validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+        },
+        adopted:{
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+        },
+        pictures:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            get() {
+                return this.getDataValue('pic').split(';')
+            },
+            set(val) {
+            this.setDataValue('pic',val.join(';'));
+            },
         }
     }, {
         underscored: true

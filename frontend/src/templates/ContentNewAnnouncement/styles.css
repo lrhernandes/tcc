@@ -275,11 +275,8 @@
 .content-new-announcement .default-page-content-wrapper{
     margin-right: 0px;
     width: 60%;
+    padding: 20px 40px 40px 0px;
 }
-
-
-
-
 .list-temperament{
     width: 100%;
     overflow: hidden;

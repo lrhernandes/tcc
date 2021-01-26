@@ -1,12 +1,22 @@
-.fake-form{
-    width: 70vw;
+
+.inicial__form{
+    width: 60vw;
     margin: auto;
-    margin-top: 50px;
-    text-align: center;
-    line-height: 300px;
-    background: #F1F1F1;
-    box-shadow: 5px 10px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 33px;
-    z-index: 1;
-    position: relative;
+    margin-top: 20px;
+}
+.inicial__form button.purple{
+    margin: 30px 0px 0px 0px;
+}
+.inicial__form__select-item{
+    padding-top: 20px;
+    padding-bottom: 0px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.inicial__form__select-item select{
+    margin: 0px;
+    height: 50px;
+    appearance: none;
+    padding: 10px;
+    cursor: pointer;
 }

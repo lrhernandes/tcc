@@ -1,8 +1,29 @@
 .form-register{
     width: 80%;
     position: relative;
-    height: 350px;
+    height: 330px;
+    padding-right: 10px;
     margin-top: -20px;
+    overflow-y: scroll;
+}
+
+/* scroll */
+.form-register::-webkit-scrollbar {
+    width: 0.4em;
+}
+.form-register::-webkit-scrollbar-track {
+    background: #cecdcd;
+    border-radius: 8px;
+}
+.form-register::-webkit-scrollbar-thumb {
+    background-color: #b4b4b4;
+    border-radius: 8px;
+}	
+
+.camada-fix .bottom-register{
+    width: 80%;
+    margin: 0px;
+    margin-top: 5px;
 }
 
 input[type="text"], input[type="password"], input[type="date"], input[type="number"], select, textarea{
@@ -13,7 +34,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="numb
     font-family: 'Montserrat', sans-serif;
     width: 100%;
     line-height: 26px;
-    height: 45px;
+    height: 50px;
     margin-bottom: 20px;
     position: relative;
 }
@@ -26,8 +47,7 @@ input:hover, select:hover{
     border: 1px solid #646464;
 }
 
-
-form h2{
+.cadastrar-client-form h2{
     text-align: justify;
     padding-bottom: 15px;
     color: #3d3d3d;
@@ -51,9 +71,6 @@ li{
 .bottom-register .login-link{
     font-size: 12px;
     font-weight: bold;
-    width: 50%;
-    display: flex;
-    margin-top: 20px;
 }
 
 .bottom-register .login-link a{

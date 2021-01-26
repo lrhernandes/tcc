@@ -1,16 +1,38 @@
 //IMPORTS
-import React from 'react';
+import React, {useEffect} from 'react';
 import './styles.css';
 import { MdCopyright } from "react-icons/md";
 
+import Modal from '../../modal/Notify'
+import {Link} from 'react-router-dom';
 import FormularioLocalizar from '../../templates/LocalizarAnimaisForm';
 import NovosAnimais from '../../templates/NovosAnimais';
 import BannerPrincipal from '../../templates/BannerPrincipal';
 import MenuHorizontal from '../../templates/MenuHorizontal';
 
 export default function TelaPrincipal(){
+    const modalRef = React.useRef();
+    useEffect(() => {
+        openModal();
+      },[]);
+    const openModal = () => {
+        modalRef.current.openModal()
+    }
+    const closeModal = () => {
+        modalRef.current.closeModal()
+    }
     return (
-        <div className="page"> 
+        <div className="page">
+            {/* NOTIFICAÇÃO DE TERMOS DE ADOÇÃO */}
+            <Modal ref={modalRef}>
+                <div>
+                    <div className="notifica-card">
+                        <p>Ao doar e adotar com o GetPet você concorda em seguir os <Link target="_blank" to="/termo">termos de adoção responsável</Link> da plataforma. </p>
+                        <button onClick={closeModal} className="purple">Concordo</button>
+                    </div>
+                </div>
+            </Modal>
+            
             <div className="content-area">
 
                 {/* MENU HORIZONTAL E BANNER */}
@@ -22,10 +44,9 @@ export default function TelaPrincipal(){
                 {/* FORMULÁRIO DE BUSCA POR ANÚNCIOS */}
                 <div className="form-content">
                     <div className="center-form">
-                        <h1 className="title-seccion">Localize pets para adotar na sua cidade</h1>
-                        <p className="subtitle-seccion">Pesquise por tipo, idade, sexo...</p>
+                        <h1 className="title-seccion">Buscar bichinhos ;)</h1>
+                        <p className="subtitle-seccion">Insira os dados da sua cidade para encontrarmos os pets mais perto de você!</p>
                         <FormularioLocalizar/>
-                        <button className="gray">LOCALIZAR PETS</button>
                     </div>
                 </div>
 

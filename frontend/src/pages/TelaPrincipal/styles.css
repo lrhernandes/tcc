@@ -5,6 +5,36 @@
     padding-top: 10vh;
 }
 
+.notifica-card{
+    position: fixed;
+    background: rgba(41, 41, 41, 0.652);
+    width: 100%;
+    top: 0;
+    z-index: 1;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+}
+.notifica-card button.purple{
+    margin: 0px;
+}
+.notifica-card p{
+    height: min-content;
+    font-weight: 200;
+}
+
+.notifica-card a{
+    color: white;
+    text-decoration: underline;
+    font-weight: 400;
+}
+
+.disable-card{
+    display: none;
+}
+
 .content-area{
     background-color: #f5f5f5;
     width: 90vw;
@@ -25,7 +55,6 @@ header{
     color: #2E2E2E;
     width: 50%;
     position: absolute;
-    z-index: 1;
     margin-top: 70px;
     margin-left: 80px;
     padding: 0px 20px;
@@ -59,6 +88,12 @@ header{
     position: relative;
     height: 100%;
 }
+
+.form-content .subtitle-seccion, 
+.center-announcements .subtitle-seccion{
+    margin-top: 20px;
+}
+
 
 .center-form{
     text-align: center;
@@ -94,28 +129,22 @@ header{
     margin-top: 15vh;
 }
 
-.fake-announcements{
+.small-announcement{
     padding-top: 6vh;
     width: 70vw;
     margin: auto;
     display: grid;
+    margin-bottom: 60px;
     grid-template-columns: 1fr 1fr 1fr;
-}
-.small-announcement{
     margin-bottom: 120px;
-    position: relative;
-    box-sizing: border-box;
-    width: 100%;
 }
 
 .item{
-    padding-top: 3vh;
-    padding-bottom: 3vh;
     width: 18vw;
     margin: auto;
     background: #F1F1F1;
     box-shadow: 5px 10px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
+    border-radius: 8px;
     text-align: center;
     transition: filter 0.2s;
 }

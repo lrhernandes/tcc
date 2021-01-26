@@ -1,10 +1,6 @@
 import React from 'react';
 import './styles.css';
 
-import {Link} from 'react-router-dom';
-import elipse7 from '../../assets/Ellipse 7.1.svg'
-import dots from '../../assets/whitedots.svg'
-
 import ContentClientSettings from '../../templates/ContentClientSettings'
 
 export default function ClientSettings(){

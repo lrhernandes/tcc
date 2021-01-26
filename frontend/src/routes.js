@@ -13,6 +13,7 @@ import NewAnnouncement from './pages/NewAnnouncement'
 import Announcement from './pages/Announcement'
 import Termo from './pages/TermoAdocao'
 import Exception from './pages/Exception'
+import Senha from './pages/RedefinePassword'
 
 export default function(){
     return(
@@ -29,6 +30,7 @@ export default function(){
                 <Route path="/newannouncement" component={NewAnnouncement}/>
                 <Route path="/announcement" component={Announcement}/>
                 <Route path="/termo" component={Termo}/>
+                <Route path="/redefine-password" component={Senha}/>
                 <Route path="/" component={Exception}/>
             </Switch>
         </BrowserRouter>

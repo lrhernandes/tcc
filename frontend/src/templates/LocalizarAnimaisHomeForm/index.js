@@ -58,7 +58,7 @@ export default class LocalizarAnimaisHomeForm extends React.Component{
             <div>
               <label>E cidade?</label><br/>
               <select id="cidade"> <option defaultValue >Selecionar</option></select>
-            </div>
+            </div> 
             <div id="filtrar-button-box">
               <button className="purple">LOCALIZAR</button>
             </div>

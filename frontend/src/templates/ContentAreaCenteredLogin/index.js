@@ -9,11 +9,8 @@ export default function ContentareaCenteredLogin(){
         <div className="content-area-centered">
             <section>
                 <div className="content-left-login">
-                    <p className="title-center-page"><Link to="/" className="none-visited">GetPet</Link></p>
-                    <div id="camada-fix-login">
-                        <div className="form-login">
-                            <ClientLoginForm/>
-                        </div>
+                    <div className="form-login">
+                        <ClientLoginForm/>
                     </div>
                 </div>
             </section>

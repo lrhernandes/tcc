@@ -4,7 +4,7 @@ import './styles.css';
 
 export default function ContentTermoAdocao(){
     return (
-        <div>    
+        <div className="content-termo-adocao">    
             <div className="default-page-content-wrapper">
                 <p className="title-termo-adocao">Title section of adoption term</p>
                 <p className="subtitle-termo-adocao"> Consectetur ex enim consectetur culpa. Non ipsum fugiat esse amet in fugiat nostrud mollit tempor occaecat dolore. Mollit veniam ex nulla consectetur. Dolore dolor laboris magna et officia laboris culpa do exercitation. Nostrud quis cillum fugiat voluptate pariatur deserunt ullamco eu officia ipsum eiusmod. Commodo laborum minim mollit amet exercitation proident ipsum.

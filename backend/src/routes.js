@@ -7,7 +7,6 @@ const connection = require('./database/connection');
 const AuthController = require('./controllers/AuthController');
 const ClientController = require('./controllers/ClientController');
 const AnnouncementController = require('./controllers/AnnouncementController');
-const AnimalPicturesController = require('./controllers/AnimalPicturesController');
 const FavouriteAnnouncementsController = require('./controllers/FavouriteAnnouncementsController');
 const { Router } = require('express');
 
@@ -34,10 +33,6 @@ routes.get('/availableannouncements', AnnouncementController.getAvailableAnnounc
 routes.get('/clientannouncements', AnnouncementController.getClientAnnouncements);
 routes.put('/announcements/settings/:id', AnnouncementController.update);
 routes.delete('/announcements/delete/:id', AnnouncementController.delete);
-
-//ROTAS ANIMAL PICTURES
-routes.post('/pictures/:id', AnimalPicturesController.create);
-routes.get('/pictures', AnimalPicturesController.index);
 
 //ROTAS FAVOURITES
 routes.get('/myfavourites', FavouriteAnnouncementsController.index);

@@ -9,7 +9,6 @@ export default function ContentareaCenteredRegister(){
         <div className="content-area-centered">
             <section>
                 <div className="content-left-register">
-                    <p className="title-center-page"><Link to="/" className="none-visited">GetPet</Link></p>
                 </div>
             </section>
             <section>
@@ -18,6 +17,9 @@ export default function ContentareaCenteredRegister(){
                     <div className="camada-fix">
                         <div className="form-register">
                             <CadastrarClientRegister/>
+                        </div>              
+                        <div className="bottom-register">
+                            <p className="login-link"> <Link to="/login">Já possuo cadastro</Link></p>   
                         </div>
                     </div>
                 </div>

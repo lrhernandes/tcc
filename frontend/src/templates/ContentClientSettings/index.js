@@ -65,20 +65,12 @@ export default function ContentClientSettings(){
             {step === 0 && (
                 <div className="content-client-settings-right-wrapper">
                     <p className="name-client-settings">Lara Cardoso Hernandes</p>
-                    <p className="username-client-settings">@lrhernandes</p>
                     <div onClick={()=>{setStep(1)}} className="profile-edit">Editar perfil</div>
-
-                    <p className="title-announcement-sections">Endereço</p>
-                    <p className="description-announcement-section">Rua Padre Anchieta, 591</p>
                     <p className="description-announcement-section">CANOAS / RIO GRANDE DO SUL</p>
 
                     <p className="title-announcement-sections">Contato</p>
                     <p className="description-announcement-section">Whatsapp: 51992194825</p>
                     <p className="description-announcement-section">Email: larachernandes@gmail.com</p>
-
-                    <p className="title-announcement-sections">DADOS PESSOAIS</p>
-                    <p className="description-announcement-section">RG: 6128581251</p>
-                    <p className="description-announcement-section">Data de nascimento: 16/10/2001</p>
                 </div>
             )}
             
@@ -86,8 +78,6 @@ export default function ContentClientSettings(){
                 <div className="content-client-settings-right-wrapper">
                     <div className="edit-client-settings-form">
                         <p className="name-client-settings">Lara Cardoso Hernandes</p>
-                        <p className="username-client-settings">@lrhernandes</p>
-
                         <p className="modal-adopt-subtitle">Endereço</p>
                         <div className="modal-client-settings-address-wrapper">
                             <div className="modal-client-settings-address-uf">

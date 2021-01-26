@@ -1,7 +1,6 @@
 //REQUISIÇÕES
 const announcement = require('../services/announcementService');
 const Announcement = require('../database/models/AnnouncementModel');
-const adress = require('../services/adressService');
 const connection = require ('../database/connection');
 
 module.exports = {

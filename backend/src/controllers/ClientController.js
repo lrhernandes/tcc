@@ -1,6 +1,5 @@
 //REQUISIÇÕES
 const client = require('../services/clientService.js');
-const adress = require('../services/adressService');
 const connection = require ('../database/connection');
 
 module.exports = {
@@ -12,9 +11,7 @@ module.exports = {
     
     //SALVAR CLIENT NO BANCO
     async create (req, res) {
-        // TIRAR TUDO ISSO AQUI, MAS ANTES CONFIRMA COM O GUS 
-        const idAdress = await adress.create(req.body);
-        const us = await client.create(req.body, idAdress);
+        const us = await client.create(req.body);
         if(us){
             return res.send(req.body).status(201).send();
         }else{
@@ -34,10 +31,8 @@ module.exports = {
 
         const jsonS = JSON.stringify(cli.dataValues);
         const jsonP = JSON.parse(jsonS);
-        const id_endereco = jsonP.adressId;
 
         if(cli.id == client_id){
-            const upadr = await adress.update(req.body, id_endereco); //requisição e id do endereço
             const upcli = await client.update(req.body, id_par);
             return res.json(upcli).status(200).send();
         }else{
