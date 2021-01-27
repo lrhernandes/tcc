@@ -59,32 +59,27 @@ module.exports = {
     //SALVAR CLIENT NO BANCO
     async create(req){
         let { firstName, lastName, whatsapp, city, password, uf, email} = req;
-        const cli = await connection.client.create({
+        const client = {
             firstName: firstName,
             lastName: lastName,
-            password: password,
             email: email,
             uf: uf,
             city: city,
             whatsapp: whatsapp,
             active: true
-        });
-        function hashing(){
-            bcrypt.genSalt(10, function(err, salt) {
-                bcrypt.hash(password, salt, async function(err, hash) {
-                    cli.password = hash;
-                    await cli.save({
-                        password: cli.password
-                    })
-                });
-            });
         }
-        const pass = hashing();
-        const mail = this.register(firstName, lastName, email);
-        const jwtToken = await jwt.sign({ sub: cli.id }, process.env.PRIVATE_KEY);
-        localStorage.setItem("TOKEN", jwtToken);
-        console.log("Token: ", jwtToken);
-        return cli;
+
+        client.password = bcrypt.hashSync(password, 10);
+        const createdClient = await connection.client.create(client);
+
+        /** SEND E-MAIL */
+        this.register(firstName, lastName, email);
+
+        /** CREATE TOKEN */
+        const jwtToken = await jwt.sign({ sub: createdClient.id }, process.env.PRIVATE_KEY);
+        //localStorage.setItem(TOKEN, jwtToken);
+
+        return jwtToken;
     },
 
     //ENVIAR EMAIL DO CADASTRO DE CLIENTS
@@ -94,6 +89,7 @@ module.exports = {
         let transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
             port: 465,
+            ignoreTLS: false,
             secure: true, // true for 465, false for other ports
             auth: {
               user: "getpetcc@gmail.com", 

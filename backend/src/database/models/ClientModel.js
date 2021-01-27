@@ -9,50 +9,31 @@ module.exports = (sequelize, DataTypes) => {
         },
         uf:{
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+            allowNull: false
         },
         city:{
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+            allowNull: false
         },
         firstName: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                notEmpty: { msg: "Este campo não pode estar vazio" },
-                is:{ args:["^[a-z]+$",'i'], msg:"Apenas letras nesse campo" },
-                len: { args: [2,25], msg: "Este campo deve ter entre 2 e 25 caracteres" }
-            }
         },
         lastName: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                notEmpty: { msg: "Este campo não pode estar vazio" },
-                is:{ args:["^[a-z]+$",'i'], msg:"Apenas letras nesse campo" },
-                len: { args: [2,25], msg: "Este campo deve ter entre 2 e 25 caracteres" }
-            }
         },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                notEmpty: { msg: "Este campo não pode estar vazio" },
-            }
         },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
-            validate: {
-                notEmpty: { msg: "Este campo não pode estar vazio" },
-                isEmail: { msg: "Este campo deve ser preenchido com um email válido" }
-            }
         },
         whatsapp: {
-            type: DataTypes.INTEGER
+            type: DataTypes.STRING
         },
         profile_pic: { type: DataTypes.STRING  },
         active: { type: DataTypes.BOOLEAN  }
