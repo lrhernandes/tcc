@@ -8,8 +8,8 @@ dotenv.config();
 
 module.exports = {
     async login(req, res){
-        const { username, password } = req.body;
-        const clientFromDB = await client.getByUser(username);
+        const { email, password } = req.body;
+        const clientFromDB = await connection.client.findOne({where: {email: email}});
 
         console.log(clientFromDB)
         bcrypt.compare(password, clientFromDB.password, async (err, sucess)=>{
@@ -26,8 +26,6 @@ module.exports = {
                     user: clientFromDB,
                     token: jwtToken
                 });
-
-                localStorage.setItem("TOKEN", jwtToken);
             }
         })
     }

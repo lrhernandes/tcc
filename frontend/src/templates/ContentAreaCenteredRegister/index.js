@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import { MdClose } from "react-icons/md";
 import '../../js/select';
 import CadastrarClientRegister from '../../templates/CadastrarClientsForm';
+import './styles.css';
 
 export default function ContentareaCenteredRegister(){
     return (
