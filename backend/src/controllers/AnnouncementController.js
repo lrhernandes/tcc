@@ -18,16 +18,14 @@ module.exports = {
 
     //LISTAR ANÚNCIOS DO CLIENT
     async getClientAnnouncements(req, res){
-        const client_id = req.headers.authorization;
-        const clientAnnouncements = await announcement.getClientAnnouncements(client_id);
+        const id_par = req.params.id;
+        const clientAnnouncements = await announcement.getClientAnnouncements(id_par);
         return res.json(clientAnnouncements);
     },
 
     //CRIAR ANÚNCIOS 
     async create (req, res) {
-        const userId = req.headers.authorization;
-        const adressId = await adress.create(req.body);
-        const ad = await announcement.create(req.body, adressId, userId);
+        const ad = await announcement.create(req.body);
         if(ad){
             return res.send(req.body).status(201).send();
         }else{

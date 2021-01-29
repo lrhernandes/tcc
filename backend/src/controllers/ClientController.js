@@ -13,7 +13,10 @@ module.exports = {
     async create (req, res) {
         const us = await client.create(req.body);
         if(us){
-            return res.status(201).send(us);
+            return res.status(201).send({
+                id: us.id,
+                token: us.token
+            });
         }else{
            return res.status(400).send('Error in insert new record');
         }

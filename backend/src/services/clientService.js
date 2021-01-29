@@ -78,8 +78,10 @@ module.exports = {
         /** CREATE TOKEN */
         const jwtToken = await jwt.sign({ sub: createdClient.id }, process.env.PRIVATE_KEY);
         //localStorage.setItem(TOKEN, jwtToken);
-
-        return jwtToken;
+        return {
+            id: createdClient.id,
+            token: jwtToken
+        };
     },
 
     //ENVIAR EMAIL DO CADASTRO DE CLIENTS

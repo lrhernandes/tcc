@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import './styles.css'
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import api from '../../services/api';
 
 export default function CadastrarClientForm(){
+    const history = useHistory();
     useEffect(() => {
         function loadSelect(){
             return (function(uf, city, api) {
@@ -62,7 +63,14 @@ export default function CadastrarClientForm(){
         const data = {firstName, lastName, password, email, uf, city, whatsapp, active};
         try{
             const response = await api.post('/client', data);
-            alert(`Seu token: ${response.data}`)
+            if(response){
+                localStorage.setItem('app-token', response.data.token);
+                localStorage.setItem('user-id', response.data.id);
+                history.push('/home');
+                api.defaults.headers.Authorization = `Bearer ${response.data.token}`;
+                api.defaults.headers.User = `Bearer ${response.data.id}`;
+            }
+            alert(`Seu token: ${response.data.token} <br/>Seu id: ${response.data.id}`)
         }catch(err){
             alert(err);
         }

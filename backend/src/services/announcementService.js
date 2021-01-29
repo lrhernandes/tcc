@@ -20,8 +20,9 @@ module.exports = {
     },
 
     //LISTAR ANÚNCIOS DO CLIENT
-    async getClientAnnouncements (client_id){
-        const availableAnnouncements = await connection.announcement.findAll({ include: [{ model: connection.adress }], where: { available : true, userId : client_id }});
+    async getClientAnnouncements (id_par){
+        console.log("MEU DEUS DO CÉU EU NÃO AGUENTO MAIS")
+        const availableAnnouncements = await connection.announcement.findAll({ where: { available : true, userId : id_par }});
         return availableAnnouncements;
     },
 
@@ -72,24 +73,30 @@ module.exports = {
     },
 
     //SALVAR ANNOUNCEMENT NO BANCO
-    async create(req, adressId, userId){
-        const { name, description, sex, age, health, temperament, type, group, size, available} = req; 
+    async create(req){
+        const { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, userId} = req; 
         const announcement = await connection.announcement.create({
-            adressId: adressId,
+            name:name,
+            description:description,
+            type:type,
+            size:size,
+            sex:sex,
+            age:age,
+            temperament:temperament,
+            uf:uf,
+            city:city,
+            castrated:castrated,
+            vaccinated:vaccinated,
+            dewormed:dewormed,
+            isSpecial:isSpecial,
+            specialDescription:specialDescription,
+            active: true,
+            available: true,
+            adopted: false,
             userId: userId,
-            name: name,
-            description: description,
-            sex: sex,
-            age: age,
-            health: health,
-            temperament: temperament,
-            type: type,
-            group: group,
-            size: size,
-            available: available
+            pictures: ''
         });
-        const newannouncement = this.register(userId, adressId, name, description, type, size, sex, age);
-        console.log("Announcement inserido!");
+        //const newannouncement = this.register(userId, adressId, name, description, type, size, sex, age);
         return announcement;
     },
 

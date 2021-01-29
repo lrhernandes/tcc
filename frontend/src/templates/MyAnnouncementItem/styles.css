@@ -3,3 +3,13 @@
     margin-top: 5px;
     position: relative;
 }
+
+.description-announcement-item-from-list-name{
+    text-transform: uppercase;
+    font-weight: 400;
+    text-overflow: ellipsis;
+}
+
+.description-announcement-item-from-list-descript{
+    font-size: 12px;
+}

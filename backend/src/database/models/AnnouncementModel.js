@@ -46,7 +46,19 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
         },
-        health:{
+        castrated:{
+            type: DataTypes.BOOLEAN
+        },
+        vaccinated:{
+            type: DataTypes.BOOLEAN
+        },
+        dewormed:{
+            type: DataTypes.BOOLEAN
+        },
+        isSpecial:{
+            type: DataTypes.BOOLEAN
+        },
+        specialDescription:{
             type: DataTypes.STRING
         },
         temperament:{
@@ -76,13 +88,6 @@ module.exports = (sequelize, DataTypes) => {
         },
         pictures:{
             type: DataTypes.STRING,
-            allowNull: false,
-            get() {
-                return this.getDataValue('pic').split(';')
-            },
-            set(val) {
-            this.setDataValue('pic',val.join(';'));
-            },
         }
     }, {
         underscored: true
