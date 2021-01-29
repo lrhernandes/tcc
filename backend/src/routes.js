@@ -30,7 +30,7 @@ routes.delete('/client/settings/delete', ClientController.delete);
 routes.post('/announcements', AnnouncementController.create);
 routes.get('/announcements', AnnouncementController.index);
 routes.get('/announcement/:id', AnnouncementController.getAnnouncement);
-routes.get('/availableannouncements', AnnouncementController.getAvailableAnnouncements);
+routes.get('/availableannouncements/:id', AnnouncementController.getAvailableAnnouncements);
 routes.get('/clientannouncements/:id', AnnouncementController.getClientAnnouncements);
 routes.put('/announcements/settings/:id', AnnouncementController.update);
 routes.delete('/announcements/delete/:id/:announcement', AnnouncementController.delete);

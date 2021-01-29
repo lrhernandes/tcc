@@ -12,7 +12,8 @@ module.exports = {
 
     //LISTAR ANÚNCIOS DISPONÍVEIS
     async getAvailableAnnouncements(req, res){
-        const availableAnnouncements = await announcement.getAvailableAnnouncements();
+        const id_par = req.params.id;
+        const availableAnnouncements = await announcement.getAvailableAnnouncements(id_par);
         return res.json(availableAnnouncements);
     },
 
@@ -23,7 +24,7 @@ module.exports = {
         return res.json(clientAnnouncements);
     },
 
-    //LISTAR ANÚNCIOS ESPECÍFICO
+    //LISTAR ANÚNCIO ESPECÍFICO
     async getAnnouncement(req, res){
         const id_par = req.params.id;
         const clientAnnouncements = await announcement.getAnnouncement(id_par);

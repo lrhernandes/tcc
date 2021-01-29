@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './styles.css';
-
+import api from '../../services/api';
 import { FaFilter } from "react-icons/fa";
 import {Link} from 'react-router-dom';
-
 import Form from '../../templates/LocalizarAnimaisHomeForm';
 import Announcement from '../../templates/AnnouncementItemFromList'
 
@@ -14,6 +13,16 @@ var monthString = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "
 
 export default function ContentFindAnnouncement(){
     const [step, setStep] = useState(0);
+    const [announcements, setAnnouncements] = useState([]);
+    
+    useEffect(()=>{
+        async function fetchData() {
+            const userId = localStorage.getItem('user-id');
+            const resp = await api.get(`/availableannouncements/${userId}`);
+            setAnnouncements(resp.data);
+        }
+        fetchData();
+    }, []);
         
     return (
         <div className="content-right">
@@ -35,15 +44,11 @@ export default function ContentFindAnnouncement(){
                     
                     <div className="box-home-announcements-animals">
                         <ul className="home-announcements-animals">
-                            <li> <Announcement/> </li>
-                            <li> <Announcement/> </li>
-                            <li> <Announcement/> </li>
-                            <li> <Announcement/> </li>
-                            <li> <Announcement/> </li>
-                            <li> <Announcement/> </li>
-                            <li> <Announcement/> </li>
-                            <li> <Announcement/> </li>
-                            <li> <Announcement/> </li>
+                            {announcements.map( announce => 
+                                <li key={announce.id}>
+                                    <Announcement ann={announce}/>
+                                </li>
+                            )}
                         </ul>
                     </div>
                     </div>

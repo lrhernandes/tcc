@@ -3,6 +3,7 @@ const connection = require ('../database/connection');
 const strTermo = require('../files/termo de adoção');
 const strEmail = require('../mail templates/announcement');
 const nodemailer = require('nodemailer');
+const { Op } = require("sequelize");
 
 // Pronto
 
@@ -14,14 +15,32 @@ module.exports = {
     },
 
     //LISTAR ANÚNCIOS DISPONÍVEIS
-    async getAvailableAnnouncements (){
-        const availableAnnouncements = await connection.announcement.findAll({ include: [{ model: connection.adress }], where:{ available : true }});
+    async getAvailableAnnouncements (user){
+        const availableAnnouncements = await connection.announcement.findAll({
+            where:{
+                available : true,
+                [Op.not]: [
+                    { userId: user },
+                ]
+            },
+            order: [
+                ['createdAt', 'DESC'],
+            ],
+        });
         return availableAnnouncements;
     },
 
     //LISTAR ANÚNCIOS DO CLIENT
     async getClientAnnouncements (id_par){
-        const availableAnnouncements = await connection.announcement.findAll({ where: { available : true, userId : id_par }});
+        const availableAnnouncements = await connection.announcement.findAll({
+            where: { 
+                available : true,
+                userId : id_par 
+            },
+                order: [
+                    ['createdAt', 'DESC'],
+                ]
+            });
         return availableAnnouncements;
     },
 
