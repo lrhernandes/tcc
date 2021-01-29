@@ -17,9 +17,10 @@ module.exports = {
         return getClients;
     },
     
-    async getByUser(user) {
-        const client = await connection.client.findOne({ where: { user }});
-        return client;
+    //GET ONE CLIENT
+    async getByUser(client_id) {
+        const cli = await connection.client.findOne({ where: { id: client_id }});
+        return cli;
     },
 
     //DELETAR CLIENT

@@ -8,6 +8,13 @@ module.exports = {
         const clients = await client.index();
         return res.json(clients);
     },
+
+    //GET ONE USER
+    async getByUser(req, res){
+        const id_par = req.params.id;
+        const cli = await client.getByUser(id_par);
+        return res.json(cli);
+    },
     
     //SALVAR CLIENT NO BANCO
     async create (req, res) {

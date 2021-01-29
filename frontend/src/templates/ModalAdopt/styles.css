@@ -104,11 +104,16 @@
     flex-direction: row;
 }
 
-.modal-adoption-contact p{
+.none-link{
     width: min-content;
     margin: auto;
-    display: flex;
     flex-direction: row;
+    text-decoration: none;
+    color: black;
+}
+
+.none-link:visited{
+    color: black;
 }
 
 #second-modal-title{

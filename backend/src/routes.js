@@ -13,7 +13,6 @@ const { Router } = require('express');
 //ROTA RAIZ
 routes.get('/', (req, res)=>{
     return res.json({
-        mensagem: "tela inicial socorro"
     });
 });
 
@@ -23,6 +22,7 @@ routes.post('/auth/login', AuthController.login);
 //ROTAS CLIENT
 routes.post('/client', ClientController.create);
 routes.get('/client', ClientController.index);
+routes.get('/client/:id', ClientController.getByUser);
 routes.put('/client/settings/:id', ClientController.update);
 routes.delete('/client/settings/delete', ClientController.delete);
 

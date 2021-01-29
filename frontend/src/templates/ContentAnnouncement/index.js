@@ -54,7 +54,7 @@ export default function ContentAnnouncement({ann}){
             <Modal ref={modalRef}>
                 <div onClick={closeModal} className="x-icon"><Link><MdClose size={20}/></Link></div>
                 <div>
-                    <ModalAdopt/>
+                    <ModalAdopt user={ann.userId}/>
                 </div>
             </Modal>
                 <div className="content-announcement-sections" id="style-scroll">
