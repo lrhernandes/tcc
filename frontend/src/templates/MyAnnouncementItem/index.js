@@ -18,15 +18,17 @@ export default function MyAnnouncementItem({ann, setAnnouncements}){
         if(response){
             try{
                 const del = await api.delete(`/announcements/delete/${ann.userId}/${ann.id}`);
-                
                 setAnnouncements(state => state.filter(announcement => announcement.id !== ann.id));
             }catch(err){
                 alert(err);
             }
         }
     }
+    function handleOpenAnnouncement(e){
+        history.push(`/announcement/${ann.id}`);
+    }
     return (
-        <Link to="/announcement">
+        <Link onClick={handleOpenAnnouncement}>
             <div className="announcement-item-from-list">
                 <div className="image-announcement-item-from-list">
                 </div>

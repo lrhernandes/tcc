@@ -105,7 +105,6 @@ export default function ContentNewAnnouncement(){
     const [animalSize, setAnimalSize] = useState('');
     const [animalSex, setAnimalSex] = useState('');
     const [animalAge, setAnimalAge] = useState('');
-    const [temperament, setTemperament] = useState('');
     const [uf, setUF] = useState('');
     const [city, setCity] = useState('');
     const [castrated, setCastrated] = useState(false);
@@ -120,7 +119,16 @@ export default function ContentNewAnnouncement(){
         const size = animalSize;
         const sex = animalSex;
         const age = animalAge;
-        setTemperament(items);
+        var temperament = '';
+        for (var i = 0; i < items.length; i++) {
+            if(i< items.length-1){
+                temperament = temperament + items[i].value + ','
+            }else{
+                temperament = temperament + items[i].value
+            }
+            
+        }
+        console.log(temperament);
         const userId = localStorage.getItem('user-id')
 
         console.table([castrated, vaccinated, dewormed, isSpecial, specialDescription])

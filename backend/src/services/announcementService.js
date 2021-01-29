@@ -21,9 +21,14 @@ module.exports = {
 
     //LISTAR ANÚNCIOS DO CLIENT
     async getClientAnnouncements (id_par){
-        console.log("MEU DEUS DO CÉU EU NÃO AGUENTO MAIS")
         const availableAnnouncements = await connection.announcement.findAll({ where: { available : true, userId : id_par }});
         return availableAnnouncements;
+    },
+
+    //LISTAR ANÚNCIO ESPECÍFICO
+    async getAnnouncement (id_par){
+        const announcement = await connection.announcement.findOne({ where: { id: id_par }});
+        return announcement;
     },
 
     //DELETAR ANÚNCIOS

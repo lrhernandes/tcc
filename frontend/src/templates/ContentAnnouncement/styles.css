@@ -192,3 +192,8 @@
     grid-template-rows: 1fr 1fr 1fr;
     grid-auto-flow: column;
 }
+
+.content-description-saude-section{
+    font-style: italic;
+    font-size: 14px;
+}

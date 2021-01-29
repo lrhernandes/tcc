@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './styles.css';
 import { MdClose } from "react-icons/md";
 import Modal from '../../modal/AnnouncementAdopt'
@@ -23,16 +23,31 @@ import galinha from '../../assets/galinha.svg'
 
 import regua from '../../assets/regua.svg'
 
-export default function ContentAnnouncement(){
+export default function ContentAnnouncement({ann}){
     const modalRef = React.useRef();
+    const [temp, setTemp] = useState([]);
+    const [userId, setUserId] = useState([]);
 
-    const openModal = () => {
-        modalRef.current.openModal()
-    }
 
-    const closeModal = () => {
-        modalRef.current.closeModal()
-    }
+    /** SEPARAR O TEMPERAMENTO EM UM ARRAY */
+    useEffect(() => {
+        setUserId(localStorage.getItem('user-id'));
+        function handleTemperament() {
+            var str = `${ann.temperament}`;
+            var resultado = str.split(",");
+            console.log(resultado);
+            return resultado;
+        }
+        const result = handleTemperament();
+        function setTemperamentState(result){
+            setTemp(result)
+        }
+        setTemperamentState();
+    }, [ann]);
+
+
+    const openModal = () => { modalRef.current.openModal() }
+    const closeModal = () => { modalRef.current.closeModal() }
 
     return (
         <div className="content-announcement">
@@ -44,31 +59,130 @@ export default function ContentAnnouncement(){
             </Modal>
                 <div className="content-announcement-sections" id="style-scroll">
                     <div className="space-scroll">
-                        <p className="current-day">INSERIDO EM 01/06/2020</p>
+                        <p className="current-day">INSERIDO EM {ann.createdAt}</p>
                         <p className="title-announcement-sections" id="first-title-announcement-section">Que bichinho é esse?</p>
-                        <p className="description-announcement-section">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis justo augue, ut semper ex dignissim et. Vestibulum et libero nec libero dapibus ultricies et sed est. Nam egestas tortor in nulla cursus, eu semper lectus gravida. Maecenas a tempor turpis. Integer blandit ex sed facilisis ornare. Fusce velit justo, mattis nec auctor at, vulputate sed enim. Donec ullamcorper semper nibh, ut varius urna euismod a. Duis cursus ultrices blandit. In pretium hendrerit nisl nec molestie. Nulla imperdiet dictum orci et tempus.</p>
+                        <p className="description-announcement-section">{ann.description}</p>
                         
                         <p className="title-announcement-sections">Quais são suas características?</p>
                         <div className="caracteristicas-announcement-section">
                             <div id="arredondar-first-radio">
-                                <img alt="type" src={cachorro}/>
-                                <p>CACHORRO</p>
+                                {ann.type == 'dog' && (
+                                    <div>
+                                        <img src={cachorro}/>
+                                        <p>CÃO</p>
+                                    </div>
+                                )}
+                                {ann.type == 'cat' && (
+                                    <div>
+                                        <img src={gato}/>
+                                        <p>GATO</p>
+                                    </div>
+                                )}
+                                {ann.type == 'reptile' && (
+                                    <div>
+                                        <img src={reptil}/>
+                                        <p>RÉPTIL</p>
+                                    </div>
+                                )}
+                                {ann.type == 'rodent' && (
+                                    <div>
+                                        <img src={hamster}/>
+                                        <p>ROEDOR</p>
+                                    </div>
+                                )}
+                                {ann.type == 'equino' && (
+                                    <div>
+                                        <img src={equino}/>
+                                        <p>EQUINO</p>
+                                    </div>
+                                )}
+                                {ann.type == 'other' && (
+                                    <div>
+                                        <img src={outros}/>
+                                        <p>OUTROS</p>
+                                    </div>
+                                )}
                             </div>
                             <div id="arredondar-second-radio">
-                                <img alt="sex" src={f}/>
-                                <p>FÊMEA</p>
+                                {ann.sex == 'fem' && (
+                                    <div>
+                                        <img src={f}/>
+                                        <p>FÊMEA</p>
+                                    </div>
+                                )}
+                                {ann.sex == 'mas' && (
+                                    <div>
+                                        <img src={m}/>
+                                        <p>MACHO</p>
+                                    </div>
+                                )}
+                                {ann.sex == 'notDefined' && (
+                                    <div>
+                                        <img src={u}/>
+                                        <p>INDEFINIDO</p>
+                                    </div>
+                                )}
                             </div>
                             <div id="arredondar-third-radio">
-                                <img alt="age" src={pintinho}/>
-                                <p>ADULTO</p>
+                                {ann.age == 'puppy' && (
+                                    <div>
+                                        <img src={ninho}/>
+                                        <p>FILHOTE</p>
+                                    </div>
+                                )}
+                                {ann.age == 'adult' && (
+                                    <div>
+                                        <img src={pintinho}/>
+                                        <p>ADULTO</p>
+                                    </div>
+                                )}
+                                {ann.age == 'elderly' && (
+                                    <div>
+                                        <img src={galinha}/>
+                                        <p>IDOSO</p>
+                                    </div>
+                                )}
                             </div>
                             <div id="arredondar-last-radio">
-                                <img alt="size" src={regua}/>
-                                <p>MÉDIO</p>
+                                {ann.size == 'mini' && (
+                                    <div>
+                                        <img src={regua}/>
+                                        <p>MINI</p>
+                                    </div>
+                                )}
+                                {ann.size == 'small' && (
+                                    <div>
+                                        <img src={regua}/>
+                                        <p>PEQUENO</p>
+                                    </div>
+                                )}
+                                {ann.size == 'medium' && (
+                                    <div>
+                                        <img src={regua}/>
+                                        <p>MÉDIO</p>
+                                    </div>
+                                )}
+                                {ann.size == 'big' && (
+                                    <div>
+                                        <img src={regua}/>
+                                        <p>GRANDE</p>
+                                    </div>
+                                )}
+                                {ann.size == 'giant' && (
+                                    <div>
+                                        <img src={regua}/>
+                                        <p>GIGANTE</p>
+                                    </div>
+                                )}
                             </div>
                         </div>
                         <div className="content-adopt-button">
-                            <button onClick={openModal} className="purple">QUERO ADOTAR!</button>
+                            {ann.userId != userId && (
+                                <button onClick={openModal} className="purple">QUERO ADOTAR!</button>
+                            )}
+                            {ann.userId == userId && (
+                                <button className="tomato">EDITAR ANÚNCIO</button>
+                            )}
                         </div>
                         <div className="temperamento-announcement-section">
                             <div className="temperamento-announcement-section-left">
@@ -90,13 +204,24 @@ export default function ContentAnnouncement(){
                             <p className="title-announcement-sections">Histórico de saúde</p>
                             <div className="saude-announcement-section">
                                 <div className="content-list-saude-announcement-section">
-                                    <p className="checked-list-item-announcement-section"><div/><p>CASTRADO</p></p>
-                                    <p className="checked-list-item-announcement-section"><div/><p>VACINADO</p></p>
-                                    <p className="checked-list-item-announcement-section"><div/><p>VERMIFUGADO</p></p>
+                                    {ann.castrated && (
+                                        <p className="checked-list-item-announcement-section"><div/><p>CASTRADO</p></p>
+                                    )}
+                                    {ann.vaccinated && (
+                                        <p className="checked-list-item-announcement-section"><div/><p>VACINADO</p></p>
+                                    )}
+                                    {ann.dewormed && (
+                                        <p className="checked-list-item-announcement-section"><div/><p>VERMIFUGADO</p></p>
+                                    )}
+                                    {ann.isSpecial && (
+                                        <p className="checked-list-item-announcement-section"><div/><p>POSSUI NECESSIDADES ESPECIAIS</p></p>
+                                    )}
                                 </div>
-                                <div className="content-description-saude-section">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis justo augue, ut semper ex dignissim et. Vestibulum et libero nec libero dapibus ultricies et sed est. Nam egestas tortor in nulla cursus, eu semper lectus gravida. Maecenas a tempor turpis. Integer blandit ex sed facilisis ornare. Fusce velit justo, mattis nec auctor at, vulputate sed enim.</p>    
-                                </div>
+                                {ann.specialDescription != "" && (
+                                    <div className="content-description-saude-section">
+                                        <p>Obs.: {ann.specialDescription}</p>    
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>

@@ -23,6 +23,13 @@ module.exports = {
         return res.json(clientAnnouncements);
     },
 
+    //LISTAR ANÚNCIOS ESPECÍFICO
+    async getAnnouncement(req, res){
+        const id_par = req.params.id;
+        const clientAnnouncements = await announcement.getAnnouncement(id_par);
+        return res.json(clientAnnouncements);
+    },
+
     //CRIAR ANÚNCIOS 
     async create (req, res) {
         const ad = await announcement.create(req.body);

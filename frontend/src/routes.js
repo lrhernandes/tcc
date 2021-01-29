@@ -28,7 +28,7 @@ export default function(){
                 <Route path="/myfavorites" component={Favourite}/>
                 <Route path="/mysettings" component={ClientSettings}/>
                 <Route path="/newannouncement" component={NewAnnouncement}/>
-                <Route path="/announcement" component={Announcement}/>
+                <Route path="/announcement/:id" component={Announcement}/>
                 <Route path="/termo" component={Termo}/>
                 <Route path="/redefine-password" component={Senha}/>
                 <Route path="/" component={Exception}/>
