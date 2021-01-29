@@ -27,11 +27,11 @@ module.exports = {
     },
 
     //DELETAR ANÚNCIOS
-    async delete(id_par_ann){
-        //DELETE ADDRESS FROM ANNOUNCEMENT
-        const announcement = await connection.announcement.findOne({ where: { id: id_par_ann }});
+    async delete(id_announcement){
         //DELETE ANNOUNCEMENT
-        const ann = await announcement.save({
+        const ann = await connection.announcement.findOne({ where:{ id: id_announcement }});
+        ann.available = false;
+        const del = await ann.save({
             available: false
         })
         return ann;

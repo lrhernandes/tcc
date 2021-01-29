@@ -1,8 +1,8 @@
 import React from 'react';
 import './styles.css'
-
+import api from '../../services/api';
 import { MdDelete, MdLocationOn} from "react-icons/md";
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import f from '../../assets/femea.svg'
 import m from '../../assets/fluido-de-genero.svg'
 import u from '../../assets/simbolo-sexual.svg'
@@ -11,8 +11,20 @@ import pintinho from '../../assets/pintinho.svg'
 import galinha from '../../assets/galinha.svg'
 import regua from '../../assets/regua.svg'
 
-export default function MyAnnouncementItem({ann}){
-    console.log(ann);
+export default function MyAnnouncementItem({ann, setAnnouncements}){
+    const history = useHistory();
+    async function handleDelete(e){
+        const response = window.confirm("Tem certeza que deseja excluir o anúncio?");
+        if(response){
+            try{
+                const del = await api.delete(`/announcements/delete/${ann.userId}/${ann.id}`);
+                
+                setAnnouncements(state => state.filter(announcement => announcement.id !== ann.id));
+            }catch(err){
+                alert(err);
+            }
+        }
+    }
     return (
         <Link to="/announcement">
             <div className="announcement-item-from-list">
@@ -22,7 +34,7 @@ export default function MyAnnouncementItem({ann}){
                     <div className="name-and-fav">
                         <p className="description-announcement-item-from-list-name">{ann.name}</p>
                         <div className="content-favorite-icon-announcement-item-from-list">
-                            <Link to="/" title="Deletar anúncio"><MdDelete size={20} className="favorite-announcement-item-from-list-icon"/></Link>
+                            <Link onClick={handleDelete} title="Deletar anúncio"><MdDelete size={20} className="favorite-announcement-item-from-list-icon"/></Link>
                         </div>
                     </div>
                     <p className="description-announcement-item-from-list-descript"> <MdLocationOn size={12}/> {ann.city}, {ann.uf}</p>

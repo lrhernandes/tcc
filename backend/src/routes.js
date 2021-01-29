@@ -32,7 +32,7 @@ routes.get('/announcements', AnnouncementController.index);
 routes.get('/availableannouncements', AnnouncementController.getAvailableAnnouncements);
 routes.get('/clientannouncements/:id', AnnouncementController.getClientAnnouncements);
 routes.put('/announcements/settings/:id', AnnouncementController.update);
-routes.delete('/announcements/delete/:id', AnnouncementController.delete);
+routes.delete('/announcements/delete/:id/:announcement', AnnouncementController.delete);
 
 //ROTAS FAVOURITES
 routes.get('/myfavourites', FavouriteAnnouncementsController.index);

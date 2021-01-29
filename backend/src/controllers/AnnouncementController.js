@@ -35,16 +35,16 @@ module.exports = {
 
     //DELETAR ANÚNCIOS
     async delete (req, res){
-        const id_par = req.params.id;
-        const client_id = req.headers.authorization;
+        const id_user = req.params.id;
+        const id_announcement = req.params.announcement;
         const ann = await connection.announcement.findOne({
             where:{
-                id: id_par
+                id: id_announcement
             },
         });
 
-        if(ann.userId == client_id){
-            const delann = await announcement.delete(id_par);
+        if(ann.userId == id_user){
+            const delann = await announcement.delete(id_announcement);
             return res.json(delann);
         }else{
             console.log("erro na excluão!");

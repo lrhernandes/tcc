@@ -14,14 +14,14 @@ export default function ContentMyAnnouncementsItens(){
             setAnnouncements(resp.data);
         }
         fetchData();
-    },[]);
+    }, []);
 
     return (
         <div className="content-my-announcements-itens">
             <ul>
             {announcements.map( announce => 
                 <li className="list-item-temperament" key={announce.id}>
-                    <Announcement ann={announce}/>
+                    <Announcement ann={announce} setAnnouncements={setAnnouncements}/>
                 </li>
             )}
             </ul>
