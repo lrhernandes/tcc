@@ -1,23 +1,44 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React, {useState} from 'react';
+import {Link, useHistory} from 'react-router-dom';
 import './styles.css';
+import api from '../../services/api';
 
 export default function LoginClientForm(){
+    const history = useHistory();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    async function handleLogin(e){
+        e.preventDefault();
+        const data = {email, password}
+        try{
+            const response = await api.post('/auth/login', data);
+            if(response){
+                localStorage.setItem('app-token', response.data.token);
+                localStorage.setItem('user-id', response.data.user);
+                console.log(email, password)
+                history.push('/home');
+            }
+            alert(`Seu token: ${response.data.token} <br/>Seu id: ${response.data.user}`)
+        }catch(err){
+            alert(err);
+        }
+    }
     return (
-        <div classname="login-clients-form">
-            <form id="form-login">
+        <div className="login-clients-form">
+            <form id="form-login" onSubmit={handleLogin}>
                 <div>
                     <h2 id="h2">Entrar</h2>
                     <h4 className="h4">Bem-vindo de volta</h4>
                 </div>
                 <div>
                     <label>E-mail</label><br/>
-                    <input type="text" id="email" placeholder="nome@email.com"/> 
+                    <input type="text" id="email" placeholder="nome@email.com" value={email} onChange={e => setEmail(e.target.value)}/> 
                     <label>Senha</label><br/>
-                    <input type="password" id="password" placeholder="••••••••••"/>
+                    <input type="password" id="password" placeholder="••••••••••" value={password} onChange={e => setPassword(e.target.value)}/>
                 </div>
                 <div className="button-group-space">
-                    <Link className="menu-link" to="/home"><button className="purple">ENTRAR</button></Link>
+                    <button className="purple" type="submit">ENTRAR</button>
                 </div>
             </form>
             <div className="bottom-register">

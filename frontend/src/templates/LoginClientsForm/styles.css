@@ -30,12 +30,6 @@ form #h2{
     margin: 0;
 }
 
-input[type="password"], input[type="password"]::placeholder{
-    font-weight: bold;
-    letter-spacing: 5px;
-    font-size: large;
-    color: rgb(158, 158, 158);
-}
 
 .bottom-register{
     margin-top: 15px;

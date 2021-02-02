@@ -39,74 +39,74 @@ export default function AnnouncementItemFromList({ann}){
                     <p className="description-announcement-item-from-list-descript"> <MdLocationOn size={12}/> {ann.city}, {ann.uf}</p>
                     <div className="caracteristicas-announcement">
                         <div id="arredondar-first-radio">
-                            {ann.sex == 'fem' && (
+                            {ann.sex === 'fem' && (
                                 <div>
-                                    <img src={f}/>
+                                    <img alt="img announcement item" src={f}/>
                                     <p>FÊMEA</p>
                                 </div>
                             )}
-                            {ann.sex == 'mas' && (
+                            {ann.sex === 'mas' && (
                                 <div>
-                                    <img src={m}/>
+                                    <img alt="img announcement item" src={m}/>
                                     <p>MACHO</p>
                                 </div>
                             )}
-                            {ann.sex == 'notDefined' && (
+                            {ann.sex === 'notDefined' && (
                                 <div>
-                                    <img src={u}/>
+                                    <img alt="img announcement item" src={u}/>
                                     <p>INDEFINIDO</p>
                                 </div>
                             )}
                             
                         </div>
                         <div id="arredondar-second-radio">
-                            {ann.age == 'puppy' && (
+                            {ann.age === 'puppy' && (
                                 <div>
-                                    <img src={ninho}/>
+                                    <img alt="img announcement item" src={ninho}/>
                                     <p>FILHOTE</p>
                                 </div>
                             )}
-                            {ann.age == 'adult' && (
+                            {ann.age === 'adult' && (
                                 <div>
-                                    <img src={pintinho}/>
+                                    <img alt="img announcement item" src={pintinho}/>
                                     <p>ADULTO</p>
                                 </div>
                             )}
-                            {ann.age == 'elderly' && (
+                            {ann.age === 'elderly' && (
                                 <div>
-                                    <img src={galinha}/>
+                                    <img alt="img announcement item" src={galinha}/>
                                     <p>IDOSO</p>
                                 </div>
                             )}
                         </div>
                         <div id="arredondar-last-radio">
-                            {ann.size == 'mini' && (
+                            {ann.size === 'mini' && (
                                 <div>
-                                    <img src={regua}/>
+                                    <img alt="img announcement item" src={regua}/>
                                     <p>MINI</p>
                                 </div>
                             )}
-                            {ann.size == 'small' && (
+                            {ann.size === 'small' && (
                                 <div>
-                                    <img src={regua}/>
+                                    <img alt="img announcement item" src={regua}/>
                                     <p>PEQUENO</p>
                                 </div>
                             )}
-                            {ann.size == 'medium' && (
+                            {ann.size === 'medium' && (
                                 <div>
-                                    <img src={regua}/>
+                                    <img alt="img announcement item" src={regua}/>
                                     <p>MÉDIO</p>
                                 </div>
                             )}
-                            {ann.size == 'big' && (
+                            {ann.size === 'big' && (
                                 <div>
-                                    <img src={regua}/>
+                                    <img alt="img announcement item" src={regua}/>
                                     <p>GRANDE</p>
                                 </div>
                             )}
-                            {ann.size == 'giant' && (
+                            {ann.size === 'giant' && (
                                 <div>
-                                    <img src={regua}/>
+                                    <img alt="img announcement item" src={regua}/>
                                     <p>GIGANTE</p>
                                 </div>
                             )}

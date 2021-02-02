@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles.css'
 import {Link, useHistory} from 'react-router-dom';
 import api from '../../services/api';
@@ -100,7 +100,7 @@ export default function CadastrarClientForm(){
 
                     <label>Senha</label><br/>
                     <p className="form-sujest">Use no mínimo 6 caracteres</p>
-                    <input  type="text" id="password" placeholder="Senha" value={password} onChange={e => setPassword(e.target.value)}/>
+                    <input  type="password" id="password" placeholder="Senha" value={password} onChange={e => setPassword(e.target.value)}/>
 
                     <div className="button-group-space">
                         <Link to="/"><button className="negative-purple">CANCELAR</button></Link>

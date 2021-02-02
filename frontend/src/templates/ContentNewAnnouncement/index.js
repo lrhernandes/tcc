@@ -122,9 +122,9 @@ export default function ContentNewAnnouncement(){
         var temperament = '';
         for (var i = 0; i < items.length; i++) {
             if(i< items.length-1){
-                temperament = temperament + items[i].value + ','
+                temperament = temperament + items[i].value + ', '
             }else{
-                temperament = temperament + items[i].value
+                temperament = temperament + items[i].value + '.';
             }
             
         }

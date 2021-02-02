@@ -187,17 +187,7 @@ export default function ContentAnnouncement({ann}){
                         <div className="temperamento-announcement-section">
                             <div className="temperamento-announcement-section-left">
                                 <p className="title-announcement-sections">Temperamento do pet</p>
-                                <div className="content-list-temperamento-announcement-section">
-                                    <p className="checked-list-item-announcement-section"><div/><p>CARINHOSO</p></p>
-                                    <p className="checked-list-item-announcement-section"><div/><p>CALMO</p></p>
-                                    <p className="checked-list-item-announcement-section"><div/><p>PROTETOR</p></p>
-                                    <p className="checked-list-item-announcement-section"><div/><p>CARINHOSO</p></p>
-                                    <p className="checked-list-item-announcement-section"><div/><p>CALMO</p></p>
-                                    <p className="checked-list-item-announcement-section"><div/><p>PROTETOR</p></p>
-                                    <p className="checked-list-item-announcement-section"><div/><p>CARINHOSO</p></p>
-                                    <p className="checked-list-item-announcement-section"><div/><p>CALMO</p></p>
-                                    <p className="checked-list-item-announcement-section"><div/><p>PROTETOR</p></p>
-                                </div>
+                                <p>{ann.temperament}</p>
                             </div>
                         </div>
                         <div className="historico-saude-announcement-section">

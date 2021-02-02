@@ -5,14 +5,11 @@ input[type="text"], input[type="password"], input[type="date"], input[type="numb
     padding: 15px;
     font-family: 'Montserrat', sans-serif;
     width: 100%;
+    font-size: 14px !important;
     line-height: 26px;
     height: 50px;
     margin-bottom: 20px;
     position: relative;
-}
-
-input::placeholder, select::placeholder{
-    color: rgb(158, 158, 158);
 }
 
 input:hover, select:hover{

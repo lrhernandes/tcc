@@ -1,4 +1,4 @@
-import React, {useState, forwardRef, useImperativeHandle} from 'react';
+import React, {forwardRef, useImperativeHandle} from 'react';
 import './styles.css';
 import ReactDOM from 'react-dom';
 

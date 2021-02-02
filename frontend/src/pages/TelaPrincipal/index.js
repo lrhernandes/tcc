@@ -2,19 +2,23 @@
 import React, {useEffect} from 'react';
 import './styles.css';
 import { MdCopyright } from "react-icons/md";
-
 import Modal from '../../modal/Notify'
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import FormularioLocalizar from '../../templates/LocalizarAnimaisForm';
 import NovosAnimais from '../../templates/NovosAnimais';
 import BannerPrincipal from '../../templates/BannerPrincipal';
 import MenuHorizontal from '../../templates/MenuHorizontal';
 
 export default function TelaPrincipal(){
+    const history = useHistory();
     const modalRef = React.useRef();
     useEffect(() => {
+        if(localStorage.getItem('user-id') && localStorage.getItem('app-token')){
+            history.push('/home');
+        }
         openModal();
-      },[]);
+    },[]);
+    
     const openModal = () => {
         modalRef.current.openModal()
     }
