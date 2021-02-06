@@ -1,12 +1,18 @@
 import React from 'react';
 import './styles.css';
 import { MdHome, MdExitToApp, MdSettings, MdPets, MdFavorite } from "react-icons/md";
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 
 import icon from '../../assets/icon.png'
 import cat from '../../assets/cat.ico'
 
 export default function ContentClientLeftMenu(){
+    const history = useHistory();
+    function handleLogout(){
+        localStorage.removeItem('app-token');
+        localStorage.removeItem('user-id');
+        history.push('/');
+    }
     return (
         <div className="content-client-left-menu">
             <div id="icon"><img src={cat}/></div>
@@ -26,7 +32,7 @@ export default function ContentClientLeftMenu(){
                     </li>
                 </div>
             </ul>
-            <div id="logout"><Link to="/" title="Sair"><MdExitToApp size={20}/></Link></div>
+            <div id="logout"><Link onClick={handleLogout} title="Sair"><MdExitToApp size={20}/></Link></div>
         </div>
     )
 }
