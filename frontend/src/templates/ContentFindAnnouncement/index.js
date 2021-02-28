@@ -18,7 +18,9 @@ export default function ContentFindAnnouncement(){
     useEffect(()=>{
         async function fetchData() {
             const userId = localStorage.getItem('user-id');
-            const resp = await api.get(`/availableannouncements/${userId}`);
+            const user = await api.get(`/client/${userId}`)
+            const userdata = user.data
+            const resp = await api.get(`/availableannouncementsbyaddress/${userId}/${userdata.city}/${userdata.uf}`)
             setAnnouncements(resp.data);
         }
         fetchData();

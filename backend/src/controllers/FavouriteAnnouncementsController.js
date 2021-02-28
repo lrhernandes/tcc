@@ -11,10 +11,24 @@ module.exports = {
         const fav = await favoutireAnnouncements.index(userId);
         const a = Object.values(fav);
         if(a.length){
-            return res.send(fav).status(201).send();
+            res.json(fav).status(201);
         } else{
-            return res.status(400).send('Nenhum anúncio favorito');
+            res.status(400).json('Nenhum anúncio favorito');
         }
+        return
+    },
+
+    //LISTAR ANÚNCIOS FAVORITOS
+    async indexAll(req, res){
+        const userId = req.params.id;
+        const fav = await favoutireAnnouncements.indexAll(userId);
+        const a = Object.values(fav);
+        if(a.length){
+            res.json(fav).status(201);
+        } else{;
+            res.status(400).json('Nenhum anúncio favorito');
+        }
+        return a
     },
 
     //ADICIONAR ANÚNCIOS FAVORITOS

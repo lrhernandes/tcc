@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.css';
 
-import { MdFavoriteBorder, MdLocationOn} from "react-icons/md";
+import { MdFavoriteBorder, MdFavorite, MdLocationOn} from "react-icons/md";
 import {Link, useHistory} from 'react-router-dom';
 import api from '../../services/api';
 
@@ -12,11 +12,35 @@ import ninho from '../../assets/ninho.svg'
 import pintinho from '../../assets/pintinho.svg'
 import galinha from '../../assets/galinha.svg'
 import regua from '../../assets/regua.svg'
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 export default function AnnouncementItemFromList({ann}){
     const history = useHistory();
+    const user = localStorage.getItem('user-id');
+    const [isFavorite, setIsFavorite] = useState(false)
+
+    useEffect(()=>{
+        async function handleAllFavorites(){
+            const fav = await api.get(`/allfavourites/${user}`)
+            for(var i=0; i<fav.data.length; i++){
+                if(fav.data[i].announcementId === ann.id){
+                    setIsFavorite(true)
+                }
+            }
+        }
+        handleAllFavorites();
+    })
+
     async function handleFavorite(e){
-        const user = localStorage.getItem('user-id');
+        try{
+            const fav = await api.post(`/addfavourite/${ann.id}/${user}/`);
+        }catch(err){
+            alert(err);
+        }
+    }
+
+    async function handleRemoveFavorite(e){
         try{
             const fav = await api.post(`/addfavourite/${ann.id}/${user}/`);
         }catch(err){
@@ -35,7 +59,13 @@ export default function AnnouncementItemFromList({ann}){
                     <div className="name-and-fav">
                         <p className="description-announcement-item-from-list-name">{ann.name}</p>
                         <div className="content-favorite-icon-announcement-item-from-list">
-                            <Link onClick={handleFavorite}> <MdFavoriteBorder size={20} className="favorite-announcement-item-from-list-icon"/></Link>
+                            {isFavorite &&  (
+                                <Link onClick={handleFavorite}> <MdFavorite size={20} className="favorite-announcement-item-from-list-icon"/></Link>    
+                            )}
+                            {!isFavorite &&  (
+                                <Link onClick={handleRemoveFavorite}> <MdFavoriteBorder size={20} className="favorite-announcement-item-from-list-icon"/></Link>    
+                            )}
+                            
                         </div>
                     </div>
                     <p className="description-announcement-item-from-list-descript"> <MdLocationOn size={12}/> {ann.city}, {ann.uf}</p>

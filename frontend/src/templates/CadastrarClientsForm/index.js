@@ -93,10 +93,10 @@ export default function CadastrarClientForm(){
                     <input type="number" id="whatsapp" placeholder="Apenas números" value={whatsapp} onChange={e => setWhatsapp(e.target.value)}/>
                     
                     <label>UF</label><br/>
-                    <select id="uf" value={uf} onChange={e => setUF(e.target.value)}><option defaultValue >Estado</option></select>
+                    <select id="uf" value={uf} onChange={e => setUF(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}><option defaultValue >Estado</option></select>
 
                     <label>Cidade</label><br/>
-                    <select id="cidade" value={city} onChange={e => setCity(e.target.value)}> <option defaultValue >Cidade</option></select>
+                    <select id="cidade" value={city} onChange={e => setCity(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}> <option defaultValue >Cidade</option></select>
 
                     <label>Senha</label><br/>
                     <p className="form-sujest">Use no mínimo 6 caracteres</p>

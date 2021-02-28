@@ -10,12 +10,12 @@ module.exports = (sequelize, DataTypes) => {
         uf:{
             type: DataTypes.STRING,
             allowNull: false,
-            validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+            validate: { notEmpty: { msg: "UF não pode estar vazio" } }
         },
         city:{
             type: DataTypes.STRING,
             allowNull: false,
-            validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+            validate: { notEmpty: { msg: "Cidade não pode estar vazio" } }
         },
         userId: {
             type: DataTypes.UUID,
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allownull: false,
             validate: {
-                notEmpty: { msg: "Este campo não pode estar vazio" },
+                notEmpty: { msg: "Nome não pode estar vazio" },
                 len: { args: [2,25], msg: "Este campo deve ter entre 2 e 25 caracteres" }
             }
         },
@@ -33,18 +33,18 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allownull: false,
             validate: {
-                max: { args: 1100, msg: "Este campo deve ter no máximo 1100 caracteres" }
+                max: { args: 1100, msg: "Descrição deve ter no máximo 1100 caracteres" }
             }
         },
         sex:{
             type: DataTypes.STRING,
             allowNull: false,
-            validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+            validate: { notEmpty: { msg: "Sexo não pode estar vazio" } }
         },
         age:{
             type: DataTypes.STRING,
             allowNull: false,
-            validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+            validate: { notEmpty: { msg: "Idade não pode estar vazio" } }
         },
         castrated:{
             type: DataTypes.BOOLEAN
@@ -68,23 +68,23 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allownull: false,
             validate: {
-                notEmpty: { msg: "Este campo não pode estar vazio" }
+                notEmpty: { msg: "Tipo não pode estar vazio" }
             }
         },
         size:{
             type: DataTypes.STRING,
             allowNull: false,
-            validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+            validate: { notEmpty: { msg: "Porte não pode estar vazio" } }
         },
         available:{
             type: DataTypes.BOOLEAN,
             allowNull: false,
-            validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+            validate: { notEmpty: { msg: "Disponibilade não pode estar vazio" } }
         },
         adopted:{
             type: DataTypes.BOOLEAN,
             allowNull: false,
-            validate: { notEmpty: { msg: "Este campo não pode estar vazio" } }
+            validate: { notEmpty: { msg: "Status de adoção não pode estar vazio" } }
         },
         pictures:{
             type: DataTypes.STRING,

@@ -31,12 +31,14 @@ routes.post('/announcements', AnnouncementController.create);
 routes.get('/announcements', AnnouncementController.index);
 routes.get('/announcement/:id', AnnouncementController.getAnnouncement);
 routes.get('/availableannouncements/:id', AnnouncementController.getAvailableAnnouncements);
+routes.get('/availableannouncementsbyaddress/:id/:city/:uf', AnnouncementController.getAvailableAnnouncementsByAddress);
 routes.get('/clientannouncements/:id', AnnouncementController.getClientAnnouncements);
 routes.put('/announcements/settings/:id', AnnouncementController.update);
 routes.delete('/announcements/delete/:id/:announcement', AnnouncementController.delete);
 
 //ROTAS FAVOURITES
 routes.get('/myfavourites/:id', FavouriteAnnouncementsController.index);
+routes.get('/allfavourites/:id', FavouriteAnnouncementsController.indexAll);
 routes.delete('/deletefavourite/:announcementId', FavouriteAnnouncementsController.delete);
 routes.post('/addfavourite/:announcementId/:id', FavouriteAnnouncementsController.create);
 

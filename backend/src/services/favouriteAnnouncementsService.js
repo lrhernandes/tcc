@@ -11,11 +11,16 @@ module.exports = {
             for (var i=0; i<announcements.length; i++){
                 const announcement = await connection.announcement.findOne({where:{id: announcements[i].announcementId}})
                 list.push(announcement)
-                console.log(list)
             }
             return list
         }
         return getData();
+    },
+
+    //LISTAR ANÚNCIOS FAVORITOS
+    async indexAll (userId){
+        const favorites = await connection.favouriteAnnouncements.findAll({where:{ userId: userId}});
+        return favorites;
     },
 
     //DELETAR ANÚNCIOS

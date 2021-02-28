@@ -128,12 +128,7 @@ export default function ContentNewAnnouncement(){
             }
             
         }
-        console.log(temperament);
         const userId = localStorage.getItem('user-id')
-
-        console.table([castrated, vaccinated, dewormed, isSpecial, specialDescription])
-        console.log(castrated, vaccinated, dewormed, isSpecial, specialDescription)
-
         const data = { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, userId};
         try{
             const response = await api.post('/announcements', data);
