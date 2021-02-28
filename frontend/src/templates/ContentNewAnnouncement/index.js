@@ -188,7 +188,7 @@ export default function ContentNewAnnouncement(){
                         </div>
                         <div className="form-new-announcement-item-type-content-item">
                             <input type="radio" id="equino" name="animal-type"/>
-                            <label className="form-new-announcement-item-type-label" htmlFor="equine"><img alt="icon equine" src={equino}/> <p className="label-type-form-new-announcement">EQUINO</p></label>
+                            <label className="form-new-announcement-item-type-label" htmlFor="equino"><img alt="icon equine" src={equino}/> <p className="label-type-form-new-announcement">EQUINO</p></label>
                         </div>
                         <div className="form-new-announcement-item-type-content-item">
                             <input type="radio" id="other" name="animal-type"/>
@@ -236,7 +236,7 @@ export default function ContentNewAnnouncement(){
                             </div>
                             <div className="form-new-announcement-item-sex-content-item">
                                 <input type="radio" id="notDefined" name="animal-sex"/>
-                                <label title="Não sabe o sexo desse animal? Selecione esta opção" id="arredondar-last-radio" className="form-new-announcement-item-sex-label" htmlFor="undefined"><img alt="icon undefined" src={u}/> <p> INDEFINIDO </p></label>
+                                <label id="arredondar-last-radio" className="form-new-announcement-item-sex-label" htmlFor="notDefined"><img alt="icon undefined" src={u}/> <p> INDEFINIDO </p></label>
                             </div>
                         </div>
                     </div>

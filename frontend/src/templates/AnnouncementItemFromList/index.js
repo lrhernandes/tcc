@@ -3,6 +3,7 @@ import './styles.css';
 
 import { MdFavoriteBorder, MdLocationOn} from "react-icons/md";
 import {Link, useHistory} from 'react-router-dom';
+import api from '../../services/api';
 
 import f from '../../assets/femea.svg'
 import m from '../../assets/fluido-de-genero.svg'
@@ -15,8 +16,9 @@ import regua from '../../assets/regua.svg'
 export default function AnnouncementItemFromList({ann}){
     const history = useHistory();
     async function handleFavorite(e){
+        const user = localStorage.getItem('user-id');
         try{
-            //const del = await api.delete(`/announcements/delete/${ann.userId}/${ann.id}`);
+            const fav = await api.post(`/addfavourite/${ann.id}/${user}/`);
         }catch(err){
             alert(err);
         }
@@ -33,7 +35,7 @@ export default function AnnouncementItemFromList({ann}){
                     <div className="name-and-fav">
                         <p className="description-announcement-item-from-list-name">{ann.name}</p>
                         <div className="content-favorite-icon-announcement-item-from-list">
-                            <Link to="/" title="Adicionar anúncio aos favoritos"><MdFavoriteBorder size={20} className="favorite-announcement-item-from-list-icon"/></Link>
+                            <Link onClick={handleFavorite}> <MdFavoriteBorder size={20} className="favorite-announcement-item-from-list-icon"/></Link>
                         </div>
                     </div>
                     <p className="description-announcement-item-from-list-descript"> <MdLocationOn size={12}/> {ann.city}, {ann.uf}</p>

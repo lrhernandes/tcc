@@ -1,12 +1,21 @@
 //REQUISIÇÕES
 const connection = require ('../database/connection');
 const clientService = require('./clientService');
-
+const { QueryTypes } = require('sequelize'); 
 module.exports = {
     //LISTAR ANÚNCIOS FAVORITOS
     async index (userId){
         const announcements = await connection.favouriteAnnouncements.findAll({where:{ userId: userId}});
-        return announcements;
+        async function getData (){
+            var list = [];
+            for (var i=0; i<announcements.length; i++){
+                const announcement = await connection.announcement.findOne({where:{id: announcements[i].announcementId}})
+                list.push(announcement)
+                console.log(list)
+            }
+            return list
+        }
+        return getData();
     },
 
     //DELETAR ANÚNCIOS

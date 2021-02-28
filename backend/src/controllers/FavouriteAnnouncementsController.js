@@ -7,19 +7,19 @@ const connection = require ('../database/connection');
 module.exports = {
     //LISTAR ANÚNCIOS FAVORITOS
     async index(req, res){
-        const userId = req.headers.authorization;
+        const userId = req.params.id;
         const fav = await favoutireAnnouncements.index(userId);
         const a = Object.values(fav);
         if(a.length){
-            return res.send(fav);
+            return res.send(fav).status(201).send();
         } else{
-            return res.send('Nenhum anúncio para chamar de seu');
+            return res.status(400).send('Nenhum anúncio favorito');
         }
     },
 
     //ADICIONAR ANÚNCIOS FAVORITOS
     async create (req, res) {
-        const userId = req.headers.authorization;
+        const userId = req.params.id;
         const announcementId = req.params.announcementId;
         const announcement = await favoutireAnnouncements.create(announcementId, userId);
         if(announcement){

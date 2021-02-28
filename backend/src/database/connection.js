@@ -16,6 +16,8 @@ db.client = require('../database/models/ClientModel')(sequelize, Sequelize);
 db.announcement = require('../database/models/AnnouncementModel')(sequelize, Sequelize);
 db.favouriteAnnouncements = require('../database/models/FavouriteAnnouncements')(sequelize, Sequelize);
 
+//db.favouriteAnnouncements.hasOne(db.announcement);
+
 /*
 //client
 db.adress.hasOne(db.client);

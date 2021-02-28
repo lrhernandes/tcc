@@ -11,7 +11,7 @@ export default function ContentClientLeftMenu(){
     function handleLogout(){
         localStorage.removeItem('app-token');
         localStorage.removeItem('user-id');
-        history.push('/');
+        history.push('/login');
     }
     return (
         <div className="content-client-left-menu">

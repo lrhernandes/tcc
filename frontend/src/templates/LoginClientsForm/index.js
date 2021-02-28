@@ -15,11 +15,12 @@ export default function LoginClientForm(){
             const response = await api.post('/auth/login', data);
             if(response){
                 localStorage.setItem('app-token', response.data.token);
-                localStorage.setItem('user-id', response.data.user);
+                localStorage.setItem('user-id', response.data.user.id);
                 console.log(email, password)
                 history.push('/home');
             }
-            alert(`Seu token: ${response.data.token} <br/>Seu id: ${response.data.user}`)
+            alert(`Seu token: ${response.data.token}`)
+            alert(`Seu id: ${response.data.user.id}`)
         }catch(err){
             alert(err);
         }

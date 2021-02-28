@@ -66,37 +66,37 @@ export default function ContentAnnouncement({ann}){
                         <p className="title-announcement-sections">Quais são suas características?</p>
                         <div className="caracteristicas-announcement-section">
                             <div id="arredondar-first-radio">
-                                {ann.type == 'dog' && (
+                                {ann.type === 'dog' && (
                                     <div>
                                         <img src={cachorro}/>
                                         <p>CÃO</p>
                                     </div>
                                 )}
-                                {ann.type == 'cat' && (
+                                {ann.type === 'cat' && (
                                     <div>
                                         <img src={gato}/>
                                         <p>GATO</p>
                                     </div>
                                 )}
-                                {ann.type == 'reptile' && (
+                                {ann.type === 'reptile' && (
                                     <div>
                                         <img src={reptil}/>
                                         <p>RÉPTIL</p>
                                     </div>
                                 )}
-                                {ann.type == 'rodent' && (
+                                {ann.type === 'rodent' && (
                                     <div>
                                         <img src={hamster}/>
                                         <p>ROEDOR</p>
                                     </div>
                                 )}
-                                {ann.type == 'equino' && (
+                                {ann.type === 'equino' && (
                                     <div>
                                         <img src={equino}/>
                                         <p>EQUINO</p>
                                     </div>
                                 )}
-                                {ann.type == 'other' && (
+                                {ann.type === 'other' && (
                                     <div>
                                         <img src={outros}/>
                                         <p>OUTROS</p>
@@ -104,19 +104,19 @@ export default function ContentAnnouncement({ann}){
                                 )}
                             </div>
                             <div id="arredondar-second-radio">
-                                {ann.sex == 'fem' && (
+                                {ann.sex === 'fem' && (
                                     <div>
                                         <img src={f}/>
                                         <p>FÊMEA</p>
                                     </div>
                                 )}
-                                {ann.sex == 'mas' && (
+                                {ann.sex === 'mas' && (
                                     <div>
                                         <img src={m}/>
                                         <p>MACHO</p>
                                     </div>
                                 )}
-                                {ann.sex == 'notDefined' && (
+                                {ann.sex === 'notDefined' && (
                                     <div>
                                         <img src={u}/>
                                         <p>INDEFINIDO</p>
@@ -124,19 +124,19 @@ export default function ContentAnnouncement({ann}){
                                 )}
                             </div>
                             <div id="arredondar-third-radio">
-                                {ann.age == 'puppy' && (
+                                {ann.age === 'puppy' && (
                                     <div>
                                         <img src={ninho}/>
                                         <p>FILHOTE</p>
                                     </div>
                                 )}
-                                {ann.age == 'adult' && (
+                                {ann.age === 'adult' && (
                                     <div>
                                         <img src={pintinho}/>
                                         <p>ADULTO</p>
                                     </div>
                                 )}
-                                {ann.age == 'elderly' && (
+                                {ann.age === 'elderly' && (
                                     <div>
                                         <img src={galinha}/>
                                         <p>IDOSO</p>
@@ -144,31 +144,31 @@ export default function ContentAnnouncement({ann}){
                                 )}
                             </div>
                             <div id="arredondar-last-radio">
-                                {ann.size == 'mini' && (
+                                {ann.size === 'mini' && (
                                     <div>
                                         <img src={regua}/>
                                         <p>MINI</p>
                                     </div>
                                 )}
-                                {ann.size == 'small' && (
+                                {ann.size === 'small' && (
                                     <div>
                                         <img src={regua}/>
                                         <p>PEQUENO</p>
                                     </div>
                                 )}
-                                {ann.size == 'medium' && (
+                                {ann.size === 'medium' && (
                                     <div>
                                         <img src={regua}/>
                                         <p>MÉDIO</p>
                                     </div>
                                 )}
-                                {ann.size == 'big' && (
+                                {ann.size === 'big' && (
                                     <div>
                                         <img src={regua}/>
                                         <p>GRANDE</p>
                                     </div>
                                 )}
-                                {ann.size == 'giant' && (
+                                {ann.size === 'giant' && (
                                     <div>
                                         <img src={regua}/>
                                         <p>GIGANTE</p>
@@ -180,7 +180,7 @@ export default function ContentAnnouncement({ann}){
                             {ann.userId != userId && (
                                 <button onClick={openModal} className="purple">QUERO ADOTAR!</button>
                             )}
-                            {ann.userId == userId && (
+                            {ann.userId === userId && (
                                 <button className="tomato">EDITAR ANÚNCIO</button>
                             )}
                         </div>

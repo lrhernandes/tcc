@@ -36,8 +36,8 @@ routes.put('/announcements/settings/:id', AnnouncementController.update);
 routes.delete('/announcements/delete/:id/:announcement', AnnouncementController.delete);
 
 //ROTAS FAVOURITES
-routes.get('/myfavourites', FavouriteAnnouncementsController.index);
+routes.get('/myfavourites/:id', FavouriteAnnouncementsController.index);
 routes.delete('/deletefavourite/:announcementId', FavouriteAnnouncementsController.delete);
-routes.post('/addfavourite/:announcementId', FavouriteAnnouncementsController.create);
+routes.post('/addfavourite/:announcementId/:id', FavouriteAnnouncementsController.create);
 
 module.exports = routes;
