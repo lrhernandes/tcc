@@ -3,7 +3,6 @@ import './styles.css';
 import api from '../../services/api';
 import { FaFilter } from "react-icons/fa";
 import {Link} from 'react-router-dom';
-import Form from '../../templates/LocalizarAnimaisHomeForm';
 import Announcement from '../../templates/AnnouncementItemFromList'
 
 var data = new Date();
@@ -14,10 +13,59 @@ var monthString = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "
 export default function ContentFindAnnouncement(){
     const [step, setStep] = useState(0);
     const [announcements, setAnnouncements] = useState([]);
+    const [city, setCity] = useState([]);
+    const [uf, setUF] = useState([]);
+    
+    const userId = localStorage.getItem('user-id');
+
+    useEffect(()=>{
+        function loadSelect(){
+          return (function(uf, city, api) {
+          function createOption (value, text) {
+            const option = document.createElement('option')
+            option.value = value
+            option.innerHTML = text
+            return option
+          }
+          function pushSelect (item, el) {
+            const opt = createOption(item.geonameId, item.toponymName)
+            el.append(opt)
+          } 
+          function handleAjax (res, el) {   
+           res.geonames.forEach(each => {
+             pushSelect(each, el)
+           })
+          } 
+          function getinfo (geoid, hasUf = false) {
+            fetch(`https://www.geonames.org/childrenJSON?geonameId=${geoid}`)
+              .then(res => res.json())
+              .then(res => {
+                if(hasUf) {
+                  city.length = 1; //clear
+                  handleAjax(res, city)
+                } else {
+                  handleAjax(res, uf)
+                }
+            });
+          }
+          function init () {
+            uf.addEventListener('change', function() {
+              getinfo(this.value, true)
+            })
+            getinfo(api)
+          }
+          init()
+        })(
+          document.getElementById('uf'),
+          document.getElementById('cidade'),
+          3469034
+        );
+        }
+        loadSelect();
+      })
     
     useEffect(()=>{
         async function fetchData() {
-            const userId = localStorage.getItem('user-id');
             const user = await api.get(`/client/${userId}`)
             const userdata = user.data
             const resp = await api.get(`/availableannouncementsbyaddress/${userId}/${userdata.city}/${userdata.uf}`)
@@ -26,6 +74,10 @@ export default function ContentFindAnnouncement(){
         fetchData();
     }, []);
         
+    async function handleFindAnnouncements(){
+        const resp = await api.get(`/availableannouncementsbyaddress/${userId}/${city}/${uf}`)
+        setAnnouncements(resp.data);
+    }
     return (
         <div className="content-right">
             <div className="content-find-announcement">
@@ -34,7 +86,21 @@ export default function ContentFindAnnouncement(){
                     <p className="current-day">{day} de {monthString[month]}</p>
                 </div>
                 <div className="home-form-locate-animals">
-                    <Form/>
+                    <div className="gambiarra">
+                        <div className="localizar-animais-home-form">
+                        <div>
+                            <label>Em qual estado?</label><br/>
+                            <select id="uf" onChange={e => setUF(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}><option defaultValue >Selecionar</option></select>
+                        </div>
+                        <div>
+                            <label>E cidade?</label><br/>
+                            <select id="cidade" onChange={e => setCity(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}> <option defaultValue >Selecionar</option></select>
+                        </div> 
+                        <div id="filtrar-button-box">
+                            <button onClick={handleFindAnnouncements} className="purple">LOCALIZAR</button>
+                        </div>
+                        </div>
+                    </div>
                 </div>
                 
                 {step === 0 && (
@@ -63,10 +129,6 @@ export default function ContentFindAnnouncement(){
                             <p className="filtrar-announcements"> <Link className="content-find-announcement-filtrar" onClick={() => {setStep(0)}} > <FaFilter size={10}/> FILTRAR</Link></p>
                         </div>
                         <form>
-                            {/*<div>
-                                <label>Nome do anúncio</label>
-                                <input type="text" placeholder="Você está procurando um anúncio específico?"/>  
-                            </div>*/}
 
                             <div className="animal-options">
                                 <div className="animal-types">
