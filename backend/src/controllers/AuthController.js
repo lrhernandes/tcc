@@ -10,7 +10,9 @@ module.exports = {
     async login(req, res){
         const { email, password } = req.body;
         const clientFromDB = await connection.client.findOne({where: {email: email}});
-        bcrypt.compare(password, clientFromDB.password, async (err, sucess)=>{
+        console.log(clientFromDB)
+        if(clientFromDB){
+            bcrypt.compare(password, clientFromDB.password, async (err, sucess)=>{
             if(err){
                 res.statusCode = 400;
                 res.send("Dados incorretos");
@@ -22,7 +24,14 @@ module.exports = {
                     user: clientFromDB,
                     token: jwtToken
                 });
+            }else{
+                res.statusCode = 400;
+                res.send("Não foi possível fazer login")
             }
-        })
+        })}else{
+            res.statusCode = 402;
+            res.send("Esse e-mail não está cadastrado")
+        }
+        return
     }
 };

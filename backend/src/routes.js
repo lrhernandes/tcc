@@ -39,7 +39,7 @@ routes.delete('/announcements/delete/:id/:announcement', AnnouncementController.
 //ROTAS FAVOURITES
 routes.get('/myfavourites/:id', FavouriteAnnouncementsController.index);
 routes.get('/allfavourites/:id', FavouriteAnnouncementsController.indexAll);
-routes.delete('/deletefavourite/:announcementId', FavouriteAnnouncementsController.delete);
+routes.delete('/deletefavourite/:announcementId/:userId', FavouriteAnnouncementsController.delete);
 routes.post('/addfavourite/:announcementId/:id', FavouriteAnnouncementsController.create);
 
 module.exports = routes;

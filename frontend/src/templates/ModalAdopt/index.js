@@ -10,7 +10,6 @@ export default function ModalAdopt({user}){
     useEffect(()=>{
         async function fetchData() {
             const u = await api.get(`/client/${user}`);
-            console.log(u.data)
             setDonor(u.data);
         }
         fetchData();

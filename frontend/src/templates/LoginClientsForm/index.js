@@ -18,11 +18,11 @@ export default function LoginClientForm(){
                 localStorage.setItem('user-id', response.data.user.id);
                 console.log(email, password)
                 history.push('/home');
+            }else{
+                alert("E-mail ou senha incorretos")
             }
-            alert(`Seu token: ${response.data.token}`)
-            alert(`Seu id: ${response.data.user.id}`)
         }catch(err){
-            alert(err);
+            alert("Não foi possível fazer login");
         }
     }
     return (

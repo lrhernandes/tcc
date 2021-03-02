@@ -46,14 +46,15 @@ module.exports = {
     //DELETAR ANÚNCIOS FAVORITOS
     async delete (req, res){
         const announcementFavouriteId = req.params.announcementId;
-        const userId = req.headers.authorization;
-        const fav = await connection.favouriteAnnouncements.findOne({where:{ id: announcementFavouriteId}});
+        const userId = req.params.userId;
+        const fav = await connection.favouriteAnnouncements.findOne({where:{ announcementId: announcementFavouriteId}});
         if(fav.userId == userId){
-            const delfav = await favoutireAnnouncements.delete(announcementFavouriteId);
-            return res.json(delfav);
+            const delfav = await favoutireAnnouncements.delete(fav.id);
+            res.json(delfav);
         }else{
             console.log("erro na excluão!");
-            return res.json({ message: "Não é possível excluir esse anúncio!"}).status(401).send();
+            res.json({ message: "Não é possível excluir esse anúncio!"}).status(401).send();
         } 
+        return
     }
 }
