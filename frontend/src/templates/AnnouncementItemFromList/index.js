@@ -42,7 +42,7 @@ export default function AnnouncementItemFromList({ann}){
 
     async function handleRemoveFavorite(e){
         try{
-            const fav = await api.post(`/deletefavourite/${ann.id}/${user}/`);
+            const fav = await api.delete(`/deletefavourite/${ann.id}/${user}/`);
         }catch(err){
             alert(err);
         }
