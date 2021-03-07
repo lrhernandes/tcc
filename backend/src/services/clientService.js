@@ -35,19 +35,13 @@ module.exports = {
 
     //ATUALIZAR CLIENT
     async update(req, id_par){
-        const { firstName, lastName, password, email, whatsapp} = req;
+        const {email, whatsapp, city, uf} = req;
         const cli = await connection.client.findOne({ where:{ id: id_par }});
-        if(firstName){ cli.firstName = firstName; };
-        if(lastName){ cli.lastName = lastName; };
-        if(password){ cli.password = password; };
         if(email){ cli.email = email; };
         if(whatsapp){ cli.whatsapp = whatsapp};
         if(uf){ cli.uf = uf};
         if(city){ cli.city = city};
         const client = await cli.save({
-            firstName: firstName,
-            lastName: lastName,
-            password: password,
             email: email,
             uf: uf,
             city: city,

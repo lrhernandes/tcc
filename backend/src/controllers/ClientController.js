@@ -32,7 +32,7 @@ module.exports = {
     //ATUALIZAR CLIENT
     async update(req, res){
         const id_par = req.params.id;
-        const client_id = req.headers.authorization;
+        const client_id = req.params.idAuth;
         const cli = await connection.client.findOne({
             where:{
                 id: id_par
