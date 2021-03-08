@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './styles.css';
 import { MdInfo, MdFileUpload, MdClose } from "react-icons/md";
-import {Link, useHistory} from 'react-router-dom';
+import {Link, useHistory, useParams} from 'react-router-dom';
 import api from '../../services/api';
 import cachorro from '../../assets/animais (2).svg';
 import gato from '../../assets/gato.svg';
@@ -18,10 +18,14 @@ import galinha from '../../assets/galinha.svg'
 
 export default function ContentNewAnnouncement(){
     const history = useHistory();
+    const user = localStorage.getItem('user-id');
+    let { id } = useParams();
+
     const [items, setItems] = useState([]);
     const [itemsCpy, setItemsCpy] = useState([]);
     const [errorMessages, setErrorMessages] = useState([]);
     const [checked, setChecked] = useState(false);
+    const [announcement, setAnnouncement] = useState([]);
 
     useEffect(() => {
         function loadSelect(){
@@ -112,6 +116,8 @@ export default function ContentNewAnnouncement(){
     const [dewormed, setDewormed] = useState(false);
     const [isSpecial, setIsSpecial] = useState(false);
     const [specialDescription, setSpecialDescription] = useState('');
+    const [temperament, setTemperament] = useState('');
+    const [temperamentList, setTemperamentList] = useState([]);
 
     async function handleAnnouncementRegister(e){
         /** PEGA OS DADOS DO STATE */
@@ -124,7 +130,7 @@ export default function ContentNewAnnouncement(){
             if(i< items.length-1){
                 temperament = temperament + items[i].value + ', '
             }else{
-                temperament = temperament + items[i].value;
+                temperament = temperament + items[i].value + '.';
             }
             
         }
@@ -137,6 +143,46 @@ export default function ContentNewAnnouncement(){
             }
         }catch(err){
             alert(err);
+        }
+    }
+
+    useEffect(()=>{
+        async function getData(){
+            const response = await api.get(`/announcement/${id}`);
+            const announcementData = response.data;
+
+            setName(announcementData.name);
+            setDescription(announcementData.description);
+            setCastrated(announcementData.castrated);
+            setVaccinated(announcementData.vaccinated);
+            setDewormed(announcementData.dewormed);
+            setIsSpecial(announcementData.isSpecial);
+            setChecked(announcementData.isSpecial)
+            setSpecialDescription(announcementData.specialDescription);
+            setUF(announcementData.uf);
+            setCity(announcementData.city);
+
+            var temperamento = [];
+            var [result] = announcementData.temperament.split(/\s*;\s*/);
+            var r = result.split(",")
+            r.forEach((element, index, array) => { temperamento.push({ id: index, value: element.trimStart()})});
+            setItems(temperamento);
+
+            document.getElementById(`${announcementData.type}`).checked = true;
+            document.getElementById(`${announcementData.sex}`).checked = true;
+            document.getElementById(`${announcementData.size}`).checked = true;
+            document.getElementById(`${announcementData.age}`).checked = true;
+
+            if(announcementData === null){ history.push('/exception')}else{ handlePermission(announcementData.userId); setAnnouncement(response.data);}
+        }
+        getData();
+    },[]);
+
+    function handlePermission(id){
+        console.log(user)
+        console.log(id)
+        if(id != user){
+            history.push('/exception')
         }
     }
 
@@ -258,19 +304,19 @@ export default function ContentNewAnnouncement(){
                     <label className="form-label-new-announcement">Histórico de saúde</label>
                     <p className="subtitle-seccion">Qual o estado de saúde do pet? descreva suas necessidades especiais na descrição do anúncio</p>
                     <div className="form-new-announcement-item-health-content-item">
-                        <input type="checkbox" id="castrado" name="animal-health" value={castrated} onChange={e => setCastrated(e.target.checked)} />
+                        <input type="checkbox" id="castrado" name="animal-health" checked={castrated} value={castrated} onChange={e => setCastrated(e.target.checked)} />
                         <label className="form-new-announcement-item-health-label" htmlFor="castrado"><p>Castrado</p></label>
                     </div>
                     <div className="form-new-announcement-item-health-content-item">
-                        <input type="checkbox" id="vacinado" name="animal-health" value={vaccinated} onChange={e => setVaccinated(e.target.checked)} />
+                        <input type="checkbox" id="vacinado" name="animal-health" checked={vaccinated} value={vaccinated} onChange={e => setVaccinated(e.target.checked)} />
                         <label className="form-new-announcement-item-health-label" htmlFor="vacinado"><p>Vacinado</p></label>
                     </div>
                     <div className="form-new-announcement-item-health-content-item">
-                        <input type="checkbox" id="vermifugado" name="animal-health" value={dewormed} onChange={e => setDewormed(e.target.checked)} />
+                        <input type="checkbox" id="vermifugado" name="animal-health" checked={dewormed} value={dewormed} onChange={e => setDewormed(e.target.checked)} />
                         <label className="form-new-announcement-item-health-label" htmlFor="vermifugado"><p>Vermifugado </p></label>
                     </div>
                     <div className="form-new-announcement-item-health-content-item">
-                        <input type="checkbox" id="especial" name="animal-health" value={isSpecial} checked={checked} onChange={handleIsSpecial}/>
+                        <input type="checkbox" id="especial" name="animal-health" checked={isSpecial} value={isSpecial} checked={checked} onChange={handleIsSpecial}/>
                         <label className="form-new-announcement-item-health-label" htmlFor="especial"><p>Possui necessidades especiais <MdInfo title="Doenças como FIV, FELV, cinomose, hepatite, deficiências físicas, alergias e afins devem ser indicadas nesse campo" size={15} className="form-new-announcement-item-health-icon"/> </p></label>
                     </div>
                 </div>         
@@ -311,11 +357,11 @@ export default function ContentNewAnnouncement(){
                     <div className="form-new-announcement-item-address-grid">
                         <div>
                             <label className="form-label-new-announcement">UF</label>
-                            <select id="uf" value={uf} onChange={e => setUF(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}><option defaultValue >Estado</option></select>
+                            <select id="uf" value={uf} onChange={e => setUF(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}><option defaultValue >{uf}</option></select>
                         </div>
                         <div id="second-item-address-grid">
                             <label className="form-label-new-announcement">Cidade</label>
-                            <select id="cidade" value={city} onChange={e => setCity(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}> <option defaultValue >Cidade</option></select>
+                            <select id="cidade" value={city} onChange={e => setCity(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}> <option defaultValue >{city}</option></select>
                         </div>
                     </div>
                 </div>

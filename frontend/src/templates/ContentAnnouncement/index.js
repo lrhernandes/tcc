@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {useHistory} from 'react-router-dom'
 import './styles.css';
 import { MdClose } from "react-icons/md";
 import Modal from '../../modal/AnnouncementAdopt'
@@ -24,10 +25,10 @@ import galinha from '../../assets/galinha.svg'
 import regua from '../../assets/regua.svg'
 
 export default function ContentAnnouncement({ann}){
+    const history = useHistory();
     const modalRef = React.useRef();
     const [temp, setTemp] = useState([]);
     const [userId, setUserId] = useState([]);
-
 
     /** SEPARAR O TEMPERAMENTO EM UM ARRAY */
     useEffect(() => {
@@ -49,13 +50,15 @@ export default function ContentAnnouncement({ann}){
     const openModal = () => { modalRef.current.openModal() }
     const closeModal = () => { modalRef.current.closeModal() }
 
+    function handleEditAnnouncement(){
+        history.push(`/announcement/edit/${ann.id}`)
+    }
+
     return (
         <div className="content-announcement">
             <Modal ref={modalRef}>
                 <div onClick={closeModal} className="x-icon"><Link><MdClose size={20}/></Link></div>
-                <div>
-                    <ModalAdopt user={ann.userId}/>
-                </div>
+                <div> <ModalAdopt user={ann.userId}/> </div>
             </Modal>
                 <div className="content-announcement-sections" id="style-scroll">
                     <div className="space-scroll">
@@ -181,7 +184,7 @@ export default function ContentAnnouncement({ann}){
                                 <button onClick={openModal} className="purple">QUERO ADOTAR!</button>
                             )}
                             {ann.userId === userId && (
-                                <button className="tomato">EDITAR ANÚNCIO</button>
+                                <button onClick={handleEditAnnouncement} className="tomato">EDITAR ANÚNCIO</button>
                             )}
                         </div>
                         <div className="temperamento-announcement-section">

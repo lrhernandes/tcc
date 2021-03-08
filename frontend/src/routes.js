@@ -14,6 +14,7 @@ import Announcement from './pages/Announcement'
 import Termo from './pages/TermoAdocao'
 import Exception from './pages/Exception'
 import Senha from './pages/RedefinePassword'
+import EditAnnouncement from './pages/EditAnnouncement'
 
 export default function(){
     return(
@@ -28,6 +29,7 @@ export default function(){
                 <Route path="/myfavorites" component={Favourite}/>
                 <Route path="/mysettings" component={ClientSettings}/>
                 <Route path="/newannouncement" component={NewAnnouncement}/>
+                <Route path="/announcement/edit/:id" component={EditAnnouncement}/>
                 <Route path="/announcement/:id" component={Announcement}/>
                 <Route path="/termo" component={Termo}/>
                 <Route path="/redefine-password" component={Senha}/>
