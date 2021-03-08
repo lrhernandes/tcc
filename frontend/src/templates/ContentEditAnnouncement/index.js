@@ -69,7 +69,7 @@ export default function ContentNewAnnouncement(){
             );
         }
         loadSelect();
-    });
+    },[]);
 
     const handleKeyPress = (event) => {
         if(event.key === "Enter"){
@@ -119,7 +119,7 @@ export default function ContentNewAnnouncement(){
     const [temperament, setTemperament] = useState('');
     const [temperamentList, setTemperamentList] = useState([]);
 
-    async function handleAnnouncementRegister(e){
+    async function handleAnnouncementEdit(e){
         /** PEGA OS DADOS DO STATE */
         const type = animalType;
         const size = animalSize;
@@ -130,17 +130,20 @@ export default function ContentNewAnnouncement(){
             if(i< items.length-1){
                 temperament = temperament + items[i].value + ', '
             }else{
-                temperament = temperament + items[i].value + '.';
+                temperament = temperament + items[i].value;
             }
             
         }
-        const userId = localStorage.getItem('user-id')
-        const data = { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, userId};
+        alert(castrated)
+        alert(vaccinated)
+        alert(isSpecial)
+        alert(dewormed)
+        const data = { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, user};
         try{
-            const response = await api.post('/announcements', data);
-            if(response){
-                history.push('/myannouncements');
-            }
+            const response = await api.put(`/announcements/settings/${id}/${user}`, data).then(()=>{
+                alert("Edições salvas :)")
+                history.push(`/announcement/${id}`);
+            });
         }catch(err){
             alert(err);
         }
@@ -372,7 +375,7 @@ export default function ContentNewAnnouncement(){
                     <input type="file" id="input-file-animal"/>
                 </div>
                 <button className="negative-purple">CANCELAR</button>
-                <button type="button" onClick={handleAnnouncementRegister} className="purple">CADASTRAR</button>
+                <button type="button" onClick={handleAnnouncementEdit} className="purple">SALVAR</button>
             </div>
             <div className="new-announcement-background-cat-wrapper">
                 <div className="new-announcement-background-cat"/>

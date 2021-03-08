@@ -79,43 +79,55 @@ module.exports = {
     },
     
     //ATUALIZAR ANÚNCIOS
-    async update(req, id_par_ann, id_endereco){
-        const { name, description, sex, age, cep, health, temperament, type, uf, city, size, available} = req;
-        console.log("ID do endereço do anúncio AAAAAAAAAAAAAAAAAAAAAa: " + id_endereco);
+    async update(req, id_par_ann){
+        const { name, description, sex, age, vaccinated, dewormed, castrated, isSpecial, specialDescription, temperament, adopted, type, uf, city, size, available} = req;
         const ann = await connection.announcement.findOne({ where:{ id: id_par_ann }});
         if(name){ ann.name = name;};
         if(description){ ann.description = description; };
         if(sex){ ann.sex = sex; };
         if(age){ ann.age = age; };
-        if(cep){ ann.cep = cep; }
-        if(health){ ann.health = health; };
         if(temperament){ ann.temperament = temperament; };
         if(type){ ann.type = type; };
         if(uf){ ann.uf = uf; };
         if(city){ ann.city = city; };
         if(size){ ann.size = size; };
         if(available){ ann.available = available}
+        if(vaccinated){ ann.vaccinated = vaccinated};
+        if(dewormed){ ann.dewormed = dewormed}
+        if(castrated){ ann.castrated = castrated}
+        if(isSpecial){ ann.isSpecial = isSpecial}
+        if(specialDescription){ ann.specialDescription = specialDescription}
+        if(adopted){ ann.adopted = adopted}
+        console.log(vaccinated)
+        console.log(dewormed)
+        console.log(isSpecial)
+        console.log(castrated)
+
         const announcement = await ann.save({
             name: name,
             description: description,
             sex: sex,
             age: age,
-            cep: cep,
-            health: health,
+            adopted: adopted,
             temperament: temperament,
             type: type,
             uf: uf,
             city: city,
             size: size,
-            available: available
+            available: available,
+            vaccinated: vaccinated,
+            dewormed: dewormed,
+            castrated: castrated,
+            isSpecial: isSpecial,
+            specialDescription: specialDescription,
+            adopted:adopted
         })
-        const getAnnouncement = await connection.announcement.findOne({ include: [{ model: connection.adress }], where: { adressId :  id_endereco }});
-        return getAnnouncement;
+        return announcement;
     },
 
     //SALVAR ANNOUNCEMENT NO BANCO
     async create(req){
-        const { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, userId} = req; 
+        const { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, adopted} = req; 
         const announcement = await connection.announcement.create({
             name:name,
             description:description,
@@ -131,10 +143,8 @@ module.exports = {
             dewormed:dewormed,
             isSpecial:isSpecial,
             specialDescription:specialDescription,
-            active: true,
             available: true,
-            adopted: false,
-            userId: userId,
+            adopted: adopted,
             pictures: ''
         });
         //const newannouncement = this.register(userId, adressId, name, description, type, size, sex, age);

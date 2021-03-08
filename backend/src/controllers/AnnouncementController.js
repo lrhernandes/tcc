@@ -82,20 +82,11 @@ module.exports = {
     //ATUALIZAR ANÚNCIOS
     async update(req, res){
         const id_par_ann = req.params.id;
-        const client_id = req.headers.authorization;
-        const ann = await connection.announcement.findOne({
-            where:{
-                id: id_par_ann
-            },
-        });
-
-        const jsonS = JSON.stringify(ann.dataValues);
-        const jsonP = JSON.parse(jsonS);
-        const id_endereco = jsonP.adressId;
+        const client_id = req.params.user;
+        const ann = await connection.announcement.findOne({ where:{ id: id_par_ann }});
 
         if(ann.userId == client_id){
-            const upadr = await adress.update(req.body, id_endereco); //requisição e id do endereço
-            const upann = await announcement.update(req.body, id_par_ann, id_endereco);
+            const upann = await announcement.update(req.body, id_par_ann);
             return res.json(upann).status(200).send();
         }else{
             console.log("Erro na edição!");
