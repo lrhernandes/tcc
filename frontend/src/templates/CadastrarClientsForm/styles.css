@@ -123,3 +123,8 @@ li{
     display: flex;
     float: left;
 }
+
+.login-item-wrapper{
+    margin-bottom: 20px;
+    text-align: justify;
+}
