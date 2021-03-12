@@ -50,3 +50,7 @@ form #h2{
 .bottom-register .register-link a:hover{
     filter: brightness(95%);
 }
+
+.login-item-wrapper{
+    margin-bottom: 10px;
+}

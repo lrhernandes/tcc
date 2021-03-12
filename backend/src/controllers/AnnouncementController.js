@@ -83,6 +83,7 @@ module.exports = {
     async update(req, res){
         const id_par_ann = req.params.id;
         const client_id = req.params.user;
+        
         const ann = await connection.announcement.findOne({ where:{ id: id_par_ann }});
 
         if(ann.userId == client_id){

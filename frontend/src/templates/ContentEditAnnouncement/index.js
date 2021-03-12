@@ -20,6 +20,7 @@ export default function ContentNewAnnouncement(){
     const history = useHistory();
     const user = localStorage.getItem('user-id');
     let { id } = useParams();
+    var reName, reDescription, reSpecial, reUf, reCity
 
     const [items, setItems] = useState([]);
     const [itemsCpy, setItemsCpy] = useState([]);
@@ -78,8 +79,7 @@ export default function ContentNewAnnouncement(){
                     id: Math.floor(Math.random()*1000+1),
                     value: event.target.value
                 }])
-                event.target.value = "";
-                console.log("Tamanho: " + [items.length+1])
+                event.target.value = null;
             }else{
                 setErrorMessages([...errorMessages, {
                     id: Math.floor(Math.random()*1000+1),
@@ -90,7 +90,6 @@ export default function ContentNewAnnouncement(){
         }
     }
     function removeItem(id) {
-        console.log(JSON.stringify(items))
         const _items = items;
         const index = _items.map((el) => el.id).indexOf(id);
         if (index > -1) {
@@ -120,33 +119,37 @@ export default function ContentNewAnnouncement(){
     const [temperamentList, setTemperamentList] = useState([]);
 
     async function handleAnnouncementEdit(e){
+        handleName();
+        handleDescription();
+        handleSpecial();
+
         /** PEGA OS DADOS DO STATE */
         const type = animalType;
         const size = animalSize;
         const sex = animalSex;
         const age = animalAge;
-        var temperament = '';
+        var temperament = null;
         for (var i = 0; i < items.length; i++) {
-            if(i< items.length-1){
-                temperament = temperament + items[i].value + ', '
-            }else{
-                temperament = temperament + items[i].value;
+            i< items.length-1 ? temperament = temperament + items[i].value + ', ' : temperament = temperament + items[i].value;
+        }
+        if (reName && reDescription && reSpecial){
+            const data = { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, user};
+            console.log(data)
+            try{
+                const response = await api.put(`/announcements/settings/${id}/${user}`, data).then(()=>{
+                    alert("Edições salvas :)");
+                    history.push(`/announcement/${id}`);
+                });
+            }catch(err){
+                alert(err);
             }
-            
+        } else {
+            alert("Não foi possível editar anúncio :(");
         }
-        alert(castrated)
-        alert(vaccinated)
-        alert(isSpecial)
-        alert(dewormed)
-        const data = { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, user};
-        try{
-            const response = await api.put(`/announcements/settings/${id}/${user}`, data).then(()=>{
-                alert("Edições salvas :)")
-                history.push(`/announcement/${id}`);
-            });
-        }catch(err){
-            alert(err);
-        }
+    }
+
+    function handleCancelEdit(){
+        history.push(`/announcement/${id}`);
     }
 
     useEffect(()=>{
@@ -182,8 +185,6 @@ export default function ContentNewAnnouncement(){
     },[]);
 
     function handlePermission(id){
-        console.log(user)
-        console.log(id)
         if(id != user){
             history.push('/exception')
         }
@@ -194,22 +195,68 @@ export default function ContentNewAnnouncement(){
         setIsSpecial(e.target.checked);
     }
 
+    //VALIDAÇÕES
+    function handleName(){
+        if(name === undefined || name === null || name === ""){
+            document.getElementById("msgname").innerHTML="<font color='red'>Esse campo é obrigatório</font>";
+            document.getElementById("name").style.border= '1px solid tomato';
+            document.getElementById("name").style.marginBottom= '5px';
+            reName = false
+        }else{
+            document.getElementById("msgname").innerHTML="";
+            document.getElementById("name").style.border= '1px solid green';
+            reName = true
+        }
+    }
+    function handleDescription(){
+        if(description === undefined || description === null || description === ""){
+            document.getElementById("msgdescription").innerHTML="<font color='red'>Esse campo é obrigatório</font>";
+            document.getElementById("description").style.border= '1px solid tomato';
+            document.getElementById("description").style.marginBottom= '5px';
+            reDescription = false
+        }else{
+            document.getElementById("msgdescription").innerHTML="";
+            document.getElementById("description").style.border= '1px solid green';
+            reDescription = true
+        }
+    }
+    function handleSpecial(){
+        console.log(isSpecial)
+        if(isSpecial){
+            if (specialDescription === undefined || specialDescription === null || specialDescription === ""){
+                document.getElementById("msgspecialdescription").innerHTML="<font color='red'>Esse campo é obrigatório</font>";
+                document.getElementById("specialdescription").style.border= '1px solid tomato';
+                document.getElementById("specialdescription").style.marginBottom= '5px';
+                reSpecial = false;
+            } else{
+                document.getElementById("msgspecialdescription").innerHTML=null;
+                document.getElementById("specialdescription").style.border= '1px solid green';
+                reSpecial = true;
+            }
+        }else{
+            reSpecial = true;
+            setSpecialDescription(null)
+        }
+    }
+
     return (
         <div className="content-new-announcement">    
             <div className="default-page-content-wrapper">
                 <div className="form-new-announcement-item" id="form-new-announcement-item-name">
-                    <label className="form-label-new-announcement">Nome do anúncio</label>
-                    <input className="default-input-new-announcement" type="text" placeholder="Ex.: Pedrinho" value={name} onChange={e => setName(e.target.value)}/>
+                    <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Nome do anúncio</label>
+                    <input id="name" className="default-input-new-announcement" type="text" placeholder="Ex.: Pedrinho" value={name} onChange={e => setName(e.target.value)}/>
+                    <span className="validationError" id="msgname"/>
                 </div>
 
                 <div className="form-new-announcement-item">
-                    <label className="form-label-new-announcement">Descrição do anúncio</label>
+                    <label className="form-label-new-announcement"> <span className="span__obrigatory__item">*</span> Descrição do anúncio</label>
                     <p className="subtitle-seccion">Qual a história desse bichinho? quais são as suas características?</p>
-                    <textarea placeholder="Ex.: Cachorro brincalhão resgatado do antigo tutor por maus tratos..." value={description} onChange={e => setDescription(e.target.value)}/>
+                    <textarea id="description" placeholder="Ex.: Cachorro brincalhão resgatado do antigo tutor por maus tratos..." value={description} onChange={e => setDescription(e.target.value)}/>
+                    <span className="validationError" id="msgdescription"/>
                 </div>
 
                 <div className="form-new-announcement-item" id="form-new-announcement-item-type">
-                    <label className="form-label-new-announcement">Tipo</label>
+                    <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Tipo</label>
                     <p className="subtitle-seccion">Que tipo de animal é esse?</p>
 
                     <div className="form-new-announcement-item-type-grid" onChange={e => {setAnimalType(e.target.id)}}>
@@ -241,7 +288,7 @@ export default function ContentNewAnnouncement(){
                     </div>
                 </div>
                 <div className="form-new-announcement-item" id="form-new-announcement-item-size">
-                    <label className="form-label-new-announcement">Porte</label>
+                    <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Porte</label>
                     <p className="subtitle-seccion">Porte de acordo com o tipo de pet selecionado</p>
                     <div className="form-new-announcement-item-size-grid"  onChange={e => {setAnimalSize(e.target.id)}}>
                         <div className="form-new-announcement-item-size-content-item">
@@ -268,7 +315,7 @@ export default function ContentNewAnnouncement(){
                 </div>
                 <div className="content-item-sex-age-grid">
                     <div className="form-new-announcement-item" id="form-new-announcement-item-sex">
-                        <label className="form-label-new-announcement">Sexo</label>
+                        <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Sexo</label>
                         <div className="form-new-announcement-item-sex-grid" onChange={e => {setAnimalSex(e.target.id)}}>
                             <div className="form-new-announcement-item-sex-content-item">
                                 <input type="radio" id="fem" name="animal-sex"/>
@@ -285,7 +332,7 @@ export default function ContentNewAnnouncement(){
                         </div>
                     </div>
                     <div className="form-new-announcement-item" id="form-new-announcement-item-age">
-                        <label className="form-label-new-announcement">Idade</label>
+                        <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Idade</label>
                         <div className="form-new-announcement-item-age-grid" onChange={e => {setAnimalAge(e.target.id)}}>
                             <div className="form-new-announcement-item-age-content-item">
                                 <input type="radio" id="puppy" name="animal-age"/>
@@ -328,7 +375,8 @@ export default function ContentNewAnnouncement(){
                 {checked && (
                     <div>
                         <label className="form-new-announcement-description-special-label">Descreva aqui as necessidades especiais apresentadas pelo bichinho</label>
-                        <textarea className="form-new-announcement-description-special-textarea" value={specialDescription} onChange={e => setSpecialDescription(e.target.value)} />
+                        <textarea id="specialdescription" className="form-new-announcement-description-special-textarea" value={specialDescription} onChange={e => setSpecialDescription(e.target.value)} />
+                        <span className="validationError" id="msgspecialdescription"/>
                     </div>
                 )}
                 {!checked && (
@@ -355,7 +403,7 @@ export default function ContentNewAnnouncement(){
                 </div>
                 
                 <div className="form-new-announcement-item" id="form-new-announcement-item-address">
-                    <label className="form-label-new-announcement">Endereço</label>
+                    <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Endereço</label>
                     <p className="subtitle-seccion">Onde o animal está alojado?</p>
                     <div className="form-new-announcement-item-address-grid">
                         <div>
@@ -374,7 +422,7 @@ export default function ContentNewAnnouncement(){
                     <label htmlFor="input-file-animal" className="button-charge-files"> <p><MdFileUpload/> CARREGAR ARQUIVOS</p> </label>
                     <input type="file" id="input-file-animal"/>
                 </div>
-                <button className="negative-purple">CANCELAR</button>
+                <button className="negative-purple" onClick={handleCancelEdit}>CANCELAR</button>
                 <button type="button" onClick={handleAnnouncementEdit} className="purple">SALVAR</button>
             </div>
             <div className="new-announcement-background-cat-wrapper">

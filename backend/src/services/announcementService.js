@@ -102,6 +102,7 @@ module.exports = {
         console.log(dewormed)
         console.log(isSpecial)
         console.log(castrated)
+        console.log(specialDescription)
 
         const announcement = await ann.save({
             name: name,
@@ -122,6 +123,8 @@ module.exports = {
             specialDescription: specialDescription,
             adopted:adopted
         })
+        
+        console.log(announcement)
         return announcement;
     },
 
@@ -129,20 +132,20 @@ module.exports = {
     async create(req){
         const { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, adopted} = req; 
         const announcement = await connection.announcement.create({
-            name:name,
-            description:description,
-            type:type,
-            size:size,
-            sex:sex,
-            age:age,
-            temperament:temperament,
+            name: name,
+            description: description,
+            type: type,
+            size: size,
+            sex: sex,
+            age: age,
+            temperament: temperament,
             uf:uf,
             city:city,
-            castrated:castrated,
-            vaccinated:vaccinated,
-            dewormed:dewormed,
-            isSpecial:isSpecial,
-            specialDescription:specialDescription,
+            castrated: castrated,
+            vaccinated: vaccinated,
+            dewormed: dewormed,
+            isSpecial: isSpecial,
+            specialDescription: specialDescription,
             available: true,
             adopted: adopted,
             pictures: ''
