@@ -11,6 +11,5 @@ export default function BannerPrincipal(){
                 <img alt="hat cat" id="cat1" src={cat1}/>
             </h1>
         </div>
-        
     )
 }

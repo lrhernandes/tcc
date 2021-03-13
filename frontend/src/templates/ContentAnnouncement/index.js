@@ -190,7 +190,7 @@ export default function ContentAnnouncement({ann}){
                         <div className="temperamento-announcement-section">
                             <div className="temperamento-announcement-section-left">
                                 <p className="title-announcement-sections">Temperamento do pet</p>
-                                <p>{ann.temperament}</p>
+                                <p className="temperament-text">{ann.temperament}</p>
                             </div>
                         </div>
                         <div className="historico-saude-announcement-section">

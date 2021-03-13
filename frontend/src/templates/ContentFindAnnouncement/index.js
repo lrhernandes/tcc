@@ -62,7 +62,7 @@ export default function ContentFindAnnouncement(){
         );
         }
         loadSelect();
-      })
+    })
     
     useEffect(()=>{
         async function fetchData() {
@@ -158,6 +158,11 @@ export default function ContentFindAnnouncement(){
                                             <input type="checkbox" name="animal-types" value="outros" id="outros" />
                                             <label htmlFor="outros" className="exception">Outros</label>
                                         </div>
+
+                                        <div>
+                                            <input type="checkbox" name="animal-types" value="indiferente" id="indiferente" />
+                                            <label htmlFor="indiferente" className="exception">Tanto faz</label>
+                                        </div>
                                     </div>
                                 </div>
                                     
@@ -174,6 +179,10 @@ export default function ContentFindAnnouncement(){
                                             <label htmlFor="femea" className="exception">Fêmea</label>
                                         </div>
 
+                                        <div>
+                                            <input type="checkbox" name="animal-types" value="indiferente" id="indiferente" />
+                                            <label htmlFor="indiferente" className="exception">Tanto faz</label>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -193,6 +202,11 @@ export default function ContentFindAnnouncement(){
                                         <div>
                                             <input type="checkbox" name="animal-types" value="idoso" id="idoso" />
                                             <label htmlFor="idoso" className="exception">Idoso</label>
+                                        </div>
+
+                                        <div>
+                                            <input type="checkbox" name="animal-types" value="indiferente" id="indiferente" />
+                                            <label htmlFor="indiferente" className="exception">Tanto faz</label>
                                         </div>
                                     </div>
                                 </div>
@@ -219,20 +233,10 @@ export default function ContentFindAnnouncement(){
                                             <input type="checkbox" name="animal-types" value="especial" id="especial" />
                                             <label htmlFor="especial" className="exception">Especial</label>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div className="animal-adoption">
-                                    <p className="form-subtitle">Adoção conjunta</p>
-                                    <div>
-                                        <div>
-                                            <input type="checkbox" name="animal-types" value="individual" id="individual" />
-                                            <label htmlFor="individual" className="exception">Individual</label>
-                                        </div>
 
                                         <div>
-                                            <input type="checkbox" name="animal-types" value="conjunta" id="conjunta" />
-                                            <label htmlFor="conjunta" className="exception">Conjunta</label>
+                                            <input type="checkbox" name="animal-types" value="indiferente" id="indiferente" />
+                                            <label htmlFor="indiferente" className="exception">Tanto faz</label>
                                         </div>
                                     </div>
                                 </div>

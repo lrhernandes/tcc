@@ -137,7 +137,13 @@
 }
 
 
-
+.temperament-text{
+    font-size: 12px;
+    text-transform: uppercase;
+    color: rgb(88, 88, 88);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+}
 
 
 

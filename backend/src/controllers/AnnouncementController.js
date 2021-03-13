@@ -10,6 +10,18 @@ module.exports = {
         return res.json(announcements);
     },
 
+    //FILTRAR ANÚNCIOS DISPONÍVEIS
+    async FILTERAvailableAnnouncements(req, res){
+        const id_par = req.params.id;
+        const availableAnnouncements = await announcement.filterAvailableAnnouncements(id_par);
+        if(availableAnnouncements){
+            res.json(availableAnnouncements).status(201);
+        } else{
+            res.status(400).json('Nenhum disponível');
+        }
+        return availableAnnouncements
+    },
+
     //LISTAR ANÚNCIOS DISPONÍVEIS
     async getAvailableAnnouncements(req, res){
         const id_par = req.params.id;

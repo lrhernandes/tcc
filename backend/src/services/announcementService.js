@@ -15,6 +15,22 @@ module.exports = {
     },
 
     //LISTAR ANÚNCIOS DISPONÍVEIS
+    async filterAvailableAnnouncements (user){
+        const availableAnnouncements = await connection.announcement.findAll({
+            where:{
+                available : true,
+                [Op.not]: [
+                    { userId: user },
+                ]
+            },
+            order: [
+                ['createdAt', 'DESC'],
+            ],
+        });
+        return availableAnnouncements;
+    },
+
+    //LISTAR ANÚNCIOS DISPONÍVEIS
     async getAvailableAnnouncements (user){
         const availableAnnouncements = await connection.announcement.findAll({
             where:{
