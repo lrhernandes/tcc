@@ -82,7 +82,6 @@ export default function ContentFindAnnouncement(){
             const respdata = resp.data;
             var filtered = respdata;
             setAnnouncements(respdata)
-
             const parsed = queryString.parse(location.search);
 
             if(parsed.sex){
@@ -104,33 +103,6 @@ export default function ContentFindAnnouncement(){
             if(parsed.sex || parsed.type || parsed.age || parsed.castrated || parsed.vaccinated || parsed.dewormed || parsed.isSpecial){
                 setAnnouncements(filtered)
             }
-
-
-
-            // if(parsed.sex && !parsed.vaccinated && !parsed.age){
-            //     setAnnouncements(respdata.filter(announcement => announcement.sex == parsed.sex));
-            // }
-            // if(parsed.type && !parsed.sex && !parsed.age){
-            //     setAnnouncements(respdata.filter(announcement => announcement.type == parsed.type))
-            // }
-            // if(parsed.age && !parsed.sex && !parsed.type){
-            //     setAnnouncements(respdata.filter(announcement => announcement.age == parsed.age))
-            // }
-            // if(parsed.castrated && !parsed.sex && !parsed.type){
-            //     setAnnouncements(respdata.filter(announcement => announcement.castrated == parsed.castrated))
-            // }
-
-
-            // if(parsed.type && parsed.sex && parsed.age && parsed.castrated && parsed.dewormed && parsed.vaccinated && parsed.isSpecial){
-            //     setAnnouncements(respdata.filter(announcement => announcement.type == parsed.type 
-            //         && announcement.sex == parsed.sex 
-            //         && announcement.age == parsed.age 
-            //         && announcement.castrated == parsed.castrated 
-            //         && announcement.dewormed == parsed.dewormed
-            //         && announcement.vaccinated == parsed.vaccinated
-            //         && announcement.isSpecial == parsed.isSpecial
-            //     ))
-            // }
         }
         fetchData();
     }, []);
@@ -138,22 +110,8 @@ export default function ContentFindAnnouncement(){
     async function handleFindAnnouncements(){
         const resp = await api.get(`/availableannouncementsbyaddress/${userId}/${city}/${uf}`);
         const respdata = resp.data;
-        if(animalType != null){
-            setAnnouncements(respdata => respdata.filter(announcement => announcement.type == animalType));
-        }else{
-            setAnnouncements(respdata);
-        }
-    }
-
-    function handleFilter(){
-        // console.log(animalType);
-        // console.log(animalSex);
-        // console.log(animalAge);
-        // console.log(animalHealth);
-
-        // if(animalType != null){
-        //     setAnnouncements(announcements => announcements.filter(announcement => announcement.type == animalType));
-        // }
+        setAnnouncements(respdata);
+        console.log(respdata)
     }
 
     return (
@@ -196,6 +154,9 @@ export default function ContentFindAnnouncement(){
                                 </li>
                             )}
                         </ul>
+                        {announcements.length === 0 && (
+                            <p className="empty-text">Ops, parece que não existem anúncios disponpiveis :(</p>
+                        )}
                     </div>
                     </div>
                 )}
@@ -328,26 +289,10 @@ export default function ContentFindAnnouncement(){
                             
                             <div className="button-group-filter">
                                 <button className="negative-purple" onClick={()=>{setStep(0)}}>CANCELAR</button>
-                                <button className="purple" onClick={handleFilter}>APLICAR FILTROS</button>
+                                <button className="purple">APLICAR FILTROS</button>
                             </div>
                         </form>
                     </div> 
-                )}
-
-                {step === 2 && (
-                    <div className="box-home-announcements-animals">
-                        <ul className="home-announcements-animals">
-                            <li> <Announcement/> </li>
-                            <li> <Announcement/> </li>
-                            <li> <Announcement/> </li>
-                            <li> <Announcement/> </li>
-                            <li> <Announcement/> </li>
-                            <li> <Announcement/> </li>
-                            <li> <Announcement/> </li>
-                            <li> <Announcement/> </li>
-                            <li> <Announcement/> </li>
-                        </ul>
-                    </div>
                 )}
             </div>
         </div>
