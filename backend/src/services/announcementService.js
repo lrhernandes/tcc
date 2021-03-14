@@ -146,9 +146,10 @@ module.exports = {
 
     //SALVAR ANNOUNCEMENT NO BANCO
     async create(req){
-        const { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, adopted} = req; 
+        const { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, userId, temperament, type, size, uf, city, specialDescription} = req; 
         const announcement = await connection.announcement.create({
             name: name,
+            userId: userId,
             description: description,
             type: type,
             size: size,
@@ -163,7 +164,7 @@ module.exports = {
             isSpecial: isSpecial,
             specialDescription: specialDescription,
             available: true,
-            adopted: adopted,
+            adopted: false,
             pictures: ''
         });
         //const newannouncement = this.register(userId, adressId, name, description, type, size, sex, age);

@@ -187,12 +187,14 @@ export default function ContentAnnouncement({ann}){
                                 <button onClick={handleEditAnnouncement} className="tomato">EDITAR ANÚNCIO</button>
                             )}
                         </div>
-                        <div className="temperamento-announcement-section">
-                            <div className="temperamento-announcement-section-left">
-                                <p className="title-announcement-sections">Temperamento do pet</p>
-                                <p className="temperament-text">{ann.temperament}</p>
+                        {ann.temperament != "null" && (
+                            <div className="temperamento-announcement-section">
+                                <div className="temperamento-announcement-section-left">
+                                    <p className="title-announcement-sections">Temperamento do pet</p>
+                                        <p className="temperament-text">{ann.temperament}</p>
+                                </div>
                             </div>
-                        </div>
+                        )}
                         <div className="historico-saude-announcement-section">
                             <p className="title-announcement-sections">Histórico de saúde</p>
                             <div className="saude-announcement-section">

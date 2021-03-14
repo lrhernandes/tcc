@@ -79,7 +79,7 @@ export default function ContentNewAnnouncement(){
                     id: Math.floor(Math.random()*1000+1),
                     value: event.target.value
                 }])
-                event.target.value = null;
+                event.target.value = [];
             }else{
                 setErrorMessages([...errorMessages, {
                     id: Math.floor(Math.random()*1000+1),
@@ -89,12 +89,12 @@ export default function ContentNewAnnouncement(){
             }
         }
     }
+
     function removeItem(id) {
         const _items = items;
         const index = _items.map((el) => el.id).indexOf(id);
         if (index > -1) {
             items.splice(index, 1);
-            //NÃO SEI PQ, MAS FUNCIONA
             for(let cont=0; cont<9; cont++){
                 setItemsCpy([ ...itemsCpy, items[cont]])
             }
@@ -115,7 +115,6 @@ export default function ContentNewAnnouncement(){
     const [dewormed, setDewormed] = useState(false);
     const [isSpecial, setIsSpecial] = useState(false);
     const [specialDescription, setSpecialDescription] = useState('');
-    const [temperament, setTemperament] = useState('');
     const [temperamentList, setTemperamentList] = useState([]);
 
     async function handleAnnouncementEdit(e){
@@ -128,13 +127,14 @@ export default function ContentNewAnnouncement(){
         const size = animalSize;
         const sex = animalSex;
         const age = animalAge;
-        var temperament = null;
+        var temperament = "";
+        console.log(items)
+        console.log(itemsCpy)
         for (var i = 0; i < items.length; i++) {
-            i< items.length-1 ? temperament = temperament + items[i].value + ', ' : temperament = temperament + items[i].value;
+            i <= items.length-1 ? temperament = temperament + items[i].value + ', ' : temperament = temperament + items[i].value;
         }
         if (reName && reDescription && reSpecial){
             const data = { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, user};
-            console.log(data)
             try{
                 const response = await api.put(`/announcements/settings/${id}/${user}`, data).then(()=>{
                     alert("Edições salvas :)");
@@ -221,7 +221,6 @@ export default function ContentNewAnnouncement(){
         }
     }
     function handleSpecial(){
-        console.log(isSpecial)
         if(isSpecial){
             if (specialDescription === undefined || specialDescription === null || specialDescription === ""){
                 document.getElementById("msgspecialdescription").innerHTML="<font color='red'>Esse campo é obrigatório</font>";

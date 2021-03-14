@@ -137,15 +137,16 @@ export default function ContentNewAnnouncement(){
         }
         const userId = localStorage.getItem('user-id')
         const data = { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, userId};
-        if(reName, reDescription, reAnimalType, reAnimalSex, reAnimalSize, reAnimalAge, reCity, reUf){
-            // try{
-            //     const response = await api.post('/announcements', data);
-            //     if(response){
-            //         history.push('/myannouncements');
-            //     }
-            // }catch(err){
-            //     alert(err);
-            // }
+        if(reName && reDescription && reAnimalType && reAnimalSex && reAnimalSize && reAnimalAge && reCity && reUf){
+            console.log("tentando inserir")
+            try{
+                const response = await api.post('/announcements', data);
+                if(response){
+                    history.push('/myannouncements');
+                }
+            }catch(err){
+                alert(err);
+            }
         }
         console.log(data)
     }

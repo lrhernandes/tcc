@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react';
 import './styles.css';
 import api from '../../services/api';
 import { FaFilter } from "react-icons/fa";
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import Announcement from '../../templates/AnnouncementItemFromList'
+import { parse } from "query-string"
 
 var data = new Date();
 var day = data.getDate();
@@ -15,8 +16,17 @@ export default function ContentFindAnnouncement(){
     const [announcements, setAnnouncements] = useState([]);
     const [city, setCity] = useState([]);
     const [uf, setUF] = useState([]);
+
+    const [animalType, setAnimalType] = useState(null);
+    const [animalSex, setAnimalSex] = useState(null);
+    const [animalAge, setAnimalAge] = useState(null);
+    const [animalHealth, setAnimalHealth] = useState(null);
     
     const userId = localStorage.getItem('user-id');
+    const location = useLocation()
+    const searchParams = parse(location.search)
+
+    const queryString = require('query-string');
 
     useEffect(()=>{
         function loadSelect(){
@@ -63,21 +73,89 @@ export default function ContentFindAnnouncement(){
         }
         loadSelect();
     })
-    
+
     useEffect(()=>{
         async function fetchData() {
             const user = await api.get(`/client/${userId}`)
             const userdata = user.data
             const resp = await api.get(`/availableannouncementsbyaddress/${userId}/${userdata.city}/${userdata.uf}`)
-            setAnnouncements(resp.data);
+            const respdata = resp.data;
+            var filtered = respdata;
+            setAnnouncements(respdata)
+
+            const parsed = queryString.parse(location.search);
+
+            if(parsed.sex){
+                filtered = filtered.filter(announcement => announcement.sex == parsed.sex);
+            } if(parsed.type){
+                filtered = filtered.filter(announcement => announcement.type == parsed.type);
+            } if(parsed.age){
+                filtered = filtered.filter(announcement => announcement.age == parsed.age);
+            } if(parsed.castrated){
+                alert("filtarrr")
+                filtered = filtered.filter(announcement => announcement.castrated == true);
+            } if(parsed.vaccinated){
+                filtered = filtered.filter(announcement => announcement.vaccinated == true);
+            } if(parsed.dewormed){
+                filtered = filtered.filter(announcement => announcement.dewormed == true);
+            } if(parsed.isSpecial){
+                filtered = filtered.filter(announcement => announcement.isSpecial == true);
+            }
+            if(parsed.sex || parsed.type || parsed.age || parsed.castrated || parsed.vaccinated || parsed.dewormed || parsed.isSpecial){
+                setAnnouncements(filtered)
+            }
+
+
+
+            // if(parsed.sex && !parsed.vaccinated && !parsed.age){
+            //     setAnnouncements(respdata.filter(announcement => announcement.sex == parsed.sex));
+            // }
+            // if(parsed.type && !parsed.sex && !parsed.age){
+            //     setAnnouncements(respdata.filter(announcement => announcement.type == parsed.type))
+            // }
+            // if(parsed.age && !parsed.sex && !parsed.type){
+            //     setAnnouncements(respdata.filter(announcement => announcement.age == parsed.age))
+            // }
+            // if(parsed.castrated && !parsed.sex && !parsed.type){
+            //     setAnnouncements(respdata.filter(announcement => announcement.castrated == parsed.castrated))
+            // }
+
+
+            // if(parsed.type && parsed.sex && parsed.age && parsed.castrated && parsed.dewormed && parsed.vaccinated && parsed.isSpecial){
+            //     setAnnouncements(respdata.filter(announcement => announcement.type == parsed.type 
+            //         && announcement.sex == parsed.sex 
+            //         && announcement.age == parsed.age 
+            //         && announcement.castrated == parsed.castrated 
+            //         && announcement.dewormed == parsed.dewormed
+            //         && announcement.vaccinated == parsed.vaccinated
+            //         && announcement.isSpecial == parsed.isSpecial
+            //     ))
+            // }
         }
         fetchData();
     }, []);
         
     async function handleFindAnnouncements(){
-        const resp = await api.get(`/availableannouncementsbyaddress/${userId}/${city}/${uf}`)
-        setAnnouncements(resp.data);
+        const resp = await api.get(`/availableannouncementsbyaddress/${userId}/${city}/${uf}`);
+        const respdata = resp.data;
+        if(animalType != null){
+            setAnnouncements(respdata => respdata.filter(announcement => announcement.type == animalType));
+        }else{
+            setAnnouncements(respdata);
+        }
     }
+
+    function handleFilter(){
+        // console.log(animalType);
+        // console.log(animalSex);
+        // console.log(animalAge);
+        // console.log(animalHealth);
+
+        // if(animalType != null){
+        //     setAnnouncements(announcements => announcements.filter(announcement => announcement.type == animalType));
+        // }
+    }
+
     return (
         <div className="content-right">
             <div className="content-find-announcement">
@@ -133,110 +211,115 @@ export default function ContentFindAnnouncement(){
                             <div className="animal-options">
                                 <div className="animal-types">
                                     <p className="form-subtitle">Quais bichinhos deseja encontrar?</p>
-                                    <div>
+                                    <div onChange={e => {setAnimalType(e.target.id)}}>
                                         <div>
-                                            <input type="checkbox" name="animal-types" value="cachorros" id="cachorros" />
-                                            <label htmlFor="cachorros" className="exception">Cachorros</label>
+                                            <input type="checkbox" name="type" value="dog" id="dog" />
+                                            <label htmlFor="dog" className="exception">Cachorros</label>
                                         </div>
 
                                         <div>
-                                            <input type="checkbox" name="animal-types" value="gatos" id="gatos" />
-                                            <label htmlFor="gatos" className="exception">Gatos</label>
+                                            <input type="checkbox" name="type" value="cat" id="cat" />
+                                            <label htmlFor="cat" className="exception">Gatos</label>
                                         </div>
 
                                         <div>
-                                            <input type="checkbox" name="animal-types" value="roedores" id="roedores" />
-                                            <label htmlFor="roedores" className="exception">Roedores</label>
+                                            <input type="checkbox" name="type" value="rodent" id="rodent" />
+                                            <label htmlFor="rodent" className="exception">Roedores</label>
                                         </div>
 
                                         <div>
-                                            <input type="checkbox" name="animal-types" value="repteis" id="repteis" />
-                                            <label htmlFor="repteis" className="exception">Répteis</label>
+                                            <input type="checkbox" name="type" value="reptile" id="reptile" />
+                                            <label htmlFor="reptile" className="exception">Répteis</label>
                                         </div>
 
                                         <div>
-                                            <input type="checkbox" name="animal-types" value="outros" id="outros" />
-                                            <label htmlFor="outros" className="exception">Outros</label>
+                                            <input type="checkbox" name="type" value="equino" id="equino" />
+                                            <label htmlFor="equino" className="exception">Equinos</label>
                                         </div>
 
                                         <div>
-                                            <input type="checkbox" name="animal-types" value="indiferente" id="indiferente" />
-                                            <label htmlFor="indiferente" className="exception">Tanto faz</label>
+                                            <input type="checkbox" name="type" value="other" id="other" />
+                                            <label htmlFor="other" className="exception">Outros</label>
+                                        </div>
+
+                                        <div>
+                                            <input type="checkbox" name="type" value="indiferentetype" id="indiferentetype" />
+                                            <label htmlFor="indiferentetype" className="exception">Tanto faz</label>
                                         </div>
                                     </div>
                                 </div>
                                     
-                                <div className="animal-sex">
+                                <div className="animal-sex" onChange={e => {setAnimalSex(e.target.id)}}>
                                     <p className="form-subtitle">De qual sexo?</p>
                                     <div>
                                         <div>
-                                            <input type="checkbox" name="animal-types" value="macho" id="macho" />
-                                            <label htmlFor="macho" className="exception">Macho</label>
+                                            <input type="checkbox" name="sex" value="mas" id="mas" />
+                                            <label htmlFor="mas" className="exception">Macho</label>
                                         </div>
 
                                         <div>
-                                            <input type="checkbox" name="animal-types" value="femea" id="femea" />
-                                            <label htmlFor="femea" className="exception">Fêmea</label>
+                                            <input type="checkbox" name="sex" value="fem" id="fem" />
+                                            <label htmlFor="fem" className="exception">Fêmea</label>
                                         </div>
 
                                         <div>
-                                            <input type="checkbox" name="animal-types" value="indiferente" id="indiferente" />
-                                            <label htmlFor="indiferente" className="exception">Tanto faz</label>
+                                            <input type="checkbox" name="sex" value="indiferentesex" id="indiferentesex" />
+                                            <label htmlFor="indiferentesex" className="exception">Tanto faz</label>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="animal-age">
+                                <div className="animal-age" onChange={e => {setAnimalAge(e.target.id)}}>
                                     <p className="form-subtitle">Alguma preferência de idade?</p>
                                     <div>
                                         <div>
-                                            <input type="checkbox" name="animal-types" value="filhote" id="filhote" />
-                                            <label htmlFor="filhote" className="exception">Filhote</label>
+                                            <input type="checkbox" name="age" value="puppy" id="puppy" />
+                                            <label htmlFor="puppy" className="exception">Filhote</label>
                                         </div>
 
                                         <div>
-                                            <input type="checkbox" name="animal-types" value="adulto" id="adulto" />
-                                            <label htmlFor="adulto" className="exception">Adulto</label>
+                                            <input type="checkbox" name="age" value="adult" id="adult" />
+                                            <label htmlFor="adult" className="exception">Adulto</label>
                                         </div>
 
                                         <div>
-                                            <input type="checkbox" name="animal-types" value="idoso" id="idoso" />
-                                            <label htmlFor="idoso" className="exception">Idoso</label>
+                                            <input type="checkbox" name="age" value="elderly" id="elderly" />
+                                            <label htmlFor="elderly" className="exception">Idoso</label>
                                         </div>
 
                                         <div>
-                                            <input type="checkbox" name="animal-types" value="indiferente" id="indiferente" />
-                                            <label htmlFor="indiferente" className="exception">Tanto faz</label>
+                                            <input type="checkbox" name="age" value="indiferenteage" id="indiferenteage" />
+                                            <label htmlFor="indiferenteage" className="exception">Tanto faz</label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="animal-health">
                                     <p className="form-subtitle">Estado de saúde</p>
-                                    <div>
+                                    <div onChange={e => {setAnimalHealth(e.target.value)}}>
                                         <div>
-                                            <input type="checkbox" name="animal-types" value="castrado" id="castrado" />
-                                            <label htmlFor="castrado" className="exception">Castrado</label>
+                                            <input type="checkbox" name="castrated" value="true" id="castrated" />
+                                            <label htmlFor="castrated" className="exception">Castrado</label>
                                         </div>
 
                                         <div>
-                                            <input type="checkbox" name="animal-types" value="vacinado" id="vacinado" />
-                                            <label htmlFor="vacinado" className="exception">Vacinado</label>
+                                            <input type="checkbox" name="vaccinated" value="true" id="vaccinated" />
+                                            <label htmlFor="vaccinated" className="exception">Vacinado</label>
                                         </div>
 
                                         <div>
-                                            <input type="checkbox" name="animal-types" value="vermifugado" id="vermifugado" />
-                                            <label htmlFor="vermifugado" className="exception">Vermifugado</label>
+                                            <input type="checkbox" name="dewormed" value="true" id="dewormed" />
+                                            <label htmlFor="dewormed" className="exception">Vermifugado</label>
                                         </div>
 
                                         <div>
-                                            <input type="checkbox" name="animal-types" value="especial" id="especial" />
-                                            <label htmlFor="especial" className="exception">Especial</label>
+                                            <input type="checkbox" name="isSpecial" value="true" id="isSpecial" />
+                                            <label htmlFor="isSpecial" className="exception">Especial</label>
                                         </div>
 
                                         <div>
-                                            <input type="checkbox" name="animal-types" value="indiferente" id="indiferente" />
-                                            <label htmlFor="indiferente" className="exception">Tanto faz</label>
+                                            <input type="checkbox" name="indiferentehealth" value="true" id="indiferentehealth" />
+                                            <label htmlFor="indiferentehealth" className="exception">Tanto faz</label>
                                         </div>
                                     </div>
                                 </div>
@@ -245,10 +328,10 @@ export default function ContentFindAnnouncement(){
                             
                             <div className="button-group-filter">
                                 <button className="negative-purple" onClick={()=>{setStep(0)}}>CANCELAR</button>
-                                <button className="purple" onClick={()=>{setStep(0)}}>APLICAR FILTROS</button>
+                                <button className="purple" onClick={handleFilter}>APLICAR FILTROS</button>
                             </div>
                         </form>
-                    </div>
+                    </div> 
                 )}
 
                 {step === 2 && (
