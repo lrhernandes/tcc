@@ -149,7 +149,7 @@ export default function ContentFindAnnouncement(){
                     <div className="box-home-announcements-animals">
                         <ul className="home-announcements-animals">
                             {announcements.map( announce => 
-                                <li key={announce.id}>
+                                <li title={announce.name} key={announce.id}>
                                     <Announcement ann={announce}/>
                                 </li>
                             )}
@@ -168,7 +168,6 @@ export default function ContentFindAnnouncement(){
                             <p className="filtrar-announcements"> <Link className="content-find-announcement-filtrar" onClick={() => {setStep(0)}} > <FaFilter size={10}/> FILTRAR</Link></p>
                         </div>
                         <form>
-
                             <div className="animal-options">
                                 <div className="animal-types">
                                     <p className="form-subtitle">Quais bichinhos deseja encontrar?</p>

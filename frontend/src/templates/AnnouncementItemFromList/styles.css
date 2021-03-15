@@ -2,7 +2,6 @@
     display: flex;
     float: left;
     height: 100%;
-    width: 100%;
     transform: filter(0.2);
 }
 
@@ -78,3 +77,4 @@
     display: flex;
     justify-content: space-between;
 }
+

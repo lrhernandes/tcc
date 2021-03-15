@@ -1,7 +1,5 @@
 .content-find-announcement{
-    margin-top: 50px;
     margin-bottom: 30px;
-    margin-right: 30px;
 }
 
 #title-from-title-date{
@@ -10,10 +8,10 @@
 }
 
 .content-right{
-    margin-bottom: 30px;
-    margin-left: 20px;
+    margin: 30px;
     padding-right: 20px;
     width: 100%;
+    overflow-y: auto;
 }
 
 
@@ -47,33 +45,25 @@
 .box-home-announcements-animals{
     height: 350px;
     position: relative;
-    overflow: auto;
+    box-sizing: border-box;
 }
-
-/* scroll */
-.box-home-announcements-animals::-webkit-scrollbar {
-    width: 0.4em;
-}.box-home-announcements-animals::-webkit-scrollbar-track {
-    background: #cecdcd;
-    border-radius: 8px;
-}.box-home-announcements-animals::-webkit-scrollbar-thumb {
-    background-color: #b4b4b4;
-    border-radius: 8px;
-}	
 
 /* grid */
 .home-announcements-animals{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    box-sizing: border-box !important;
+    grid-template-columns: 1fr 1fr 1fr ;
     grid-gap: 25px;
-    margin-right: 25px;
+    width: 100% !important;
+    position: absolute;
+    min-height: 0;  /* NEW */
+    min-width: 0;   /* NEW; needed for Firefox */
 }
 
-.box-home-announcements-animals li{
-    background-color: #F1F1F1;
-    border-radius: 8px;
-    box-sizing: border-box;
-    height: 150px;
+.home-announcements-animals li{
+    overflow: hidden;  /* NEW */
+  min-width: 0;      /* NEW; needed for Firefox */
+
 }
 
 .content-find-announcement-filtrar{
@@ -125,7 +115,7 @@
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px;
-    height: 300px;
+    
 }
 
 .animal-options{

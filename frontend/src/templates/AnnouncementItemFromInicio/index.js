@@ -18,9 +18,9 @@ export default function AnnouncementItemFromInicio(){
                     </div>
                 </div>
                 <p className="description-announcement-item-from-list-descript"> <MdLocationOn size={12}/> Canoas, RS</p>
-                <div>
-                    <p className="announcement__item__description__animal-sex"> <IoIosFemale/>Fêmea</p>
-                    <p className="announcement__item__description__animal-age">  <IoIosCalendar/>Adulto</p>
+                <div className="announcement__item__description__animal__item-wrapper">
+                    <p className="announcement__item__description__animal-item"> <IoIosFemale/>Fêmea</p>
+                    <p className="announcement__item__description__animal-item">  <IoIosCalendar/>Adulto</p>
                 </div>
             </div>
         </div>

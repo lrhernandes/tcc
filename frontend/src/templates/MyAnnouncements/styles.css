@@ -1,9 +1,8 @@
 .my-announcements{
-    padding-top: 50px;
-    padding-bottom: 30px;
+    margin: 30px;
+    padding-right: 20px;
     width: 100%;
-    position: relative;
-    margin-left: 20px;
+    overflow-y: auto;
 }
 
 .my-announcements img{

@@ -1,5 +1,11 @@
-.content-my-announcements-itens .caracteristicas-announcement img{
-    height: 20px;
+.box-home-announcements-animals{
     position: relative;
-    margin-top: 5px;
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+}
+.home-announcements-animals{
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }

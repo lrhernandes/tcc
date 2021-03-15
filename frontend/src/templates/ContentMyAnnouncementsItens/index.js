@@ -17,13 +17,13 @@ export default function ContentMyAnnouncementsItens(){
     }, []);
 
     return (
-        <div className="content-my-announcements-itens">
-            <ul>
-            {announcements.map( announce => 
-                <li className="list-item-temperament" key={announce.id}>
-                    <Announcement ann={announce} setAnnouncements={setAnnouncements}/>
-                </li>
-            )}
+        <div className="box-home-announcements-animals">
+            <ul className="home-announcements-animals">
+                {announcements.map( announce => 
+                    <li title={announce.name} className="list-item-temperament" key={announce.id}>
+                        <Announcement ann={announce} setAnnouncements={setAnnouncements}/>
+                    </li>
+                )}
             </ul>
         </div>
     )

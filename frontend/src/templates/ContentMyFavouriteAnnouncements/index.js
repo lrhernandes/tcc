@@ -16,10 +16,12 @@ export default function ContentMyFavouriteAnnouncements(){
         fetchData();
     }, []);
     return (
-        <div className="content-my-announcements-itens">
-            <ul>
+        
+        
+        <div className="box-home-announcements-animals">
+            <ul className="home-announcements-animals">
                 {announcements.map( announce => 
-                    <li key={announce.id}>
+                    <li title={announce.name} key={announce.id}>
                         <Announcement ann={announce}/>
                     </li>
                 )}
