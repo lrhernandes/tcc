@@ -9,6 +9,13 @@ module.exports = {
         return res.json(clients);
     },
 
+    //LISTAR CLIENTS
+    async getPassword(req, res){
+        const email = req.params.email;
+        const pasword = await client.getPassword(email);
+        return res.json(pasword);
+    },
+
     //GET ONE USER
     async getByUser(req, res){
         const id_par = req.params.id;

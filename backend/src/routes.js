@@ -23,6 +23,7 @@ routes.post('/auth/login', AuthController.login);
 routes.post('/client', ClientController.create);
 routes.get('/client', ClientController.index);
 routes.get('/client/:id', ClientController.getByUser);
+routes.get('/client/password/:email', ClientController.getPassword);
 routes.put('/client/settings/:id/:idAuth', ClientController.update);
 routes.delete('/client/settings/delete', ClientController.delete);
 

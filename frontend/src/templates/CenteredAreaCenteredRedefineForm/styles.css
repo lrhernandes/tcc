@@ -36,14 +36,14 @@
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    width: max-content;
+    width: 280px;
     padding: 60px 0px;
     margin: auto;
 }
 
 .redefine-right #email{
-    width: 250px;
+    width: 100%;
 }
 .redefine-right .purple{
-    width: 250px;
+    width: 230px;
 }
