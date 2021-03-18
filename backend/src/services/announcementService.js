@@ -10,7 +10,15 @@ const { Op } = require("sequelize");
 module.exports = {
     //LISTAR ANÚNCIOS
     async index (){
-        const announcements = await connection.announcement.findAll({ include: [{ model: connection.adress }]});
+        const announcements = await connection.announcement.findAll({
+            where:{
+                available: true
+            },
+            order: [
+                ['createdAt', 'DESC'],
+            ],
+            limit: 3
+        });
         return announcements;
     },
 

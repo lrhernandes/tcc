@@ -3,6 +3,12 @@
     text-align: left;
     border-radius: 8px;
     box-sizing: border-box;
+    overflow: hidden;  /* NEW */
+    min-width: 0;      /* NEW; needed for Firefox */
+}
+
+.announcement__item .announcement__item__description__animal-item{
+    margin: 4px;
 }
 
 .announcement__item:hover{

@@ -137,16 +137,21 @@ header{
     margin-bottom: 60px;
     grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: 120px;
+    grid-gap: 30px;
+    min-height: 0;  /* NEW */
+    min-width: 0;   /* NEW; needed for Firefox */
 }
 
 .item{
-    width: 18vw;
     margin: auto;
     background: #F1F1F1;
     box-shadow: 5px 10px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    width: 95%;
     text-align: center;
     transition: filter 0.2s;
+    overflow: hidden;  /* NEW */
+    min-width: 0;      /* NEW; needed for Firefox */
 }
 
 .item:hover{
