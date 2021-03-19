@@ -34,6 +34,19 @@ module.exports = {
         return availableAnnouncements
     },
 
+    //LISTAR ANÚNCIOS DISPONÍVEIS
+    async availableAnnouncementsByAddress(req, res){
+        const city = req.params.city;
+        const uf = req.params.uf;
+        const availableAnnouncements = await announcement.availableAnnouncementsByAddress(city, uf);
+        if(availableAnnouncements){
+            res.json(availableAnnouncements).status(201);
+        } else{
+            res.status(400).json('Nenhum disponível');
+        }
+        return availableAnnouncements
+    },
+
     //LISTAR ANÚNCIOS DISPONÍVEIS NO ENDEREÇO
     async getAvailableAnnouncementsByAddress(req, res){
         const id = req.params.id;

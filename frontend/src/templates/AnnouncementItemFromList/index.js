@@ -103,11 +103,14 @@ export default function AnnouncementItemFromList({ann}){
                             <div className="name-and-fav">
                                 <p className="description-announcement-item-from-list-name">{ann.name}</p>
                                 <div className="content-favorite-icon-announcement-item-from-list">
-                                    {isFavorite &&  (
-                                        <Link title="Remover anúncio dos favoritos"onClick={handleRemoveFavorite}> <MdFavorite size={20} className="favorite-announcement-item-from-list-icon"/></Link>    
-                                    )}
-                                    {!isFavorite &&  (
-                                        <Link title="Adicionar anúncio aos favoritos"onClick={handleFavorite}> <MdFavoriteBorder size={20} className="favorite-announcement-item-from-list-icon"/></Link>    
+                                    {user && (
+                                        <div>
+                                        {isFavorite &&  (
+                                            <Link title="Remover anúncio dos favoritos"onClick={handleRemoveFavorite}> <MdFavorite size={20} className="favorite-announcement-item-from-list-icon"/></Link>    
+                                        )}
+                                        {!isFavorite &&  (
+                                            <Link title="Adicionar anúncio aos favoritos"onClick={handleFavorite}> <MdFavoriteBorder size={20} className="favorite-announcement-item-from-list-icon"/></Link>    
+                                        )}</div>
                                     )}
                                 </div>
                             </div>

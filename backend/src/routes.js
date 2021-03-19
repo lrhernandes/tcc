@@ -33,6 +33,7 @@ routes.get('/announcements', AnnouncementController.index);
 routes.get('/announcement/:id', AnnouncementController.getAnnouncement);
 routes.get('/availableannouncements/:id', AnnouncementController.getAvailableAnnouncements);
 routes.get('/availableannouncementsbyaddress/:id/:city/:uf', AnnouncementController.getAvailableAnnouncementsByAddress);
+routes.get('/announcementsbyaddress/:city/:uf', AnnouncementController.availableAnnouncementsByAddress);
 routes.get('/clientannouncements/:id', AnnouncementController.getClientAnnouncements);
 routes.put('/announcements/settings/:id/:user', AnnouncementController.update);
 routes.delete('/announcements/delete/:id/:announcement', AnnouncementController.delete);

@@ -13,11 +13,12 @@ export default function ContentClientLeftMenu(){
         localStorage.removeItem('user-id');
         history.push('/login');
     }
+    const userId = localStorage.getItem('user-id')
     return (
         <div className="content-client-left-menu">
             <div id="icon"><img src={cat}/></div>
             <ul>
-                <div className="left-menu-item-group-center">
+                {userId && (<div className="left-menu-item-group-center">
                     <li className="left-menu-item-center">
                         <div><Link to="/home"  title="Tela inicial"><MdHome size={20}/></Link></div>
                     </li>
@@ -30,7 +31,21 @@ export default function ContentClientLeftMenu(){
                     <li className="left-menu-item-center">
                         <div><Link to="/mysettings"  title="Configurações da conta"><MdSettings size={20}/></Link></div>
                     </li>
-                </div>
+                </div>)}
+                {!userId && (<div className="left-menu-item-group-center">
+                    <li className="left-menu-item-center">
+                        <div><Link to="/home"  title="Tela inicial"><MdHome size={20}/></Link></div>
+                    </li>
+                    <li className="left-menu-item-center">
+                        <div><Link to="/login"  title="Meus anúncios"><MdPets size={20}/></Link></div>
+                    </li>
+                    <li className="left-menu-item-center">
+                        <div><Link to="/login"  title="Anúncios favoritos"><MdFavorite size={20}/></Link></div>
+                    </li>
+                    <li className="left-menu-item-center">
+                        <div><Link to="/login"  title="Configurações da conta"><MdSettings size={20}/></Link></div>
+                    </li>
+                </div>)}
             </ul>
             <div id="logout"><Link onClick={handleLogout} title="Sair"><MdExitToApp size={20}/></Link></div>
         </div>

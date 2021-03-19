@@ -1,7 +1,9 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import './styles.css';
 
 export default function LocalizarAnimaisForm (){
+    const [uf, setUf] = useState('');
+    const [city, setCity] = useState('');
     useEffect(() => {
         function loadSelect(){
             return (function(uf, city, api) {
@@ -45,20 +47,28 @@ export default function LocalizarAnimaisForm (){
         }
         loadSelect();
     });
+    function findAnnouncements(){
+        if(uf && city){
+            localStorage.setItem('ufSearch', uf)
+            localStorage.setItem('citySearch', city)
+
+            window.open(`/home?uf=${uf}?city=${city}`, "_blank")
+        }
+    }
     return (
         <div className="inicial__form">
             <div className="inicial__form__select-group">
                 <div className="inicial__form__select-item">
                     <label>Seu estado vai aqui</label><br/>
-                    <select id="uf"><option defaultValue >Selecionar</option></select>
+                    <select id="uf" onChange={e => setUf(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}><option defaultValue >Selecionar</option></select>
                 </div>
                 <div className="inicial__form__select-item">
                     <label>E a cidade aqui :)</label><br/>
-                    <select id="cidade"> <option defaultValue >Selecionar</option></select>
+                    <select id="cidade" onChange={e => setCity(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}> <option defaultValue >Selecionar</option></select>
                 </div>
             </div>  
             <div id="inicial__form__button">
-                <button className="purple">LOCALIZAR PETS</button>
+                <button className="purple" onClick={findAnnouncements}>LOCALIZAR PETS</button>
             </div>
         </div>
     )

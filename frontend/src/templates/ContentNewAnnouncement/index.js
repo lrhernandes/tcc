@@ -22,49 +22,54 @@ export default function ContentNewAnnouncement(){
     const [itemsCpy, setItemsCpy] = useState([]);
     const [errorMessages, setErrorMessages] = useState([]);
     const [checked, setChecked] = useState(false);
+    const userId = localStorage.getItem('user-id')
 
     useEffect(() => {
-        function loadSelect(){
-            return (function(uf, city, api) {
-                function createOption (value, text) {
-                    const option = document.createElement('option')
-                    option.value = value
-                    option.innerHTML = text
-                    return option
-                }
-                function pushSelect (item, el) {
-                    const opt = createOption(item.geonameId, item.toponymName)
-                    el.append(opt)
-                } 
-                function handleAjax (res, el) {   
-                    res.geonames.forEach(each => {
-                    pushSelect(each, el)
-                })
-            } 
-            function getinfo (geoid, hasUf = false) {
-                fetch(`https://www.geonames.org/childrenJSON?geonameId=${geoid}`)
-                    .then(res => res.json())
-                    .then(res => {
-                    if(hasUf) {
-                        city.length = 1; //clear
-                        handleAjax(res, city)
-                    } else {
-                        handleAjax(res, uf)
+        if(!userId){
+            history.push('/error');
+        }else{
+            function loadSelect(){
+                return (function(uf, city, api) {
+                    function createOption (value, text) {
+                        const option = document.createElement('option')
+                        option.value = value
+                        option.innerHTML = text
+                        return option
                     }
-                });
+                    function pushSelect (item, el) {
+                        const opt = createOption(item.geonameId, item.toponymName)
+                        el.append(opt)
+                    } 
+                    function handleAjax (res, el) {   
+                        res.geonames.forEach(each => {
+                        pushSelect(each, el)
+                    })
+                } 
+                function getinfo (geoid, hasUf = false) {
+                    fetch(`https://www.geonames.org/childrenJSON?geonameId=${geoid}`)
+                        .then(res => res.json())
+                        .then(res => {
+                        if(hasUf) {
+                            city.length = 1; //clear
+                            handleAjax(res, city)
+                        } else {
+                            handleAjax(res, uf)
+                        }
+                    });
+                }
+                function init () {
+                    uf.addEventListener('change', function() {
+                        getinfo(this.value, true)
+                    })
+                    getinfo(api)
+                }init()})(
+                    document.getElementById('uf'),
+                    document.getElementById('cidade'),
+                    3469034
+                );
             }
-            function init () {
-                uf.addEventListener('change', function() {
-                    getinfo(this.value, true)
-                })
-                getinfo(api)
-            }init()})(
-                document.getElementById('uf'),
-                document.getElementById('cidade'),
-                3469034
-            );
+            loadSelect()
         }
-        loadSelect();
     });
 
     const handleKeyPress = (event) => {
@@ -135,7 +140,6 @@ export default function ContentNewAnnouncement(){
         for (var i = 0; i < items.length; i++) {
             i< items.length-1 ? temperament = temperament + items[i].value + ', ' : temperament = temperament + items[i].value;
         }
-        const userId = localStorage.getItem('user-id')
         const data = { name, description, sex, age, castrated, vaccinated, dewormed, isSpecial, temperament, type, size, uf, city, specialDescription, userId};
         if(reName && reDescription && reAnimalType && reAnimalSex && reAnimalSize && reAnimalAge && reCity && reUf){
             console.log("tentando inserir")
@@ -155,9 +159,6 @@ export default function ContentNewAnnouncement(){
         setChecked(!checked);
         setIsSpecial(e.target.checked);
     }
-
-
-
 
     function handleName(){
         if(name === undefined || name === null || name === ""){
@@ -254,214 +255,216 @@ export default function ContentNewAnnouncement(){
     
 
     return (
-        <div className="content-new-announcement">    
-            <div className="default-page-content-wrapper">
-                <div className="form-new-announcement-item" id="form-new-announcement-item-name">
-                    <div className="login-item-wrapper">
-                        <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Nome do anúncio</label>
-                        <input minLength="2" maxLength="25" id="name" className="default-input-new-announcement" type="text" placeholder="Ex.: Pedrinho" value={name} onChange={e => setName(e.target.value)}/>
-                        <span className="validationError" id="msgname"/>
-                    </div>
-                </div>
-
-                <div className="form-new-announcement-item">
-                    <div className="login-item-wrapper">
-                        <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Descrição do anúncio</label>
-                        <p className="subtitle-seccion">Qual a história desse bichinho? quais são as suas características?</p>
-                        <textarea id="description" placeholder="Ex.: Cachorro brincalhão resgatado do antigo tutor por maus tratos..." value={description} onChange={e => setDescription(e.target.value)}/>
-                        <span className="validationError" id="msgdescription"/>
-                    </div>
-                </div>
-
-                <div className="form-new-announcement-item" id="form-new-announcement-item-type">
-                    <div className="login-item-wrapper">
-                        <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Tipo</label>
-                        <p className="subtitle-seccion">Que tipo de animal é esse?</p>
-                        <div className="form-new-announcement-item-type-grid" id="animal-type-selector" onChange={e => {setAnimalType(e.target.id)}}>
-                            <div className="form-new-announcement-item-type-content-item">
-                                <input type="radio" id="dog" name="animal-type"/>
-                                <label className="typeMiddle" id="arredondar-first-radio" className="form-new-announcement-item-type-label" htmlFor="dog"><img alt="icon dog" src={cachorro}/> <p className="label-type-form-new-announcement">CACHORRO</p></label>
-                            </div>
-                            <div className="form-new-announcement-item-type-content-item">
-                                <input type="radio" id="cat" name="animal-type"/>
-                                <label className="typeMiddle" className="form-new-announcement-item-type-label" htmlFor="cat"><img alt="icon cat" src={gato}/> <p className="label-type-form-new-announcement">GATO</p></label>
-                            </div>
-                            <div className="form-new-announcement-item-type-content-item">
-                                <input type="radio" id="reptile" name="animal-type"/>
-                                <label className="typeMiddle" className="form-new-announcement-item-type-label" htmlFor="reptile"><img alt="icon reptile" src={reptil}/> <p className="label-type-form-new-announcement">RÉPTIL</p></label>
-                            </div>
-                            <div className="form-new-announcement-item-type-content-item">
-                                <input type="radio" id="rodent" name="animal-type"/>
-                                <label className="typeMiddle" className="form-new-announcement-item-type-label" htmlFor="rodent"><img alt="icon rodent" src={hamster}/> <p className="label-type-form-new-announcement">ROEDOR</p></label>
-                            </div>
-                            <div className="form-new-announcement-item-type-content-item">
-                                <input type="radio" id="equino" name="animal-type"/>
-                                <label className="typeMiddle" className="form-new-announcement-item-type-label" htmlFor="equino"><img alt="icon equine" src={equino}/> <p className="label-type-form-new-announcement">EQUINO</p></label>
-                            </div>
-                            <div className="form-new-announcement-item-type-content-item">
-                                <input type="radio" id="other" name="animal-type"/>
-                                <label className="typeMiddle" id="arredondar-last-radio" className="form-new-announcement-item-type-label" htmlFor="other"><img alt="icon other" src={outros}/> <p className="label-type-form-new-announcement">OUTRO</p></label>
-                            </div>
-                        </div>
-                        <span className="validationError" id="msgAnimalType"/>
-                    </div>
-                </div>
-
-                <div className="form-new-announcement-item" id="form-new-announcement-item-size">
-                    <div className="login-item-wrapper">
-                        <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Porte</label>
-                        <p className="subtitle-seccion">Porte de acordo com o tipo de pet selecionado</p>
-                        <div className="form-new-announcement-item-size-grid"  onChange={e => {setAnimalSize(e.target.id)}}>
-                            <div className="form-new-announcement-item-size-content-item">
-                                <input type="radio" id="mini" name="animal-size"/>
-                                <label id="arredondar-first-radio" className="form-new-announcement-item-size-label" htmlFor="mini" ><p>MINI</p></label>
-                            </div>
-                            <div className="form-new-announcement-item-size-content-item">
-                                <input type="radio" id="small" name="animal-size"/>
-                                <label className="form-new-announcement-item-size-label" htmlFor="small" ><p>PEQUENO</p></label>
-                            </div>
-                            <div className="form-new-announcement-item-size-content-item">
-                                <input type="radio" id="medium" name="animal-size"/>
-                                <label className="form-new-announcement-item-size-label" htmlFor="medium"><p>MÉDIO</p></label>
-                            </div>
-                            <div className="form-new-announcement-item-size-content-item">
-                                <input type="radio" id="big" name="animal-size"/>
-                                <label className="form-new-announcement-item-size-label" htmlFor="big"><p>GRANDE</p></label>
-                            </div>
-                            <div className="form-new-announcement-item-size-content-item">
-                                <input type="radio" id="giant" name="animal-size"/>
-                                <label id="arredondar-last-radio" className="form-new-announcement-item-size-label" htmlFor="giant"><p>GIGANTE</p></label>
-                            </div>
-                        </div>
-                        <span className="validationError" id="msgAnimalSize"/>
-                    </div>
-                </div>
-
-                <div className="content-item-sex-age-grid">
-                    <div className="form-new-announcement-item" id="form-new-announcement-item-sex">
+        <div>
+            {userId && (<div className="content-new-announcement">    
+                <div className="default-page-content-wrapper">
+                    <div className="form-new-announcement-item" id="form-new-announcement-item-name">
                         <div className="login-item-wrapper">
-                            <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Sexo</label>
-                            <div className="form-new-announcement-item-sex-grid" onChange={e => {setAnimalSex(e.target.id)}}>
-                                <div className="form-new-announcement-item-sex-content-item">
-                                    <input type="radio" id="fem" name="animal-sex"/>
-                                    <label id="arredondar-first-radio" className="form-new-announcement-item-sex-label" htmlFor="fem"><img alt="icon female" src={f}/> <p> FÊMEA </p></label>
-                                </div>
-                                <div className="form-new-announcement-item-sex-content-item">
-                                    <input type="radio" id="mas" name="animal-sex"/>
-                                    <label className="form-new-announcement-item-sex-label" htmlFor="mas"><img alt="icon male" src={m}/> <p> MACHO </p></label>
-                                </div>
-                                <div className="form-new-announcement-item-sex-content-item">
-                                    <input type="radio" id="notDefined" name="animal-sex"/>
-                                    <label id="arredondar-last-radio" className="form-new-announcement-item-sex-label" htmlFor="notDefined"><img alt="icon undefined" src={u}/> <p> INDEFINIDO </p></label>
-                                </div>
-                            </div>
-                            <span className="validationError" id="msgAnimalSex"/>
+                            <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Nome do anúncio</label>
+                            <input minLength="2" maxLength="25" id="name" className="default-input-new-announcement" type="text" placeholder="Ex.: Pedrinho" value={name} onChange={e => setName(e.target.value)}/>
+                            <span className="validationError" id="msgname"/>
                         </div>
                     </div>
-                    <div className="form-new-announcement-item" id="form-new-announcement-item-age">
+
+                    <div className="form-new-announcement-item">
                         <div className="login-item-wrapper">
-                            <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Idade</label>
-                            <div className="form-new-announcement-item-age-grid" onChange={e => {setAnimalAge(e.target.id)}}>
-                                <div className="form-new-announcement-item-age-content-item">
-                                    <input type="radio" id="puppy" name="animal-age"/>
-                                    <label id="arredondar-first-radio" className="form-new-announcement-item-age-label" htmlFor="puppy"><img alt="icon puppy" src={ninho}/><p>FILHOTE</p></label>
-                                </div>
-                                <div className="form-new-announcement-item-age-content-item">
-                                    <input type="radio" id="adult" name="animal-age"/>
-                                    <label className="form-new-announcement-item-age-label" htmlFor="adult"><img alt="icon adult" src={pintinho}/><p>ADULTO</p></label>
-                                </div>
-                                <div className="form-new-announcement-item-age-content-item">
-                                    <input type="radio" id="elderly" name="animal-age"/>
-                                    <label id="arredondar-last-radio" className="form-new-announcement-item-age-label" htmlFor="elderly"><img alt="icon elderly" src={galinha}/><p>IDOSO</p></label>
-                                </div>
-                            </div>
-                            <span className="validationError" id="msgAnimalAge"/>
+                            <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Descrição do anúncio</label>
+                            <p className="subtitle-seccion">Qual a história desse bichinho? quais são as suas características?</p>
+                            <textarea id="description" placeholder="Ex.: Cachorro brincalhão resgatado do antigo tutor por maus tratos..." value={description} onChange={e => setDescription(e.target.value)}/>
+                            <span className="validationError" id="msgdescription"/>
                         </div>
                     </div>
-                </div>
-                
-                <div className="form-new-announcement-item" id="form-new-announcement-item-health">
-                    <label className="form-label-new-announcement">Histórico de saúde</label>
-                    <p className="subtitle-seccion">Qual o estado de saúde do pet? descreva suas necessidades especiais na descrição do anúncio</p>
-                    <div className="form-new-announcement-item-health-content-item">
-                        <input type="checkbox" id="castrado" name="animal-health" value={castrated} onChange={e => setCastrated(e.target.checked)} />
-                        <label className="form-new-announcement-item-health-label" htmlFor="castrado"><p>Castrado</p></label>
-                    </div>
-                    <div className="form-new-announcement-item-health-content-item">
-                        <input type="checkbox" id="vacinado" name="animal-health" value={vaccinated} onChange={e => setVaccinated(e.target.checked)} />
-                        <label className="form-new-announcement-item-health-label" htmlFor="vacinado"><p>Vacinado</p></label>
-                    </div>
-                    <div className="form-new-announcement-item-health-content-item">
-                        <input type="checkbox" id="vermifugado" name="animal-health" value={dewormed} onChange={e => setDewormed(e.target.checked)} />
-                        <label className="form-new-announcement-item-health-label" htmlFor="vermifugado"><p>Vermifugado </p></label>
-                    </div>
-                    <div className="form-new-announcement-item-health-content-item">
-                        <input type="checkbox" id="especial" name="animal-health" value={isSpecial} checked={checked} onChange={handleIsSpecial}/>
-                        <label className="form-new-announcement-item-health-label" htmlFor="especial"><p>Possui necessidades especiais <MdInfo title="Doenças como FIV, FELV, cinomose, hepatite, deficiências físicas, alergias e afins devem ser indicadas nesse campo" size={15} className="form-new-announcement-item-health-icon"/> </p></label>
-                    </div>
-                </div>         
 
-                
-                {checked && (
-                    <div>
-                        <label className="form-new-announcement-description-special-label">Descreva aqui as necessidades especiais apresentadas pelo bichinho</label>
-                        <textarea className="form-new-announcement-description-special-textarea" value={specialDescription} onChange={e => setSpecialDescription(e.target.value)} />
-                    </div>
-                )}
-                {!checked && (
-                    <div>
-                    </div>
-                )}
-
-
-                <div className="form-new-announcement-item" id="form-new-announcement-item-health">
-                    <label className="form-label-new-announcement">Temperamento</label>
-                    <p className="subtitle-seccion">Como esse bichinho costuma ser?</p>
-
-                    <div>
-                        <input onKeyPress={handleKeyPress} className="default-input-new-announcement" type="text" placeholder="Separe com Enter as características do seu pet"/>
-                        <ul className="list-temperament">
-                            {items.map( item => 
-                                <li className="list-item-temperament" key={item.id}>
-                                    {item.value}<MdClose onClick={()=> removeItem(item.id)}/>
-                                </li>
-                            )}
-                        </ul>
-                    </div>
-
-                </div>
-                
-                <div className="form-new-announcement-item" id="form-new-announcement-item-address">
-                    <div className="login-item-wrapper">
-                        <label className="form-label-new-announcement">Endereço</label>
-                        <p className="subtitle-seccion">Onde o animal está alojado?</p>
-                        <div className="form-new-announcement-item-address-grid">
-                            <div>
-                                <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> UF</label>
-                                <select id="uf" value={uf} onChange={e => setUF(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}><option defaultValue >Estado</option></select>
-                                <span className="validationError" id="msguf"/>
+                    <div className="form-new-announcement-item" id="form-new-announcement-item-type">
+                        <div className="login-item-wrapper">
+                            <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Tipo</label>
+                            <p className="subtitle-seccion">Que tipo de animal é esse?</p>
+                            <div className="form-new-announcement-item-type-grid" id="animal-type-selector" onChange={e => {setAnimalType(e.target.id)}}>
+                                <div className="form-new-announcement-item-type-content-item">
+                                    <input type="radio" id="dog" name="animal-type"/>
+                                    <label className="typeMiddle" id="arredondar-first-radio" className="form-new-announcement-item-type-label" htmlFor="dog"><img alt="icon dog" src={cachorro}/> <p className="label-type-form-new-announcement">CACHORRO</p></label>
+                                </div>
+                                <div className="form-new-announcement-item-type-content-item">
+                                    <input type="radio" id="cat" name="animal-type"/>
+                                    <label className="typeMiddle" className="form-new-announcement-item-type-label" htmlFor="cat"><img alt="icon cat" src={gato}/> <p className="label-type-form-new-announcement">GATO</p></label>
+                                </div>
+                                <div className="form-new-announcement-item-type-content-item">
+                                    <input type="radio" id="reptile" name="animal-type"/>
+                                    <label className="typeMiddle" className="form-new-announcement-item-type-label" htmlFor="reptile"><img alt="icon reptile" src={reptil}/> <p className="label-type-form-new-announcement">RÉPTIL</p></label>
+                                </div>
+                                <div className="form-new-announcement-item-type-content-item">
+                                    <input type="radio" id="rodent" name="animal-type"/>
+                                    <label className="typeMiddle" className="form-new-announcement-item-type-label" htmlFor="rodent"><img alt="icon rodent" src={hamster}/> <p className="label-type-form-new-announcement">ROEDOR</p></label>
+                                </div>
+                                <div className="form-new-announcement-item-type-content-item">
+                                    <input type="radio" id="equino" name="animal-type"/>
+                                    <label className="typeMiddle" className="form-new-announcement-item-type-label" htmlFor="equino"><img alt="icon equine" src={equino}/> <p className="label-type-form-new-announcement">EQUINO</p></label>
+                                </div>
+                                <div className="form-new-announcement-item-type-content-item">
+                                    <input type="radio" id="other" name="animal-type"/>
+                                    <label className="typeMiddle" id="arredondar-last-radio" className="form-new-announcement-item-type-label" htmlFor="other"><img alt="icon other" src={outros}/> <p className="label-type-form-new-announcement">OUTRO</p></label>
+                                </div>
                             </div>
-                            <div id="second-item-address-grid">
-                                <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Cidade</label>
-                                <select id="cidade" value={city} onChange={e => setCity(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}> <option defaultValue >Cidade</option></select>
-                                <span className="validationError" id="msgcity"/>
+                            <span className="validationError" id="msgAnimalType"/>
+                        </div>
+                    </div>
+
+                    <div className="form-new-announcement-item" id="form-new-announcement-item-size">
+                        <div className="login-item-wrapper">
+                            <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Porte</label>
+                            <p className="subtitle-seccion">Porte de acordo com o tipo de pet selecionado</p>
+                            <div className="form-new-announcement-item-size-grid"  onChange={e => {setAnimalSize(e.target.id)}}>
+                                <div className="form-new-announcement-item-size-content-item">
+                                    <input type="radio" id="mini" name="animal-size"/>
+                                    <label id="arredondar-first-radio" className="form-new-announcement-item-size-label" htmlFor="mini" ><p>MINI</p></label>
+                                </div>
+                                <div className="form-new-announcement-item-size-content-item">
+                                    <input type="radio" id="small" name="animal-size"/>
+                                    <label className="form-new-announcement-item-size-label" htmlFor="small" ><p>PEQUENO</p></label>
+                                </div>
+                                <div className="form-new-announcement-item-size-content-item">
+                                    <input type="radio" id="medium" name="animal-size"/>
+                                    <label className="form-new-announcement-item-size-label" htmlFor="medium"><p>MÉDIO</p></label>
+                                </div>
+                                <div className="form-new-announcement-item-size-content-item">
+                                    <input type="radio" id="big" name="animal-size"/>
+                                    <label className="form-new-announcement-item-size-label" htmlFor="big"><p>GRANDE</p></label>
+                                </div>
+                                <div className="form-new-announcement-item-size-content-item">
+                                    <input type="radio" id="giant" name="animal-size"/>
+                                    <label id="arredondar-last-radio" className="form-new-announcement-item-size-label" htmlFor="giant"><p>GIGANTE</p></label>
+                                </div>
+                            </div>
+                            <span className="validationError" id="msgAnimalSize"/>
+                        </div>
+                    </div>
+
+                    <div className="content-item-sex-age-grid">
+                        <div className="form-new-announcement-item" id="form-new-announcement-item-sex">
+                            <div className="login-item-wrapper">
+                                <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Sexo</label>
+                                <div className="form-new-announcement-item-sex-grid" onChange={e => {setAnimalSex(e.target.id)}}>
+                                    <div className="form-new-announcement-item-sex-content-item">
+                                        <input type="radio" id="fem" name="animal-sex"/>
+                                        <label id="arredondar-first-radio" className="form-new-announcement-item-sex-label" htmlFor="fem"><img alt="icon female" src={f}/> <p> FÊMEA </p></label>
+                                    </div>
+                                    <div className="form-new-announcement-item-sex-content-item">
+                                        <input type="radio" id="mas" name="animal-sex"/>
+                                        <label className="form-new-announcement-item-sex-label" htmlFor="mas"><img alt="icon male" src={m}/> <p> MACHO </p></label>
+                                    </div>
+                                    <div className="form-new-announcement-item-sex-content-item">
+                                        <input type="radio" id="notDefined" name="animal-sex"/>
+                                        <label id="arredondar-last-radio" className="form-new-announcement-item-sex-label" htmlFor="notDefined"><img alt="icon undefined" src={u}/> <p> INDEFINIDO </p></label>
+                                    </div>
+                                </div>
+                                <span className="validationError" id="msgAnimalSex"/>
+                            </div>
+                        </div>
+                        <div className="form-new-announcement-item" id="form-new-announcement-item-age">
+                            <div className="login-item-wrapper">
+                                <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Idade</label>
+                                <div className="form-new-announcement-item-age-grid" onChange={e => {setAnimalAge(e.target.id)}}>
+                                    <div className="form-new-announcement-item-age-content-item">
+                                        <input type="radio" id="puppy" name="animal-age"/>
+                                        <label id="arredondar-first-radio" className="form-new-announcement-item-age-label" htmlFor="puppy"><img alt="icon puppy" src={ninho}/><p>FILHOTE</p></label>
+                                    </div>
+                                    <div className="form-new-announcement-item-age-content-item">
+                                        <input type="radio" id="adult" name="animal-age"/>
+                                        <label className="form-new-announcement-item-age-label" htmlFor="adult"><img alt="icon adult" src={pintinho}/><p>ADULTO</p></label>
+                                    </div>
+                                    <div className="form-new-announcement-item-age-content-item">
+                                        <input type="radio" id="elderly" name="animal-age"/>
+                                        <label id="arredondar-last-radio" className="form-new-announcement-item-age-label" htmlFor="elderly"><img alt="icon elderly" src={galinha}/><p>IDOSO</p></label>
+                                    </div>
+                                </div>
+                                <span className="validationError" id="msgAnimalAge"/>
                             </div>
                         </div>
                     </div>
-                </div>
+                    
+                    <div className="form-new-announcement-item" id="form-new-announcement-item-health">
+                        <label className="form-label-new-announcement">Histórico de saúde</label>
+                        <p className="subtitle-seccion">Qual o estado de saúde do pet? descreva suas necessidades especiais na descrição do anúncio</p>
+                        <div className="form-new-announcement-item-health-content-item">
+                            <input type="checkbox" id="castrado" name="animal-health" value={castrated} onChange={e => setCastrated(e.target.checked)} />
+                            <label className="form-new-announcement-item-health-label" htmlFor="castrado"><p>Castrado</p></label>
+                        </div>
+                        <div className="form-new-announcement-item-health-content-item">
+                            <input type="checkbox" id="vacinado" name="animal-health" value={vaccinated} onChange={e => setVaccinated(e.target.checked)} />
+                            <label className="form-new-announcement-item-health-label" htmlFor="vacinado"><p>Vacinado</p></label>
+                        </div>
+                        <div className="form-new-announcement-item-health-content-item">
+                            <input type="checkbox" id="vermifugado" name="animal-health" value={dewormed} onChange={e => setDewormed(e.target.checked)} />
+                            <label className="form-new-announcement-item-health-label" htmlFor="vermifugado"><p>Vermifugado </p></label>
+                        </div>
+                        <div className="form-new-announcement-item-health-content-item">
+                            <input type="checkbox" id="especial" name="animal-health" value={isSpecial} checked={checked} onChange={handleIsSpecial}/>
+                            <label className="form-new-announcement-item-health-label" htmlFor="especial"><p>Possui necessidades especiais <MdInfo title="Doenças como FIV, FELV, cinomose, hepatite, deficiências físicas, alergias e afins devem ser indicadas nesse campo" size={15} className="form-new-announcement-item-health-icon"/> </p></label>
+                        </div>
+                    </div>         
 
-                <div className="form-new-announcement-item" id="form-new-announcement-item-pictures">
-                    <label className="form-label-new-announcement">Fotos</label>
-                    <p className="subtitle-seccion">Selecione até 5 fotos do seu bichinho</p>
-                    <label htmlFor="input-file-animal" className="button-charge-files"> <p><MdFileUpload/> CARREGAR ARQUIVOS</p> </label>
-                    <input type="file" id="input-file-animal"/>
+                    
+                    {checked && (
+                        <div>
+                            <label className="form-new-announcement-description-special-label">Descreva aqui as necessidades especiais apresentadas pelo bichinho</label>
+                            <textarea className="form-new-announcement-description-special-textarea" value={specialDescription} onChange={e => setSpecialDescription(e.target.value)} />
+                        </div>
+                    )}
+                    {!checked && (
+                        <div>
+                        </div>
+                    )}
+
+
+                    <div className="form-new-announcement-item" id="form-new-announcement-item-health">
+                        <label className="form-label-new-announcement">Temperamento</label>
+                        <p className="subtitle-seccion">Como esse bichinho costuma ser?</p>
+
+                        <div>
+                            <input onKeyPress={handleKeyPress} className="default-input-new-announcement" type="text" placeholder="Separe com Enter as características do seu pet"/>
+                            <ul className="list-temperament">
+                                {items.map( item => 
+                                    <li className="list-item-temperament" key={item.id}>
+                                        {item.value}<MdClose onClick={()=> removeItem(item.id)}/>
+                                    </li>
+                                )}
+                            </ul>
+                        </div>
+
+                    </div>
+                    
+                    <div className="form-new-announcement-item" id="form-new-announcement-item-address">
+                        <div className="login-item-wrapper">
+                            <label className="form-label-new-announcement">Endereço</label>
+                            <p className="subtitle-seccion">Onde o animal está alojado?</p>
+                            <div className="form-new-announcement-item-address-grid">
+                                <div>
+                                    <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> UF</label>
+                                    <select id="uf" value={uf} onChange={e => setUF(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}><option defaultValue >Estado</option></select>
+                                    <span className="validationError" id="msguf"/>
+                                </div>
+                                <div id="second-item-address-grid">
+                                    <label className="form-label-new-announcement"><span className="span__obrigatory__item">*</span> Cidade</label>
+                                    <select id="cidade" value={city} onChange={e => setCity(e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text)}> <option defaultValue >Cidade</option></select>
+                                    <span className="validationError" id="msgcity"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="form-new-announcement-item" id="form-new-announcement-item-pictures">
+                        <label className="form-label-new-announcement">Fotos</label>
+                        <p className="subtitle-seccion">Selecione até 5 fotos do seu bichinho</p>
+                        <label htmlFor="input-file-animal" className="button-charge-files"> <p><MdFileUpload/> CARREGAR ARQUIVOS</p> </label>
+                        <input type="file" id="input-file-animal"/>
+                    </div>
+                    <button className="negative-purple">CANCELAR</button>
+                    <button type="button" onClick={handleAnnouncementRegister} className="purple">CADASTRAR</button>
                 </div>
-                <button className="negative-purple">CANCELAR</button>
-                <button type="button" onClick={handleAnnouncementRegister} className="purple">CADASTRAR</button>
-            </div>
-            <div className="new-announcement-background-cat-wrapper">
-                <div className="new-announcement-background-cat"/>
-            </div>
+                <div className="new-announcement-background-cat-wrapper">
+                    <div className="new-announcement-background-cat"/>
+                </div>
+            </div>)}
         </div>
     )
 }

@@ -71,6 +71,20 @@ module.exports = {
         return availableAnnouncements;
     },
 
+    async availableAnnouncementsByAddress(city, uf){
+        const availableAnnouncements = await connection.announcement.findAll({
+            where:{
+                available : true,
+                city : city,
+                uf: uf
+            },
+            order: [
+                ['createdAt', 'DESC'],
+            ],
+        });
+        return availableAnnouncements;
+    },
+
     //LISTAR ANÚNCIOS DO CLIENT
     async getClientAnnouncements (id_par){
         const availableAnnouncements = await connection.announcement.findAll({

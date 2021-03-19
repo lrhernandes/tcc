@@ -76,13 +76,26 @@ export default function ContentFindAnnouncement(){
 
     useEffect(()=>{
         async function fetchData() {
-            const user = await api.get(`/client/${userId}`)
-            const userdata = user.data
-            const resp = await api.get(`/availableannouncementsbyaddress/${userId}/${userdata.city}/${userdata.uf}`)
-            const respdata = resp.data;
-            var filtered = respdata;
-            setAnnouncements(respdata)
+            const user = await api.get(`/client/${userId}`);
+            
             const parsed = queryString.parse(location.search);
+
+            const searchuf = localStorage.getItem('ufSearch');
+            const searchcity = localStorage.getItem('citySearch');
+
+            if(user.data != null){
+                const userdata = user.data
+                const resp = await api.get(`/availableannouncementsbyaddress/${userId}/${userdata.city}/${userdata.uf}`)
+                const respdata = resp.data;
+                var filtered = respdata;
+                setAnnouncements(respdata)
+            } else{
+                if(searchuf && searchcity){
+                    const resp = await api.get(`/announcementsbyaddress/${searchcity}/${searchuf}`)
+                    setAnnouncements(resp.data)
+                }
+            }
+
 
             if(parsed.sex){
                 filtered = filtered.filter(announcement => announcement.sex == parsed.sex);
@@ -108,10 +121,14 @@ export default function ContentFindAnnouncement(){
     }, []);
         
     async function handleFindAnnouncements(){
-        const resp = await api.get(`/availableannouncementsbyaddress/${userId}/${city}/${uf}`);
-        const respdata = resp.data;
-        setAnnouncements(respdata);
-        console.log(respdata)
+        if(userId){
+            const resp = await api.get(`/availableannouncementsbyaddress/${userId}/${city}/${uf}`);
+            const respdata = resp.data;
+            setAnnouncements(respdata);
+        }else{
+            const resp = await api.get(`/announcementsbyaddress/${city}/${uf}`)
+            setAnnouncements(resp.data)
+        }
     }
 
     return (

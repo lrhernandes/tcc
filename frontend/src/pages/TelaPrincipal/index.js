@@ -25,6 +25,7 @@ export default function TelaPrincipal(){
     const closeModal = () => {
         modalRef.current.closeModal()
     }
+
     return (
         <div className="page">
             {/* NOTIFICAÇÃO DE TERMOS DE ADOÇÃO */}
